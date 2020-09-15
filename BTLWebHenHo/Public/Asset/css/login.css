@@ -1,0 +1,64 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+.login-form {
+    width: 560px;
+    min-height: 100vh;
+    display: block;
+    background-color: #f7f7f7;
+    padding: 173px 55px 55px 55px;
+}
+
+input#username,
+input#password {
+    padding: 23px;
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 2rem;
+    border-radius: 3rem;
+    box-shadow: 1px 4px #888888;
+    border: 0;
+}
+
+.form-tittle {
+    width: 100%;
+    display: block;
+    font-size: 30px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+    padding-bottom: 43px;
+}
+
+input#remember-me {
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+
+#remember-forgot label {
+    color: #999999;
+    font-size: 1.1rem;
+}
+
+.login-btn {
+    width: 100%;
+    background: #6675df;
+    color: #fff;
+    margin-top: 1rem;
+    padding: 15px;
+    border-radius: 2rem;
+    border: 0;
+    font-weight: bold;
+}
+
+#login-background {
+    background: url(../img/bg-01.jpg);
+    width: calc(100% - 560px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+}

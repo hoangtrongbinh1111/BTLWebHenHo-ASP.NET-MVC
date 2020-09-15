@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS lib -->
+    <link rel="stylesheet" href="../~/Public/~/Public/Asset/css/reset.css">
+    <link rel="stylesheet" href="../~/Public/~/Public/Asset/css/global.css">
+    <link rel="stylesheet" href="../~/Public/~/Public/Asset/css/buy-coin.css">
+    <!-- Font-Awesome lib -->
+    <link rel="stylesheet" href="../lib/Fontawesome/css/all.css">
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS + JS-->
+    <link rel="stylesheet" href="../lib/bootstrap-4.5.0-dist/css/bootstrap.css">
+    <script src="../lib/bootstrap-4.5.0-dist/js/jquery 3.5.0.js"></script>
+    <script src="../lib/bootstrap-4.5.0-dist/js/popper.min.js"></script>
+    <script src="../lib/bootstrap-4.5.0-dist/js/bootstrap.js"></script>
+    <!-- jQuery -->
+    <script src="../~/Public/~/Public/Asset/js/personal.js"></script>
+    <title>Buy-coin</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="tittle-trade" class="d-flex py-3 justify-content-between">
+            <div class="d-flex">
+                <a href="personal.html">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h3>Chọn gói thanh toán</h3>
+            </div>
+            <!-- Giỏ hàng -->
+            <div>
+                <a href="payment.html">
+                    <i class="fas fa-cart-plus"></i>
+                </a>
+                <span class="product-num text-center">0</span>
+            </div>
+
+        </div>
+        <ul class="nav nav-pills nav-fill mx-2" id="myPill" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="tab-upgrade" data-toggle="tab" href="#content-half" role="tab" aria-controls="content-half" aria-selected="true">
+                    <div>
+                        <p class="mb-0">Nâng cấp tài khoản</p>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tab-shop" data-toggle="tab" href="#content-shop" role="tab" aria-controls="content-shop" aria-selected="false">
+                    <div>
+                        <p class="mb-0">Shop</p>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tab-buy-coin" data-toggle="tab" href="#content-likeme" role="tab" aria-controls="content-likeme" aria-selected="false">
+                    <div>
+                        <p class="mb-0">Mua xu</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myPillContent">
+            <!-- upgrade -->
+            <div class="tab-pane fade active show" id="content-half" role="tabpanel" aria-labelledby="tab-upgrade">
+                <div id="myCarousel" class="carousel slide border mt-3" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                        <li data-target="#myCarousel" data-slide-to="4"></li>
+                        <li data-target="#myCarousel" data-slide-to="5"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active bg-info" data-interval="1000">
+                            <!-- <img class="d-block w-100" src="../~/Public/~/Public/Asset/img/Blog-1.png" alt="Leopard"> -->
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/unlocked.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">Mở chat với nhiều người</h3>
+                                <p>Chat với tất cả người đã ghép đôi trong thời hạn nâng cấp</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/lightning.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">Kết đôi nhanh FREE tới 12 lần</h3>
+                                <p>Trò chuyện luôn mà không cần đợi người ấy thích lại</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/Rocket.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">Nổi bật ngay không giới hạn</h3>
+                                <p>Lên top danh sách người dùng trong 24h để được chú ý hơn</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/Hand.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">TỰ SOẠN LỜI CHÀO LÀM QUEN</h3>
+                                <p>Gửi tới người mình thích để tăng cơ hội được thích lại</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/infinity.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">GỬI THÍCH KHÔNG GIỚI HẠN</h3>
+                                <p>Nếu không nâng cấp tài khoản, bạn chỉ được gửi 100 lượt thích mỗi ngày.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/Slide3.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">TÌM KIẾM NÂNG CAO</h3>
+                                <p>Bộ lọc nhiều tiêu chí giúp tìm kiếm dễ dàng hơn</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="wp-package mt-3" id="package-upgrade">
+                    <div class="container">
+                        <div class="row mx-0">
+                            <div class="col-md-12 package">
+                                <div class="row">
+                                    <div class="col-md-2 package-radio">
+                                        <input type="radio" name="package" id="package-selected" class="ml-4" value="on">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="text-info">6 tháng</h4>
+                                        <small class="font-weight-bold">+12 Kết đôi nhanh</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h2 class="text-warning">84k/tháng</h2>
+                                        <h4 class="txt__light txt__linethrough">99k/tháng</h4>
+                                        <small>Thanh toán: 505k</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 package">
+                                <div class="row">
+                                    <div class="col-md-2 package-radio">
+                                        <input type="radio" name="package" id="package-selected" class="ml-4" value="on">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="text-info">3 tháng</h4>
+                                        <small class="font-weight-bold">+6 Kết đôi nhanh</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h2 class="text-warning">127k/tháng</h2>
+                                        <h4 class="txt__light txt__linethrough">149k/tháng</h4>
+                                        <small>Thanh toán: 380k</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 package">
+                                <div class="row">
+                                    <div class="col-md-2 package-radio">
+                                        <input type="radio" name="package" id="package-selected" class="ml-4" value="on">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="text-info">1 tháng</h4>
+                                        <small class="font-weight-bold">+2 Kết đôi nhanh</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h2 class="text-warning">169k/tháng</h2>
+                                        <h4 class="txt__light txt__linethrough">199k/tháng</h4>
+                                        <small>Thanh toán: 169k</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 package">
+                                <div class="row">
+                                    <div class="col-md-2 package-radio">
+                                        <input type="radio" name="package" id="package-selected" class="ml-4" value="on">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="text-info">1 tuần</h4>
+                                        <small class="font-weight-bold">+1 Kết đôi nhanh<br>+3 Ghép đôi ngẫu nhiên</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h2 class="text-warning">101k/tháng</h2>
+                                        <h4 class="txt__light txt__linethrough">110k/tháng</h4>
+                                        <small>Thanh toán: 101k</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-continue">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="payment.html" class="btn-info d-block text-center">Tiếp tục</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- End upgrade -->
+            <!-- Shop -->
+            <div class="tab-pane fade" id="content-shop" role="tabpanel" aria-labelledby="tab-shop">
+                <!-- Carousel -->
+                <div id="myCarousel_shop" class="carousel slide border mt-3" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel_shop" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel_shop" data-slide-to="1"></li>
+                        <li data-target="#myCarousel_shop" data-slide-to="2"></li>
+                        <li data-target="#myCarousel_shop" data-slide-to="3"></li>
+                        <li data-target="#myCarousel_shop" data-slide-to="4"></li>
+                        <li data-target="#myCarousel_shop" data-slide-to="5"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active bg-info" data-interval="1000">
+                            <!-- <img class="d-block w-100" src="../~/Public/~/Public/Asset/img/Blog-1.png" alt="Leopard"> -->
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/unlocked.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">mua quà tặng cho người bạn chat</h3>
+                                <p>Mỗi món quà là một nấc thang trong hẹn hò</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/lightning.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">KẾT ĐÔI NHANH</h3>
+                                <p>Dễ dàng tán đổ người bạn thích bằng những món quà ý nghĩa</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/floating_button.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">Quà đẹp giá rẻ</h3>
+                                <p>Lựa chọn những món quá thật xịn xò với giá thành hợp lý</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/Boost_superlike.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">NỔI BẬT NGAY</h3>
+                                <p>Mua càng nhiều quà càng dễ lên top</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/Refund.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">NHẬN HOÀN XU DỄ DÀNG</h3>
+                                <p>Mua quà sẽ được hoàn xu theo phần trăm giá trị món quà</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/Coins.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">tăng sức hút bản thân</h3>
+                                <p>Mua nhiều quà sẽ giúp bạn tăng tương tác với mọi người</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="carousel-control-prev" href="#myCarousel_shop" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel_shop" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <!-- End carousel -->
+                <div class="wp-package mt-3" id="package-shop">
+                    <div class="container">
+                        <div class="row mx-0">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="product-item text-center">
+                                            <!-- click here to redirect to detail -->
+                                            <a href="" class="product-thumbnail">
+                                                <img src="../~/Public/~/Public/Asset/img/shop/4-SGA7-so-go-a7-2.jpg" alt="" class="img-fluid mb-2">
+                                            </a>
+                                            <h3 class="product-tittle">
+                                                <a href="">Sổ tay lò xo, bìa gỗ khắc laser</a>
+                                            </h3>
+                                            <p class="product-price font-weight-bold text-danger">200 xu</p>
+                                            <button class="btn btn-success product-buy-now mr-2">Mua ngay</button>
+                                            <button class="btn btn-danger product-detail">Chi tiết</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="product-item text-center">
+                                            <!-- click here to redirect to detail -->
+                                            <a href="" class="product-thumbnail">
+                                                <img src="../~/Public/~/Public/Asset/img/shop/tranh-go-khac-laser-1-XS.jpg" alt="" class="img-fluid mb-2">
+                                            </a>
+                                            <h3 class="product-tittle">
+                                                <a href="">Tranh gỗ khắc laser</a>
+                                            </h3>
+                                            <p class="product-price font-weight-bold text-danger">500 xu</p>
+                                            <button class="btn btn-success product-buy-now mr-2">Mua ngay</button>
+                                            <button class="btn btn-danger product-detail">Chi tiết</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="product-item text-center">
+                                            <!-- click here to redirect to detail -->
+                                            <a href="" class="product-thumbnail">
+                                                <img src="../~/Public/~/Public/Asset/img/shop/b1.jpg" alt="" class="img-fluid mb-2">
+                                            </a>
+                                            <h3 class="product-tittle">
+                                                <a href="">Móc khóa gỗ hình tròn khắc theo yêu cầu</a>
+                                            </h3>
+                                            <p class="product-price font-weight-bold text-danger">150 xu</p>
+                                            <button class="btn btn-success product-buy-now mr-2">Mua ngay</button>
+                                            <button class="btn btn-danger product-detail">Chi tiết</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="product-item text-center">
+                                            <!-- click here to redirect to detail -->
+                                            <a href="" class="product-thumbnail">
+                                                <img src="../~/Public/~/Public/Asset/img/shop/L04-1.jpg" alt="" class="img-fluid mb-2">
+                                            </a>
+                                            <h3 class="product-tittle">
+                                                <a href="">Đèn LED khắc theo yêu cầu</a>
+                                            </h3>
+                                            <p class="product-price font-weight-bold text-danger">1200 xu</p>
+                                            <button class="btn btn-success product-buy-now mr-2">Mua ngay</button>
+                                            <button class="btn btn-danger product-detail">Chi tiết</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="btn-continue">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="payment.html" class="btn-info d-block text-center">Tiếp tục</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- End shop -->
+            <!-- Buy coin -->
+            <div class="tab-pane fade" id="content-likeme" role="tabpanel" aria-labelledby="tab-buy-coin">
+                <div id="myCarousel_buyCoin" class="carousel slide border mt-3" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel_buyCoin" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel_buyCoin" data-slide-to="1"></li>
+                        <li data-target="#myCarousel_buyCoin" data-slide-to="2"></li>
+                        <li data-target="#myCarousel_buyCoin" data-slide-to="3"></li>
+                        <li data-target="#myCarousel_buyCoin" data-slide-to="4"></li>
+                        <li data-target="#myCarousel_buyCoin" data-slide-to="5"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active bg-info" data-interval="1000">
+                            <!-- <img class="d-block w-100" src="../~/Public/~/Public/Asset/img/Blog-1.png" alt="Leopard"> -->
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/unlocked.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">MỞ CHAT VỚI TỪNG NGƯỜI</h3>
+                                <p>Mở 1 lần, chat không giới hạn với 1 người đã ghép đôi</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/lightning.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">KẾT ĐÔI NHANH</h3>
+                                <p>Trò chuyện luôn mà không cần đợi người ấy thích lại</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/floating_button.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">CHAT VỚI NGƯỜI LẠ</h3>
+                                <p>Ghép đôi ngẫu nhiên và trò chuyện trong 24h</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/Boost_superlike.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">NỔI BẬT NGAY</h3>
+                                <p>Lên top danh sách người dùng trong 24h để được chú ý hơn</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/Refund.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">NHẬN HOÀN XU DỄ DÀNG</h3>
+                                <p>Nếu bạn không nhận được hồi âm sau khi mở chat</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item bg-info" data-interval="1000">
+                            <div class="carousel-caption text-center">
+                                <img src="../~/Public/~/Public/Asset/img/slide-upgrade-buycoin/Coins.png" alt="" class="img-fluid">
+                                <h3 class="text-uppercase mb-3">KIẾM THÊM XU MIỄN PHÍ?</h3>
+                                <p>Tham khảo các cách kiếm xu<a href="" class="text-warning"> tại đây</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="carousel-control-prev" href="#myCarousel_buyCoin" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel_buyCoin" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="wp-package mt-3" id="package-buyCoin">
+                    <div class="container">
+                        <div class="row mx-0">
+                            <div class="col-md-12 package">
+                                <div class="row">
+                                    <div class="col-md-2 package-radio">
+                                        <input type="radio" name="package" id="package-selected" class="ml-4" value="on">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="text-info">2000xu</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h2 class="text-warning">255k</h2>
+                                        <h4 class="txt__light txt__linethrough">300k</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 package">
+                                <div class="row">
+                                    <div class="col-md-2 package-radio">
+                                        <input type="radio" name="package" id="package-selected" class="ml-4" value="on">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="text-info">1200xu</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h2 class="text-warning">170k</h2>
+                                        <h4 class="txt__light txt__linethrough">200k</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 package">
+                                <div class="row">
+                                    <div class="col-md-2 package-radio">
+                                        <input type="radio" name="package" id="package-selected" class="ml-4" value="on">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="text-info">450xu</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h2 class="text-warning">85k</h2>
+                                        <h4 class="txt__light txt__linethrough">100k</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 package">
+                                <div class="row">
+                                    <div class="col-md-2 package-radio">
+                                        <input type="radio" name="package" id="package-selected" class="ml-4" value="on">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="text-info">180xu</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h2 class="text-warning">50k</h2>
+                                        <h4 class="txt__light txt__linethrough">70k</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-continue">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="payment.html" class="btn-info d-block text-center">Tiếp tục</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

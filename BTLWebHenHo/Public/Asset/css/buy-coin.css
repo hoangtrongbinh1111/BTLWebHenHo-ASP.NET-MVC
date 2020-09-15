@@ -1,0 +1,157 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    background: #dae2f8 linear-gradient(90deg, #f7c9c9, #91a8d1)
+}
+
+#wrapper {
+    width: 660px;
+    margin: 0px auto;
+    background: #fff;
+    min-height: 100vh;
+}
+
+body a:hover {
+    text-decoration: none;
+}
+
+
+/* tittle trade */
+
+#tittle-trade {
+    color: #fff;
+    background: #4c71b5;
+}
+
+#tittle-trade a>i {
+    color: #fff;
+    font-size: 2rem;
+    margin: 0 1rem;
+    margin-top: 5px;
+}
+
+
+/* Số sản phẩm trong giỏ hàng */
+
+.product-num {
+    width: 25px;
+    height: 25px;
+    background: red;
+    border-radius: 2rem;
+    position: absolute;
+    top: 0;
+    right: 32.5%;
+}
+
+
+/* tab menu */
+
+ul.nav {
+    margin-top: 1rem;
+    border: 1px solid #4c71b5;
+    border-radius: 2rem;
+}
+
+a#tab-upgrade {
+    border-radius: 2rem 0 0 2rem;
+}
+
+a#tab-buy-coin {
+    border-radius: 0 2rem 2rem 0;
+}
+
+
+/* carousel */
+
+.carousel-caption {
+    bottom: 70px !important;
+}
+
+ol.carousel-indicators>li {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}
+
+.carousel-item {
+    height: 300px;
+}
+
+.carousel-caption h5 {
+    color: #000000;
+}
+
+.carousel-caption>img {
+    width: 4rem;
+}
+
+
+/* package-upgrade */
+
+.wp-package {
+    padding-bottom: 5rem;
+}
+
+.package {
+    background: hsla(0, 0%, 94%, .5);
+    padding: 1.666667rem 0;
+}
+
+.package-radio {
+    padding-left: 2rem;
+    margin-top: 10px;
+}
+
+input#package-selected {
+    transform: scale(2.5);
+}
+
+.btn-continue {
+    width: 660px;
+    padding-top: 1rem;
+    position: fixed;
+    bottom: 0;
+}
+
+.btn-continue a {
+    border-radius: 2rem;
+    border: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.btn-continue a:hover {
+    text-decoration: none;
+}
+
+
+/* Shop */
+
+a.product-thumbnail:hover>img {
+    transform: scale(1.05);
+    border: 1px solid #4c71b5;
+}
+
+h3.product-tittle {
+    font-size: 16px;
+    height: 25px;
+}
+
+h3.product-tittle>a {
+    color: #000;
+    font-weight: 500;
+}
+
+
+/* một số hàm hỗ trợ thêm */
+
+.txt__light {
+    color: #899096 !important;
+}
+
+.txt__linethrough {
+    text-decoration-line: line-through !important;
+}

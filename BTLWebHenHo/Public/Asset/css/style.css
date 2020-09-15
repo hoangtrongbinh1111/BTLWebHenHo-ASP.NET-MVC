@@ -1,0 +1,124 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+:root {
+    --bg-header: #8E8E8D;
+}
+
+#wrapper {
+    background: #F2EFEC;
+}
+
+
+/* ==========================================CONTENT============================================ */
+
+
+/* -----Introduce----- */
+
+.introduce-content>ul {
+    padding: 10rem 0;
+}
+
+.introduce-content>ul>li {
+    background-image: linear-gradient(1turn, #eee, #eee 17%, #fff);
+    border-radius: 3rem;
+    margin-bottom: 2rem;
+}
+
+.introduce-content>ul>li>p {
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: .5rem 1.5rem .5rem .7rem;
+    margin-left: .625rem;
+    color: #555;
+}
+
+
+/* ----download-app---- */
+
+.download-app {
+    padding: 4rem 0 3rem 0;
+}
+
+.download-app>h2 {
+    margin-bottom: 4rem;
+    font-size: 2.44141rem;
+    font-weight: 400;
+}
+
+
+/* CSKH */
+
+#wrap_chat_min {
+    background: #ff8383;
+    position: fixed;
+    bottom: 0px;
+    left: 10px;
+    padding: 0px 100px;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+p.chat {
+    margin: 10px 0px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+#wrap_chat_max {
+    display: block;
+    width: 350px;
+    /*background: #ff8383;*/
+    position: fixed;
+    bottom: 0px;
+    left: 10px;
+    /*padding: 0px 60px;*/
+    border-radius: 6px;
+    /*cursor: pointer;*/
+    background-color: #fff;
+    z-index: 9999;
+    display: none;
+}
+
+.header_chat {
+    background-color: #ff8383;
+    padding: 5px 10px;
+    position: relative;
+}
+
+.content_chat {
+    padding: 10px 10px;
+}
+
+.content_chat>form {
+    border: 1px solid #e1e1e1;
+    padding: 15px 0px;
+}
+
+.content_chat input {
+    height: 35px;
+    width: 90% !important;
+    margin: 0px auto;
+}
+
+input#btn_chat {
+    background-color: #ff8383;
+    color: red;
+    font-weight: bold;
+}
+
+#bt_close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.footer_chat>p {
+    font-size: 12px;
+    margin-bottom: 5px;
+}

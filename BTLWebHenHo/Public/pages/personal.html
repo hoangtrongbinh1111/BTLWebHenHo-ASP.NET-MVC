@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS lib -->
+    <link rel="stylesheet" href="../~/Public/~/Public/Asset/css/reset.css">
+    <link rel="stylesheet" href="../~/Public/~/Public/Asset/css/global.css">
+    <link rel="stylesheet" href="../~/Public/~/Public/Asset/css/personal.css">
+    <!-- Font-Awesome lib -->
+    <link rel="stylesheet" href="../lib/Fontawesome/css/all.css">
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS + JS-->
+    <link rel="stylesheet" href="../lib/bootstrap-4.5.0-dist/css/bootstrap.css">
+    <script src="../lib/bootstrap-4.5.0-dist/js/jquery 3.5.0.js"></script>
+    <script src="../lib/bootstrap-4.5.0-dist/js/popper.min.js"></script>
+    <script src="../lib/bootstrap-4.5.0-dist/js/bootstrap.js"></script>
+    <!-- jQuery -->
+    <script src="../~/Public/~/Public/Asset/js/personal.js"></script>
+    <title>Personal</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <ul class="nav nav-pills nav-fill" id="myPill" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="tab-half" data-toggle="tab" href="#content-half" role="tab" aria-controls="content-half" aria-selected="false">
+                    <div>
+                        <i class="fas fa-heart"></i>
+                        <p>Một nửa</p>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tab-likeme" data-toggle="tab" href="#content-likeme" role="tab" aria-controls="content-likeme" aria-selected="false">
+                    <div>
+                        <i class="fas fa-thumbs-up"></i>
+                        <p>Ai thích tôi</p>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tab-chat" data-toggle="tab" href="#content-chat" role="tab" aria-controls="content-chat" aria-selected="false">
+                    <div>
+                        <i class="fas fa-comments"></i>
+                        <p>Trò chuyện</p>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" id="tab-personal" data-toggle="tab" href="#content-personal" role="tab" aria-controls="content-personal" aria-selected="true">
+                    <div>
+                        <i class="fas fa-user-circle"></i>
+                        <p>Personal</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myPillContent">
+            <div class="tab-pane fade" id="content-half" role="tabpanel" aria-labelledby="tab-half">
+                JavaScript is a cross-platform, object-oriented scripting language ...
+            </div>
+            <div class="tab-pane fade" id="content-likeme" role="tabpanel" aria-labelledby="tab-likeme">
+                CSS stands for Cascading Style Sheets. ...
+            </div>
+            <div class="tab-pane fade" id="content-chat" role="tabpanel" aria-labelledby="tab-chat">
+                Bootstrap is a free front-end framework for faster and easier web development...
+            </div>
+            <div class="tab-pane fade show active" id="content-personal" role="tabpanel" aria-labelledby="tab-personal">
+                <div class="text-center my-5">
+                    <a href="" class="card_link">
+                        <img src="../~/Public/~/Public/Asset/img/male_default_large.jpg" alt="">
+                        <form action="" class="card_meta">
+                            <label for="change-avt">Thay ảnh đại diện</label>
+                            <input type="file" id="change-avt" class="d-none">
+                        </form>
+                        <!-- <p class="card_meta">Thay ảnh đại diện</p> -->
+                    </a>
+                </div>
+                <div id="list-img">
+                    <div class="tittle-item">
+                        Ảnh
+                    </div>
+                    <p class="sub-tittle-item">Chia sẻ những hình ảnh mới nhất của bạn</p>
+                    <div class="btn-item text-center">
+                        <button class="btn btn-info">Tải ảnh lên</button>
+                    </div>
+                    <div class="wp-item-info d-flex
+                            justify-content-between">
+                        <div class="item-info-user ml-3 font-weight-bolder">
+                            <p class="item-fullname">Bình Looper</p>
+                            <p class="item-age">20 - <span class="item-address">Hà Nội</span></p>
+                        </div>
+                        <div class="hide-age-user mr-3">
+                            <p>Ẩn tuổi<sup id="hide-age" class="ml-2"><i
+                                            class="far fa-info-circle"></i></sup></p>
+                            <label class="form-switch">
+                                    <input type="checkbox" id="switch-ios">
+                                    <i></i>
+                                </label>
+                        </div>
+                    </div>
+                </div>
+                <div id="upgrade-account">
+                    <div class="tittle-item">
+                        Nâng cấp tài khoản
+                    </div>
+                    <div class="btn-item text-center py-4">
+                        <button class="btn btn-info mb-0">Nâng cấp ngay</button>
+                    </div>
+                </div>
+                <div id="introduce-self">
+                    <div class="tittle-item">
+                        Giới thiệu bản thân
+                    </div>
+                    <p class="sub-tittle-item">Giới thiệu bản thân thật thú vị và thu hút nhé</p>
+                    <div class="btn-item text-center">
+                        <button class="btn btn-info">Sửa giới thiệu bản thân</button>
+                    </div>
+                </div>
+                <form>
+                    <div id="Info-basic-username">
+                        <div class="tittle-item">
+                            Thông tin cơ bản
+                        </div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Tên</td>
+                                    <td>
+                                        <a href="" class="d-flex
+                                                justify-content-between">
+                                            <span>Bình Looper</span>
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Tuổi</td>
+                                    <td>
+                                        30
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Chòm sao</td>
+                                    <td>
+                                        Song Tử
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Chiều cao</td>
+                                    <td>
+                                        <input type="number" name="height-user" min=135 max=200 value=150>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40 pt-15">Dáng người
+                                    </td>
+                                    <td>
+                                        <select name="body-user" class="select-properties-user">
+                                                <option value="0">_</option>
+                                                <option value="1">Mảnh mai</option>
+                                                <option value="2">Thể thao</option>
+                                                <option value="3">Trung bình</option>
+                                                <option value="4">Cơ bắp</option>
+                                                <option value="5">Hơi mập</option>
+                                                <option value="6">Đậm</option>
+                                                <option value="7">Cao lớn</option>
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40 pt-15">Nhóm máu
+                                    </td>
+                                    <td>
+                                        <select name="blood-user" class="select-properties-user">
+                                                <option value="0">_</option>
+                                                <option value="1">A</option>
+                                                <option value="2">B</option>
+                                                <option value="3">O</option>
+                                                <option value="4">AB</option>
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40 pt-15">Quốc gia
+                                    </td>
+                                    <td>
+                                        <select name="national-user" class="select-properties-user">
+                                                <option value="0">_</option>
+                                                <option value="1">Việt Nam</option>
+                                                <option value="2">Nhật Bản</option>
+                                                <option value="3">Trung Quốc</option>
+                                                <option value="4">Hàn Quốc</option>
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40 pt-15">Quê quán
+                                    </td>
+                                    <td>
+                                        <select name="country-user" class="select-properties-user">
+                                                <option value="0">_</option>
+                                                <option  
+                                                    value="1">An Giang</option><option
+                                                      value="2">Bà
+                                                    Rịa - Vũng Tàu</option><option
+                                                      value="3">Bạc
+                                                    Liêu</option><option
+                                                      value="4">Bắc
+                                                    Kạn</option><option
+                                                      value="5">Bắc
+                                                    Giang</option><option
+                                                      value="6">Bắc
+                                                    Ninh</option><option
+                                                      value="7">Bến
+                                                    Tre</option><option
+                                                      value="8">Bình
+                                                    Dương</option><option
+                                                      value="9">Bình
+                                                    Định</option><option
+                                                      value="10">Bình
+                                                    Phước</option><option
+                                                      value="11">Bình
+                                                    Thuận</option><option
+                                                      value="12">Cà
+                                                    Mau</option><option
+                                                      value="13">Cao
+                                                    Bằng</option><option
+                                                      value="14">Cần
+                                                    Thơ</option><option
+                                                      value="15">Đà
+                                                    Nẵng</option><option
+                                                      value="16">Đắk
+                                                    Lắk</option><option
+                                                      value="17">Đắk
+                                                    Nông</option><option
+                                                      value="18">Đồng
+                                                    Nai</option><option
+                                                      value="19">Đồng
+                                                    Tháp</option><option
+                                                      value="20">Điện
+                                                    Biên</option><option
+                                                      value="21">Gia
+                                                    Lai</option><option
+                                                      value="22">Hà
+                                                    Giang</option><option
+                                                      value="23">Hà
+                                                    Nam</option><option
+                                                      value="24">Hà
+                                                    Nội</option><option
+                                                      value="25">Hà
+                                                    Tĩnh</option><option
+                                                      value="26">Hải
+                                                    Dương</option><option
+                                                      value="27">Hải
+                                                    Phòng</option><option
+                                                      value="28">Hòa
+                                                    Bình</option><option
+                                                      value="29">Hậu
+                                                    Giang</option><option
+                                                      value="30">Hưng
+                                                    Yên</option><option
+                                                      value="31">TP.
+                                                    Hồ Chí Minh</option><option
+                                                      value="32">Khánh
+                                                    Hòa</option><option
+                                                      value="33">Kiên
+                                                    Giang</option><option
+                                                      value="34">Kon
+                                                    Tum</option><option
+                                                      value="35">Lai
+                                                    Châu</option><option
+                                                      value="36">Lào
+                                                    Cai</option><option
+                                                      value="37">Lạng
+                                                    Sơn</option><option
+                                                      value="38">Lâm
+                                                    Đồng</option><option
+                                                      value="39">Long
+                                                    An</option><option
+                                                      value="40">Nam
+                                                    Định</option><option
+                                                      value="41">Nghệ
+                                                    An</option><option
+                                                      value="42">Ninh
+                                                    Bình</option><option
+                                                      value="43">Ninh
+                                                    Thuận</option><option
+                                                      value="44">Phú
+                                                    Thọ</option><option
+                                                      value="45">Phú
+                                                    Yên</option><option
+                                                      value="46">Quảng
+                                                    Bình</option><option
+                                                      value="47">Quảng
+                                                    Nam</option><option
+                                                      value="48">Quảng
+                                                    Ngãi</option><option
+                                                      value="49">Quảng
+                                                    Ninh</option><option
+                                                      value="50">Quảng
+                                                    Trị</option><option
+                                                      value="51">Sóc
+                                                    Trăng</option><option
+                                                      value="52">Sơn
+                                                    La</option><option
+                                                      value="53">Tây
+                                                    Ninh</option><option
+                                                      value="54">Thái
+                                                    Bình</option><option
+                                                      value="55">Thái
+                                                    Nguyên</option><option
+                                                      value="56">Thanh
+                                                    Hóa</option><option
+                                                      value="57">Thừa
+                                                    Thiên - Huế</option><option
+                                                      value="58">Tiền
+                                                    Giang</option><option
+                                                      value="59">Trà
+                                                    Vinh</option><option
+                                                      value="60">Tuyên
+                                                    Quang</option><option
+                                                      value="61">Vĩnh
+                                                    Long</option><option
+                                                      value="62">Vĩnh
+                                                    Phúc</option><option
+                                                      value="63">Yên
+                                                    Bái</option><option
+                                                     
+                                                    value="110">Tokyo</option><option
+                                                     
+                                                    value="109">Aichi</option><option
+                                                     
+                                                    value="108">Saitama</option><option
+                                                     
+                                                    value="107">Osaka</option><option
+                                                     
+                                                    value="106">Kanagawa</option><option
+                                                     
+                                                    value="105">Chiba</option><option
+                                                     
+                                                    value="104">Hyogo</option><option
+                                                     
+                                                    value="103">Fukuoka</option><option
+                                                     
+                                                    value="102">Hiroshima</option><option
+                                                     
+                                                    value="101">Gunma</option><option
+                                                     
+                                                    value="100">Shizuoka</option><option
+                                                      value="99">Ibaraki</option><option
+                                                      value="98">Okayama</option><option
+                                                      value="97">Gifu</option><option
+                                                      value="96">Tochigi</option><option
+                                                      value="95">Mie</option><option
+                                                      value="94">Hokkaido</option><option
+                                                      value="93">Miyagi</option><option
+                                                      value="92">Kumamoto</option><option
+                                                      value="91">Kyoto</option><option
+                                                      value="90">Nagano</option><option
+                                                      value="89">Yamaguchi</option><option
+                                                      value="88">Toyama</option><option
+                                                      value="87">Ishikawa</option><option
+                                                      value="86">Ehime</option><option
+                                                      value="85">Kagoshima</option><option
+                                                      value="84">Kagawa</option><option
+                                                      value="83">Nagasaki</option><option
+                                                      value="82">Fukushima</option><option
+                                                      value="81">Oita</option><option
+                                                      value="80">Shiga</option><option
+                                                      value="79">Niigata</option><option
+                                                      value="78">Fukui</option><option
+                                                      value="77">Yamanashi</option><option
+                                                      value="76">Iwate</option><option
+                                                      value="75">Tokushima</option><option
+                                                      value="74">Saga</option><option
+                                                      value="73">Nara</option><option
+                                                      value="72">Miyazaki</option><option
+                                                      value="71">Okinawa</option><option
+                                                      value="70">Aomori</option><option
+                                                      value="69">Yamagata</option><option
+                                                      value="68">Tottori</option><option
+                                                      value="67">Shimane</option><option
+                                                      value="66">Kochi</option><option
+                                                      value="65">Wakayama</option><option
+                                                      value="64">Akita</option>
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40 pt-15">Anh chị em
+                                    </td>
+                                    <td>
+                                        <select name="family-user" class="select-properties-user">
+                                                <option value="0">_</option>
+                                                <option value="1">Con trai cả</option>
+                                                <option value="2">Con trai thứ</option>
+                                                <option value="3">Con trai út</option>                                              
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40 pt-15">Ngôn ngữ
+                                    </td>
+                                    <td>
+                                        <select name="language-user" class="select-properties-user">
+                                                <option value="0">_</option>
+                                                <option value="1">Tiếng Việt</option>
+                                                <option value="2">Tiếng Anh</option>
+                                                <option value="3">Tiếng khác</option>                                              
+                                            </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="Info-job-username">
+                        <div class="tittle-item">
+                            Học vấn - Nghề nghiệp
+                        </div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Học vấn</td>
+                                    <td>
+                                        <select name="qualify-user" class="select-properties-user">
+                                                <option value="0">_</option>
+                                                <option value="1">Chưa tốt nghiệp PT</option>
+                                                <option value="2">Tốt nghiệp PT</option>
+                                                <option value="3">Học nghề</option>      
+                                                <option value="4">Trung cấp</option>   
+                                                <option value="5">Cao đẳng</option>   
+                                                <option value="6">Đại học</option>   
+                                                <option value="7">Thạc sĩ</option>     
+                                                <option value="8">Tiến sĩ</option>                                                                                 
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Nghề nghiệp</td>
+                                    <td>
+                                        <select name="job-user" class="select-properties-user">
+                                                <option value="0">_</option>
+                                                <option   value="1">Nghệ thuật</option><option   value="2">Kinh doanh</option><option   value="3">Kỹ thuật</option><option   value="4">Luật pháp</option><option   value="5">Y dược</option><option   value="6">Giáo dục</option><option   value="7">Báo chí</option><option   value="8">Giải trí</option><option   value="15">Truyền thông</option><option   value="9">Ẩm thực</option><option   value="10">Hành chính</option><option   value="11">Thể thao</option><option   value="12">Công an</option><option   value="16">Quân đội</option><option   value="17">Xây dựng</option><option   value="18">Tài chính</option><option   value="19">Ngân hàng</option><option   value="20">CNTT</option><option   value="21">Nông nghiệp</option><option   value="22">Vận tải</option><option   value="23">Du lịch</option><option   value="14">Sinh viên</option><option   value="24">Chưa đi làm</option><option   value="13">Khác</option>                                                                               
+                                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Thu nhập hàng tháng</td>
+                                    <td>
+                                        <select name="salary-user" class="select-properties-user">
+                                                <option value="0">Không có</option>
+                                                <option value="1">Dưới 5 Triệu VNĐ</option>
+                                                <option value="2">5 đến 10 Triệu VNĐ</option>
+                                                <option value="3">10 đến 15 Triệu VNĐ</option>      
+                                                <option value="4">15 đến 20 Triệu VNĐ</option>   
+                                                <option value="5">Trên 20 Triệu VNĐ</option>                                                                                                                                
+                                            </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="Info-family-username">
+                        <div class="tittle-item">
+                            Gia đình
+                        </div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Tình trạng hôn nhân</td>
+                                    <td>
+                                        <select name="marriage-user" class="select-properties-user">
+                                              <option value="0">_</option>
+                                              <option value="1">Độc thân</option>
+                                              <option value="2">Độc thân(Đã ly hôn)</option>
+                                              <option value="3">Độc thân(Người kia đã mất)</option>                                                                                                                                   
+                                          </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Đã có con</td>
+                                    <td>
+                                        <select name="children-user" class="select-properties-user">
+                                              <option value="0">_</option>
+                                              <option value="1">Chưa có con</option>
+                                              <option value="2">Có. Đang sống cùng</option>
+                                              <option value="3">Có. Không sống cùng</option> 
+                                          </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Mong muốn có con</td>
+                                    <td>
+                                        <select name="need-children-user" class="select-properties-user">
+                                              <option value="0">_</option>
+                                              <option value="1">Không muốn có con</option>
+                                              <option value="2">Có từ 1 đến 2 con</option>
+                                              <option value="3">Có từ 3 con trở lên</option>      
+                                              <option value="4">Chưa rõ</option>                                                                                                                                      
+                                          </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Tình trạng sinh sống</td>
+                                    <td>
+                                        <select name="live-user" class="select-properties-user">
+                                            <option value="0">_</option>
+                                            <option value="1">Một mình</option>
+                                            <option value="2">Cùng bạn</option>
+                                            <option value="3">Cùng vật nuôi</option>      
+                                            <option value="4">Cùng gia đình</option> 
+                                            <option value="5">Khác</option>                                                                                                                                      
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="Info-family-username">
+                        <div class="tittle-item">
+                            Quan điểm - Phong cách sống
+                        </div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Sở thích</td>
+                                    <td>
+                                        <input type="text" name="hobbies-user">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Tính cách</td>
+                                    <td>
+                                        <select name="character-user" class="select-properties-user">
+                                            <option value="0">_</option>
+                                            <option value="1">Tốt bụng</option>
+                                            <option value="2">Quyết đoán</option>
+                                            <option value="3">Kỹ tính</option> 
+                                            <option value="4">Trung thực</option> 
+                                            <option value="5">Thông minh</option> 
+                                            <option value="6">Nhút nhát</option> 
+                                            <option value="7">Bình tĩnh</option> 
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Quan hệ xã hội</td>
+                                    <td>
+                                        <select name="relationship-user" class="select-properties-user">
+                                            <option value="0">_</option>
+                                            <option value="1">Thích chỗ đông người</option>
+                                            <option value="2">Thích chỗ vắng người</option>
+                                            <option value="3">Thích một mình</option>      
+                                            <option value="4">Dễ dàng để trở thành bạn bè</option>     
+                                            <option value="5">Cần thời gian để trở thành bạn bè</option>                                                                                                                                     
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Mong muốn gặp mặt</td>
+                                    <td>
+                                        <select name="language-user" class="select-properties-user">
+                                          <option value="0">_</option>
+                                          <option value="1">Sau khi kết bạn</option>
+                                          <option value="2">Kết bạn và thấy quan tâm</option>
+                                          <option value="3">Kết bạn và nói chuyện hợp</option>                                                                                                                                                                                    
+                                      </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Mong muốn kết hôn</td>
+                                    <td>
+                                        <select name="need-marry-user" class="select-properties-user">
+                                        <option value="0">_</option>
+                                        <option value="1">Kết hôn sớm</option>
+                                        <option value="2">Trong vòng 2-3 năm tới</option>
+                                        <option value="3">Khi gặp người phù hợp</option>      
+                                        <option value="4">Không muốn kết hôn</option>    
+                                        <option value="5">Chưa rõ lắm</option>                                                                                                                                                                                  
+                                    </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Mong muốn gặp mặt</td>
+                                    <td>
+                                        <select name="language-user" class="select-properties-user">
+                                      <option value="0">_</option>
+                                      <option value="1">Sau khi kết bạn</option>
+                                      <option value="2">Kết bạn và thấy quan tâm</option>
+                                      <option value="3">Kết bạn và nói chuyện hợp</option>                                                                                                                                                                                    
+                                  </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Sẵn sàng làm việc nhà</td>
+                                    <td>
+                                        <select name="do-homework-user" class="select-properties-user">
+                                    <option value="0">_</option>
+                                    <option value="1">Tự làm</option>
+                                    <option value="2">Có thể làm</option>
+                                    <option value="3">Muốn cùng làm</option>      
+                                    <option value="4">Muốn đối tác làm</option>                                                                                                                                                                                   
+                                </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Ngày nghỉ</td>
+                                    <td>
+                                        <select name="dayoff-user" class="select-properties-user">
+                                  <option value="0">_</option>
+                                  <option value="1">Thứ 7 và chủ nhật</option>
+                                  <option value="2">Ngày trong tuần</option>
+                                  <option value="3">Không cố định</option> 
+                                  <option value="4">Khác</option>                                                                                                                                                                                   
+                              </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Uống rượu</td>
+                                    <td>
+                                        <select name="drink-wine-user" class="select-properties-user">
+                                <option value="0">_</option>
+                                <option value="1">Có</option>
+                                <option value="2">Không</option>
+                                <option value="3">Thi thoảng</option>                                                                                                                                                                                    
+                            </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Hút thuốc</td>
+                                    <td>
+                                        <select name="language-user" class="select-properties-user">
+                              <option value="0">_</option>
+                              <option value="1">Có</option>
+                                <option value="2">Không</option>
+                                <option value="3">Thi thoảng</option>                                                                                                                                                                                     
+                          </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=" txt-light f-18 w-40">Chi phí cho lần hẹn đầu</td>
+                                    <td>
+                                        <select name="cost-first-user" class="select-properties-user">
+                            <option value="0">_</option>
+                            <option value="1">Nam giới trả</option>
+                            <option value="2">Nam giới trả nhiều hơn</option>
+                            <option value="3">Chia đều</option>   
+                            <option value="4">Không quan trọng</option>  
+                            <option value="">Sẽ thảo luận rồi quyết định sau</option>                                                                                                                                                                                   
+                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <!-- Side bar right -->
+            <div id="side-bar">
+                <div id="side-header" class="d-flex m-3">
+                    <a href="" class="w-25 mr-3">
+                        <img src="../~/Public/~/Public/Asset/img/male_default_large.jpg" alt="" class="img-fluid">
+                    </a>
+                    <div id="info-user-header">
+                        <div class="username-header f-18 mb-2">
+                            <a href="" class="font-weight-bold">Bình Looper</a>
+                            <span class="id-username text-info">ID - 261599</span>
+                        </div>
+                        <!-- Hoàn thiện hồ sơ -->
+                        <div class="percent-profile d-flex justify-content-between f-18 mb-2">
+                            <i class="fas fa-battery-empty text-danger"><span class="text-info"> 0% hoàn thiện hồ sơ</span></i>
+                            <a href=""><i class="fas fa-pencil-alt"></i></a>
+                        </div>
+                        <!-- Xu -->
+                        <div class="coin-user">
+                            <i class="fas fa-coins"><span>160</span></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="button-function">
+                    <a href="buy-coin.html" class="w-45 d-inline-block buy-coin">
+                        <img src="../~/Public/~/Public/Asset//img/Coin.png" alt="" class="img-fluid">Mua xu
+                    </a>
+                    <a href="" class="w-45 d-inline-block highlight-now buy-coin">
+                        <i class="fas fa-rocket"></i>Nổi bật ngay
+                    </a>
+                    <a href="" class="d-block buy-coin mt-2 authentic-account">
+                        <i class="fas fa-check-circle mr-2"></i>Xác thực tài khoản
+                    </a>
+                </div>
+                <div id="list-function" class="mt-5">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="" class="d-flex">
+                                <img src="../~/Public/~/Public/Asset/img/Upgrade.png" alt="" class="img-fluid"> Nâng cấp tài khoản
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="d-flex">
+                                <i class="fas fa-university"></i> Hỗ trợ CK ngân hàng, ATM
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="d-flex">
+                                <img src="../~/Public/~/Public/Asset/img/match-list-icon.png" alt="" class="img-fluid"> Danh sách kết đôi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="d-flex">
+                                <i class="far fa-eye"></i> Khách thăm
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="d-flex">
+                                <i class="fas fa-heartbeat"></i> Ai đã quan tâm tôi?
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="d-flex">
+                                <img src="../~/Public/~/Public/Asset/img/KM_2.png" alt="" class="img-fluid"> Khuyến mãi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="d-flex">
+                                <i class="fas fa-list-ol"></i> Danh sách mở rộng
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="d-flex">
+                                <img src="../~/Public/~/Public/Asset/img/tarot-icon.png" alt="" class="img-fluid"> Bói bài Tarot
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="d-flex">
+                                <i class="far fa-question-circle"></i> Khám phá bản thân
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="d-flex">
+                                <i class="fas fa-share-alt"></i> Giới thiệu bạn bè & ưu đãi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="d-flex">
+                                <i class="fas fa-cog"></i> Cài đặt hệ thống
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="d-flex">
+                                <i class="fas fa-brain"></i> Tôi muốn hỏi
+                            </a>
+                        </li>
+                        <li class="border-bottom-0">
+                            <a href="" class="d-flex ">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </li>
+                    </ul>
+                    <h3 class="font-weight-bold text-info download-app">Tải ứng dụng hẹn hò miễn phí MTAhub</h3>
+                    <div id="download-app-in-store" class="d-flex ml-2">
+                        <a href="">
+                            <img src="../~/Public/~/Public/Asset/img/app_store.svg" alt="" class="w-100">
+                        </a>
+                        <a href="">
+                            <img src="../~/Public/~/Public/Asset/img/google_play.svg" alt="" class="w-100">
+                        </a>
+                    </div>
+                </div>
+                <div id="list-menu-footer" class="mt-5">
+                    <ul class="list-unstyled d-flex flex-wrap">
+                        <li>
+                            <a href="">Điều khoản</a>
+                        </li>
+                        <li>
+                            <a href="">Bảo mật</a>
+                        </li>
+                        <li>
+                            <a href="">Trợ giúp</a>
+                        </li>
+                        <li>
+                            <a href="">Liên hệ</a>
+                        </li>
+                        <li>
+                            <a href="">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Modal thông báo ẩn tuổi -->
+        <div class="modal" id="myModal-info-hide-age">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Ẩn số tuổi của bạn</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Nếu bạn kích hoạt tính năng này, khi người khác xem hồ sơ của bạn, tuổi của bạn sẽ được ẩn đi.
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal thông báo có hiện tuổi hay không -->
+        <div class="modal" id="myModal-hide-age">
+            <div class="modal-dialog">
+                <div class="modal-content text-center">
+                    <!-- Modal Header -->
+                    <div class="modal-header d-flex flex-column">
+                        <img src="../~/Public/~/Public/Asset/img/hide_age.png" alt="" class="mx-auto">
+                        <h4 class="modal-title mx-auto">Ẩn số tuổi của bạn</h4>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Nếu bạn kích hoạt tính năng này, khi người khác xem hồ sơ của bạn, tuổi của bạn sẽ được ẩn đi.
+                        <p>Bạn cần nâng cấp tài khoản hoặc sử dụng xu</p>
+                        <p>Tính năng sẽ khả dụng trong suốt thời hạn gói Nâng cấp hoặc khả dụng vĩnh viễn nếu được mua bằng Xu.</p>
+                        <div class="btn-item text-center">
+                            <button class="btn btn-info">Nâng cấp ngay</button>
+                        </div>
+                        <a href="">Sử dụng xu</a>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal nổi bật ngay -->
+        <div class="modal" id="myModal-highlight-now">
+            <div class="modal-dialog">
+                <div class="modal-content text-center">
+                    <!-- Modal Header -->
+                    <div class="modal-header d-flex flex-column">
+                        <img src="../~/Public/~/Public/Asset/img/hide_age.png" alt="" class="mx-auto">
+                        <h4 class="modal-title mx-auto">Nổi bật ngay</h4>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Bạn sẽ được ON TOP trong vòng 24h, mọi người có thể thấy và làm quen với bạn một cách nhanh chóng hơn
+                        <a href="">Nổi bật ngay</a>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="back-to-top" href="#" class="btn btn-danger btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+
+</body>
+
+</html>

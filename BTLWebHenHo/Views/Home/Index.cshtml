@@ -1,0 +1,77 @@
+﻿
+@{
+     ViewBag.Title = "Index";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Public/Asset/css/style.css">
+<!-- CONTENT -->
+<div id="wp-content">
+     <div class="welcome-member-img">
+          <img src="~/Public/Asset/img/2m-member-welcome.png" alt="" class="img-fluid">
+     </div>
+     <div class="introduce-page py-5">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-12">
+                         <div class="row">
+                              <div class="col-md-6">
+                                   <img src="~/Public/Asset/img/phone_decor.png" alt="">
+                              </div>
+                              <div class="col-md-6 introduce-content">
+                                   <ul class="list-unstyled">
+                                        <li class=" d-inline-block">
+                                             <img src="~/Public/Asset/img/icon-1.png" alt="">
+                                             <p class="float-right">Kết bạn, làm quen với <strong class="text-info">hàng nghìn</strong><br> thành viên mới mỗi ngày</p>
+                                        </li>
+                                        <li class=" d-inline-block">
+                                             <img src="~/Public/Asset/img/icon-1.png" alt="">
+                                             <p class="float-right">Tự động đề xuất những người<br><strong class="text-info">phù hợp nhất</strong> với tiêu chí của bạn</p>
+                                        </li>
+                                        <li class=" d-inline-block">
+                                             <img src="~/Public/Asset/img/icon-1.png" alt="">
+                                             <p class="float-right">Cam kết tìm người yêu thành công<br> <strong class="text-info">chỉ sau 3 tháng</strong></p>
+                                        </li>
+                                   </ul>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <div class="download-app text-center">
+          <h2>Tải ứng dụng hẹn hò miễn phí MTAhub</h2>
+          <div class="installer-app">
+               <a href=""><img src="~/Public/Asset/img/app_store.svg" alt="" class="px-2"></a>
+               <a href=""><img src="~/Public/Asset/img/google_play.svg" alt="" class="px-2"></a>
+
+          </div>
+     </div>
+</div>
+<!-- END CONTENT -->
+@section Chat_CSKH{
+     <div id="wrap_chat_min">
+          <p class="chat">CSKH MTAHUB</p>
+     </div>
+     <div id="wrap_chat_max">
+          <div class="header_chat">
+               <p>CSKH MTAHUB</p>
+               <i class="fa fa-times" id="bt_close" aria-hidden="true"></i>
+               <p style="text-align: center;">Bạn vui lòng điền vào biểu mẫu dưới đây để nói chuyện với nhân viên đang trực tiếp theo</p>
+          </div>
+          <div class="content_chat">
+               <form action="" class="form-group mt-5 mb-0">
+                    <input type="text" name="name" maxlength="40" placeholder="Tên" class="form-control"><br>
+                    <input type="email" name="email" placeholder="Email" class="form-control"><br>
+                    <input type="text" name="phone" placeholder="Điện thoại" class="form-control"><br>
+                    <input type="submit" name="btn_chat" value="Bắt đầu trò chuyện" class="form-control" id="btn_chat">
+               </form>
+          </div>
+          <div class="footer_chat text-center">
+               <p>We are MTAhub</p>
+          </div>
+     </div>
+}
+<!-- END FOOTER -->
+@section back_top{
+     <a id="back-to-top" href="#" class="btn btn-danger btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+}

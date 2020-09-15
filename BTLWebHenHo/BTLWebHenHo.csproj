@@ -1,0 +1,1259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{868981FC-795B-4F03-8C73-33CE7EE01F50}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BTLWebHenHo</RootNamespace>
+    <AssemblyName>BTLWebHenHo</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44397</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Public\Asset\css\blog.css" />
+    <Content Include="Public\Asset\css\branding.css" />
+    <Content Include="Public\Asset\css\buy-coin.css" />
+    <Content Include="Public\Asset\css\footer.css" />
+    <Content Include="Public\Asset\css\global.css" />
+    <Content Include="Public\Asset\css\header.css" />
+    <Content Include="Public\Asset\css\login.css" />
+    <Content Include="Public\Asset\css\payment.css" />
+    <Content Include="Public\Asset\css\personal.css" />
+    <Content Include="Public\Asset\css\quizzvui.css" />
+    <Content Include="Public\Asset\css\reset.css" />
+    <Content Include="Public\Asset\css\shop.css" />
+    <Content Include="Public\Asset\css\style.css" />
+    <Content Include="Public\Asset\img\2m-member-welcome.png" />
+    <Content Include="Public\Asset\img\app_store.svg" />
+    <Content Include="Public\Asset\img\Attractive-1.png" />
+    <Content Include="Public\Asset\img\bg-01.jpg" />
+    <Content Include="Public\Asset\img\Blog-1.png" />
+    <Content Include="Public\Asset\img\blog.jpg" />
+    <Content Include="Public\Asset\img\Blog_No-talk-2.1.jpg" />
+    <Content Include="Public\Asset\img\bulb.png" />
+    <Content Include="Public\Asset\img\Cam-ki-1.jpg" />
+    <Content Include="Public\Asset\img\Coin.png" />
+    <Content Include="Public\Asset\img\Cover_ban_se_gap_nguoi_yeu_cua_minh_qua_mang_xa_hoi_nao.png" />
+    <Content Include="Public\Asset\img\Cover_ban_se_tan_gai_hieu_qua_nhat_bang_cach_nao.png" />
+    <Content Include="Public\Asset\img\Cover_Nguoi_yeu_ban_la_ai_trong_em_gai_mua.png" />
+    <Content Include="Public\Asset\img\dathongbao.png" />
+    <Content Include="Public\Asset\img\Facebook-white.png" />
+    <Content Include="Public\Asset\img\Female-user.png" />
+    <Content Include="Public\Asset\img\Google.png" />
+    <Content Include="Public\Asset\img\google_play.svg" />
+    <Content Include="Public\Asset\img\hero_bg.png" />
+    <Content Include="Public\Asset\img\hesjustnotthatintoyoupic1.jpg" />
+    <Content Include="Public\Asset\img\hide_age.png" />
+    <Content Include="Public\Asset\img\icon-1.png" />
+    <Content Include="Public\Asset\img\icon-2.png" />
+    <Content Include="Public\Asset\img\icon-3.png" />
+    <Content Include="Public\Asset\img\iPhone.png" />
+    <Content Include="Public\Asset\img\KM_2.png" />
+    <Content Include="Public\Asset\img\Like.png" />
+    <Content Include="Public\Asset\img\logo-header.png" />
+    <Content Include="Public\Asset\img\logo.png" />
+    <Content Include="Public\Asset\img\LogoMakr_7p9NPs.png" />
+    <Content Include="Public\Asset\img\Male-user.png" />
+    <Content Include="Public\Asset\img\male_default_large.jpg" />
+    <Content Include="Public\Asset\img\match-list-icon.png" />
+    <Content Include="Public\Asset\img\Match.png" />
+    <Content Include="Public\Asset\img\Matched_users.png" />
+    <Content Include="Public\Asset\img\new-logo-2.jpg" />
+    <Content Include="Public\Asset\img\phone.png" />
+    <Content Include="Public\Asset\img\phone_decor.png" />
+    <Content Include="Public\Asset\img\Pic-3-180924.jpg" />
+    <Content Include="Public\Asset\img\Rocket.png" />
+    <Content Include="Public\Asset\img\SectionBackground-1.png" />
+    <Content Include="Public\Asset\img\Shield.png" />
+    <Content Include="Public\Asset\img\shop\3-SGA6-so-go-a6-1.jpg" />
+    <Content Include="Public\Asset\img\shop\4-SGA7-so-go-a7-2.jpg" />
+    <Content Include="Public\Asset\img\shop\b1.jpg" />
+    <Content Include="Public\Asset\img\shop\L04-1.jpg" />
+    <Content Include="Public\Asset\img\shop\tranh-go-khac-laser-1-XS.jpg" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\ATM.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\Bank.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\Boost_superlike.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\Coins.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\floating_button.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\Hand.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\infinity.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\lightning.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\Momo.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\Refund.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\Rocket.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\Slide3.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\The.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\unlocked.png" />
+    <Content Include="Public\Asset\img\slide-upgrade-buycoin\ViettelPay.png" />
+    <Content Include="Public\Asset\img\Success-story_1-1 %281%29.jpg" />
+    <Content Include="Public\Asset\img\tarot-icon.png" />
+    <Content Include="Public\Asset\img\Tech1.png" />
+    <Content Include="Public\Asset\img\Tech2.png" />
+    <Content Include="Public\Asset\img\Tech3.png" />
+    <Content Include="Public\Asset\img\Text-1.3.jpg" />
+    <Content Include="Public\Asset\img\tinh-yeu-cua-nguoi-cung-ma-ket-2018.jpeg" />
+    <Content Include="Public\Asset\img\tumblr_inline_oht7tfPq6Z1ua4s38_500-300x200.jpg" />
+    <Content Include="Public\Asset\img\tình-cảm-12-con-giáp-3.jpg" />
+    <Content Include="Public\Asset\img\Upgrade.png" />
+    <Content Include="Public\Asset\img\User.png" />
+    <Content Include="Public\Asset\img\users.png" />
+    <Content Include="Public\Asset\img\Verify.png" />
+    <Content Include="Public\Asset\img\YMM1.png" />
+    <Content Include="Public\Asset\js\blog.js" />
+    <Content Include="Public\Asset\js\branding.js" />
+    <Content Include="Public\Asset\js\personal.js" />
+    <Content Include="Public\Asset\js\style.js" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\css\bootstrap-grid.css" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\css\bootstrap-grid.min.css" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\css\bootstrap-reboot.css" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\css\bootstrap.css" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\css\bootstrap.min.css" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\js\bootstrap.bundle.js" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\js\bootstrap.js" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\js\bootstrap.min.js" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\js\jquery 3.5.0.js" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\js\popper.min.js" />
+    <Content Include="Public\lib\Fontawesome\css\all.css" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.10.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.11.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.12.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.3.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.5.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.9.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.1.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.10.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.11.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.11.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.12.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.2.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.3.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.4.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.4.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.6.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.7.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.9.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.10.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.11.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.13.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.3.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.5.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.7.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.9.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.1.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.1.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.10.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.10.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.12.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.2.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.3.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.4.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.4.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.5.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.3.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.7.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.7.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.8.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.8.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.9.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.10.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.11.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.13.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.3.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.5.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.7.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.9.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.1.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.1.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.10.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.10.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.12.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.2.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.3.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.4.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.4.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.5.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.3.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.7.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.7.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.8.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.8.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.9.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.11.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.13.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.3.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.5.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.9.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.1.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.10.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.10.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.11.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.11.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.12.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.2.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.3.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.5.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.7.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.10.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.11.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.13.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.3.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.5.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.7.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.9.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.1.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.1.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.10.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.10.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.12.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.2.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.3.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.4.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.4.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.5.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.3.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.7.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.7.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.8.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.8.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.9.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.10.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.11.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.13.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.3.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.5.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.7.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.9.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.1.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.10.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.10.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.11.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.11.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.12.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.2.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.3.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.4.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.5.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.3.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.7.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.8.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.8.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.9.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.10.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.11.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.5.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.7.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.9.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.1.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.1.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.10.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.10.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.2.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.12.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.2.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.3.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.4.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.4.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.5.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.6.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.7.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.7.1.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.8.0.svg" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.9.0.svg" />
+    <Content Include="Public\lib\jQuery\jquery 3.5.0.js" />
+    <Content Include="Public\lib\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="Public\lib\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="Public\lib\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="Public\lib\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="Public\lib\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="Public\lib\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="Public\lib\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="Public\lib\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="Public\lib\owlcarousel\owl.carousel.js" />
+    <Content Include="Public\lib\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Public\pages\buy-coin.html" />
+    <Content Include="Public\pages\payment.html" />
+    <Content Include="Public\pages\personal.html" />
+    <Content Include="Public\pages\shop.html" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\css\bootstrap-grid.css.map" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\css\bootstrap.css.map" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\css\bootstrap.min.css.map" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\js\bootstrap.js.map" />
+    <Content Include="Public\lib\bootstrap-4.5.0-dist\js\bootstrap.min.js.map" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.10.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.10.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.10.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.10.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.11.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.11.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.11.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.11.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.12.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.12.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.12.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.12.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.3.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.3.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.3.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.3.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.5.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.5.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.5.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.5.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.9.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.9.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.9.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.0.9.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.1.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.1.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.1.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.1.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.10.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.10.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.10.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.10.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.11.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.11.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.11.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.11.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.11.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.11.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.11.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.11.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.12.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.12.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.12.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.12.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.2.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.2.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.2.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.2.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.3.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.3.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.3.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.3.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.4.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.4.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.4.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.4.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.4.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.4.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.4.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.4.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.6.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.6.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.6.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.6.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.7.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.7.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.7.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.7.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.8.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.9.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.9.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.9.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-brands-400-free-5.9.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.10.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.10.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.10.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.10.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.11.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.11.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.11.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.11.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.13.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.13.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.13.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.13.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.3.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.3.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.3.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.3.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.5.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.5.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.5.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.5.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.7.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.7.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.7.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.7.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.9.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.9.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.9.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.0.9.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.1.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.1.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.1.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.1.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.1.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.1.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.1.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.1.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.10.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.10.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.10.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.10.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.10.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.10.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.10.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.10.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.11.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.12.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.12.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.12.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.12.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.2.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.2.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.2.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.2.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.3.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.3.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.3.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.3.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.4.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.4.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.4.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.4.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.4.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.4.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.4.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.4.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.5.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.5.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.5.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.5.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.3.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.3.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.3.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.6.3.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.7.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.7.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.7.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.7.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.7.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.7.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.7.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.7.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.8.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.8.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.8.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.8.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.8.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.8.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.8.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.8.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.9.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.9.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.9.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-duotone-900-pro-5.9.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.10.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.10.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.10.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.10.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.11.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.11.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.11.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.11.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.13.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.13.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.13.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.13.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.3.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.3.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.3.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.3.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.5.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.5.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.5.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.5.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.7.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.7.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.7.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.7.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.9.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.9.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.9.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.0.9.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.1.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.1.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.1.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.1.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.1.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.1.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.1.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.1.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.10.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.10.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.10.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.10.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.10.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.10.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.10.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.10.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.11.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.12.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.12.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.12.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.12.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.2.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.2.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.2.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.2.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.3.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.3.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.3.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.3.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.4.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.4.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.4.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.4.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.4.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.4.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.4.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.4.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.5.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.5.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.5.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.5.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.3.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.3.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.3.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.6.3.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.7.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.7.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.7.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.7.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.7.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.7.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.7.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.7.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.8.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.8.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.8.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.8.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.8.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.8.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.8.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.8.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.9.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.9.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.9.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-light-300-pro-5.9.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.11.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.11.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.11.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.11.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.13.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.13.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.13.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.13.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.3.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.3.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.3.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.3.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.5.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.5.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.5.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.5.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.9.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.9.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.9.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.0.9.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.1.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.1.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.1.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.1.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.10.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.10.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.10.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.10.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.10.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.10.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.10.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.10.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.11.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.11.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.11.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.11.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.11.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.11.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.11.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.11.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.12.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.12.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.12.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.12.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.2.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.2.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.2.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.2.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.3.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.3.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.3.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.3.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.5.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.5.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.5.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.5.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.7.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.7.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.7.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-free-5.7.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.10.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.10.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.10.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.10.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.11.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.11.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.11.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.11.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.13.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.13.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.13.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.13.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.3.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.3.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.3.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.3.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.5.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.5.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.5.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.5.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.7.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.7.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.7.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.7.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.9.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.9.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.9.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.0.9.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.1.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.1.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.1.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.1.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.1.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.1.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.1.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.1.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.10.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.10.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.10.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.10.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.10.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.10.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.10.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.10.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.11.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.12.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.12.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.12.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.12.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.2.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.2.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.2.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.2.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.3.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.3.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.3.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.3.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.4.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.4.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.4.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.4.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.4.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.4.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.4.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.4.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.5.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.5.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.5.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.5.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.3.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.3.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.3.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.6.3.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.7.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.7.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.7.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.7.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.7.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.7.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.7.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.7.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.8.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.8.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.8.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.8.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.8.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.8.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.8.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.8.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.9.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.9.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.9.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-regular-400-pro-5.9.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.10.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.10.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.10.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.10.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.11.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.11.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.11.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.11.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.13.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.13.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.13.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.13.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.3.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.3.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.3.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.3.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.5.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.5.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.5.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.5.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.7.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.7.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.7.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.7.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.9.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.9.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.9.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.0.9.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.1.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.1.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.1.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.1.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.10.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.10.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.10.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.10.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.10.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.10.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.10.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.10.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.11.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.11.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.11.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.11.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.11.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.11.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.11.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.11.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.12.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.12.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.12.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.12.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.2.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.2.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.2.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.2.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.3.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.3.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.3.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.3.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.4.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.4.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.4.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.4.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.5.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.5.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.5.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.5.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.3.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.3.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.3.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.6.3.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.7.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.7.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.7.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.7.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.8.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.8.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.8.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.8.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.8.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.8.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.8.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.8.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.9.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.9.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.9.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-free-5.9.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.10.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.10.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.10.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.10.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.11.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.11.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.11.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.11.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.5.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.5.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.5.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.5.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.7.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.7.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.7.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.7.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.9.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.9.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.9.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.0.9.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.1.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.1.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.1.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.1.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.1.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.1.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.1.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.1.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.10.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.10.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.10.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.10.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.10.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.10.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.10.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.10.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.2.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.2.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.2.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.11.2.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.12.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.12.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.12.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.12.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.2.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.2.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.2.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.2.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.3.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.3.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.3.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.3.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.4.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.4.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.4.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.4.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.4.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.4.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.4.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.4.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.5.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.5.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.5.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.5.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.6.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.6.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.6.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.6.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.7.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.7.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.7.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.7.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.7.1.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.7.1.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.7.1.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.7.1.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.8.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.8.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.8.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.8.0.woff2" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.9.0.eot" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.9.0.ttf" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.9.0.woff" />
+    <Content Include="Public\lib\Fontawesome\webfonts\fa-solid-900-pro-5.9.0.woff2" />
+    <Content Include="Public\lib\owlcarousel\README.md" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\MTAhub_Story.cshtml" />
+    <Content Include="Views\Home\Quizz.cshtml" />
+    <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\Shared\Layout_Blog.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Public\Asset\audio\" />
+    <Folder Include="Public\Asset\template\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59165</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44397/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

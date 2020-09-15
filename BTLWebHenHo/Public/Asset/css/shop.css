@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+span {
+    font-weight: normal;
+}
+
+h3#product-name {
+    color: #aa0044;
+    font-size: 22px;
+}
+
+span#product-code {
+    color: #aa0044;
+    font-weight: bold;
+}
+
+h4.detail-item {
+    display: inline-block;
+    font-size: 18px;
+    padding: 10px;
+    background: #ff9c00;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-left: 10px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.detail-prd>p {
+    font-size: 20px;
+}

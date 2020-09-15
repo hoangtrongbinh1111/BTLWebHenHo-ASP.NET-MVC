@@ -1,0 +1,86 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    background: #dae2f8 linear-gradient(90deg, #f7c9c9, #91a8d1)
+}
+
+#wrapper {
+    width: 660px;
+    margin: 0px auto;
+    background: #fff;
+    min-height: 100vh;
+}
+
+body a:hover {
+    text-decoration: none;
+}
+
+
+/* tittle trade */
+
+#tittle-trade {
+    color: #fff;
+    background: #4c71b5;
+}
+
+#tittle-trade>a>i {
+    color: #fff;
+    font-size: 2rem;
+    margin: 0 1rem;
+    margin-top: 5px;
+}
+
+
+/* payment method */
+
+#payment-method {
+    margin-bottom: 7rem;
+}
+
+#payment-method img {
+    width: 1.333333rem;
+}
+
+.payment-item {
+    padding: 2rem;
+    border-top: 3px solid #bbb8b8;
+}
+
+.payment-item>input {
+    margin-right: 1rem;
+    transform: scale(2);
+    margin-top: 10px;
+}
+
+.payment-item>span {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 1rem;
+    color: #827474;
+}
+
+
+/* bottom continue */
+
+.btn-continue {
+    width: 660px;
+    padding-top: 1rem;
+}
+
+.btn-continue a {
+    border-radius: 2rem;
+    border: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+
+/* Thanh toán */
+
+.promotion-code>span {
+    font-size: 20px;
+    margin-right: 10px;
+}

@@ -1,0 +1,378 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    background: #dae2f8 linear-gradient(90deg, #f7c9c9, #91a8d1)
+}
+
+#wrapper {
+    width: 660px;
+    margin: 0px auto;
+    background: #fff;
+    min-height: 100vh;
+}
+
+
+/* ul menu */
+
+ul#myPill {
+    border-bottom: 1px solid #e8d5d5;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #fff;
+}
+
+ul#myPill>li a {
+    color: #797687;
+}
+
+ul#myPill>li a i {
+    font-size: 22px;
+}
+
+.nav-pills .nav-link.active {
+    color: #fff !important;
+}
+
+
+/* change avatar */
+
+.card_link {
+    position: relative;
+    text-align: center;
+}
+
+.card_meta {
+    position: absolute;
+    top: 145px;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+    color: #fff;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.card_meta>label {
+    margin-top: 5px !important;
+}
+
+.card_meta>label:hover {
+    cursor: pointer;
+}
+
+.card_link>img:hover {
+    border: 1px solid blue;
+}
+
+
+/* List-img */
+
+.tittle-item {
+    font-size: 1.16667rem;
+    font-weight: 700;
+    color: #777580;
+    padding: 1rem 1.25rem;
+    background: #f0f0f0;
+}
+
+p.sub-tittle-item {
+    font-size: 1rem;
+    color: #f34635;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.btn-item>button {
+    margin-bottom: 1rem;
+    width: 75%;
+    background: #91a7cf;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    box-shadow: inset 0 -0.16667rem 0 0 rgba(0, 0, 0, .3);
+}
+
+.item-info-user>p {
+    font-size: 1.5rem;
+}
+
+.hide-age-user>p {
+    font-size: 1.2rem;
+}
+
+
+/* Form switch */
+
+
+/* `Form Switch */
+
+.form-switch {
+    display: inline-block;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.form-switch i {
+    position: relative;
+    display: inline-block;
+    /* margin-right: .5rem; */
+    width: 46px;
+    height: 26px;
+    background-color: #e6e6e6;
+    border-radius: 23px;
+    vertical-align: text-bottom;
+    transition: all 0.3s linear;
+}
+
+.form-switch i::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 42px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 11px;
+    transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+    transition: all 0.25s linear;
+}
+
+.form-switch i::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 11px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+    transform: translate3d(2px, 2px, 0);
+    transition: all 0.2s ease-in-out;
+}
+
+.form-switch:active i::after {
+    width: 28px;
+    transform: translate3d(2px, 2px, 0);
+}
+
+.form-switch:active input:checked+i::after {
+    transform: translate3d(16px, 2px, 0);
+}
+
+.form-switch input {
+    display: none;
+}
+
+.form-switch input:checked+i {
+    background-color: #4a83fb;
+}
+
+.form-switch input:checked+i::before {
+    transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+}
+
+.form-switch input:checked+i::after {
+    transform: translate3d(22px, 2px, 0);
+}
+
+
+/* ---Hide age--- */
+
+sup#hide-age:hover {
+    cursor: pointer;
+}
+
+
+/* modal thông báo ẩn tuổi */
+
+.modal {
+    background: rgba(0, 0, 0, .5);
+}
+
+
+/* INfo basic user */
+
+#Info-basic-username a:hover {
+    text-decoration: none;
+}
+
+.txt-light {
+    color: #899096;
+}
+
+.f-18 {
+    font-size: 18px;
+}
+
+.pt-15 {
+    padding-top: 15px !important;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.w-45 {
+    width: 45%;
+}
+
+.select-properties-user {
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+/* Back top */
+
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 500px;
+    display: none;
+    z-index: 1;
+}
+
+
+/* ===================================== Sidebar==================================== */
+
+#side-bar {
+    width: 25rem;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    transition: transform .25s linear;
+    transform: translateX(25rem);
+}
+
+#side-header>a>img {
+    border: 3px solid blue;
+    border-radius: 15px;
+}
+
+#info-user-header {
+    width: 75%;
+}
+
+.coin-user>i {
+    color: #ffc107
+}
+
+.coin-user>i>span {
+    font-size: 18px;
+    color: #797687;
+    margin-left: 7px;
+}
+
+#button-function>a.buy-coin {
+    text-align: center;
+    margin-left: 1rem;
+    color: #fff;
+    background: #4c71b5;
+    padding: 5px;
+}
+
+#button-function>a.buy-coin:hover {
+    text-decoration: none;
+    opacity: 75%;
+}
+
+#button-function>a.buy-coin>img {
+    width: 2rem;
+}
+
+a.highlight-now {
+    margin-left: 0.5rem !important;
+}
+
+a.highlight-now>i {
+    padding: 8px 5px 8px 0px;
+}
+
+a.authentic-account {
+    background: #78c752 !important;
+    margin-right: 10px;
+}
+
+a.authentic-account>i {
+    padding: 9px;
+}
+
+
+/* animation for highlight now */
+
+@keyframes highlight-now {
+    25% {
+        background: red;
+    }
+    50% {
+        background: green;
+    }
+    75% {
+        background: violet;
+    }
+    50% {
+        background: tomato;
+    }
+}
+
+a.highlight-now {
+    animation-name: highlight-now;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+
+/* list-function */
+
+#list-function>ul>li>a {
+    display: block;
+    padding: 1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #797687;
+}
+
+#list-function>ul>li>a:hover {
+    text-decoration: none;
+}
+
+#list-function>ul>li {
+    border-bottom: 1px solid #e1e1e1;
+}
+
+#list-function>ul>li>a>img {
+    width: 2rem;
+    margin-right: 1rem;
+}
+
+#list-function>ul>li>a>i {
+    font-size: 30px;
+    margin-right: 1rem;
+}
+
+h3.download-app {
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+
+/* menu-footer */
+
+#list-menu-footer>ul>li {
+    width: 33.333333333%;
+    border-right: .0625rem solid #e1e1e1;
+    border-bottom: .0625rem solid #e1e1e1;
+    text-align: center;
+}
+
+#list-menu-footer>ul>li>a {
+    display: block;
+    font-size: 1.15rem;
+    padding: 1rem .5rem;
+    color: #797687;
+    text-decoration: none;
+    text-align: center;
+}
