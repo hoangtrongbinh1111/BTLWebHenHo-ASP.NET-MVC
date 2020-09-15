@@ -73,3 +73,7 @@ C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\obj\Debug\BTLWebHenHo.csprojAss
 C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\obj\Debug\BTLWebHenHo.csproj.CopyComplete
 C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\obj\Debug\BTLWebHenHo.dll
 C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\obj\Debug\BTLWebHenHo.pdb
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\EntityFramework.dll
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\EntityFramework.SqlServer.dll
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\EntityFramework.xml
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\EntityFramework.SqlServer.xml

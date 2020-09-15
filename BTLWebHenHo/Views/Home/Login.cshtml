@@ -1,0 +1,47 @@
+﻿@model BTLWebHenHo.Models.UserInfo
+@{ 
+     ViewBag.Tittle = "Đăng nhập";
+     Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+@Html.Partial("head")
+<link rel="stylesheet" href="~/Public/Asset/css/login.css">
+
+<body>
+     <div id="wrapper" class="d-flex flex-row-reverse">
+          <div class="login-form">
+               <form action="" method="post" class="">
+                    @Html.AntiForgeryToken()
+                    <span class="form-tittle">Login to continue</span>
+                    <div class="username">
+                         <input type="text" name="username" placeholder="Username" id="username">
+                    </div>
+                    <div class="password">
+                         <input type="password" name="password" placeholder="Password" id="password">
+                    </div>
+                    <div id="remember-forgot" class="d-flex justify-content-between">
+                         <div>
+                              <input type="checkbox" name="remember-me" value="False" id="remember-me" class="ml-2">
+                              <label for="remember-me">Remember-me</label>
+                         </div>
+                         <a href="">Forgot Password?</a>
+                    </div>
+                    <button type="submit" name="btn-login" class=" login-btn">LOGIN</button>
+               </form>
+               <div class="sign-up text-center">
+                    <p class="mb-0 mt-3">or</p>
+                    <a href="">
+                         <button class="login-btn bg-danger">Sign Up</button>
+                    </a>
+               </div>
+          </div>
+
+          <div id="login-background">
+
+          </div>
+     </div>
+</body>
+
+</html>
