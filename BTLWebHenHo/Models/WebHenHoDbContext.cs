@@ -12,17 +12,11 @@ namespace BTLWebHenHo.Models
           {
           }
 
+          public virtual DbSet<Profile_User> Profile_User { get; set; }
           public virtual DbSet<UserInfo> UserInfoes { get; set; }
 
           protected override void OnModelCreating(DbModelBuilder modelBuilder)
           {
-               modelBuilder.Entity<UserInfo>()
-                   .Property(e => e.username)
-                   .IsUnicode(false);
-
-               modelBuilder.Entity<UserInfo>()
-                   .Property(e => e.passw)
-                   .IsUnicode(false);
           }
      }
 }

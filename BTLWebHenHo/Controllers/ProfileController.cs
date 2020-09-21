@@ -11,13 +11,13 @@ namespace BTLWebHenHo.Controllers
         // GET: Profile
         public ActionResult Index()
         {
-               if (Session["idUser"] != null)
+               if (Session["idUser"] != null|| Request.Cookies["usercredentials"] != null)
                {
                     return View();
                }
                else
                {
-                    return RedirectToAction("Login","Home");
+                    return RedirectToAction("Index","Login");
                }
           }
     }

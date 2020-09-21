@@ -1,0 +1,37 @@
+﻿@model BTLWebHenHo.Models.UserInfo
+@{
+     ViewBag.Tittle = "Đăng ký";
+     Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+@Html.Partial("head")
+<link rel="stylesheet" href="~/Public/Asset/css/login.css">
+
+<body>
+     <div id="wrapper" class="d-flex flex-row-reverse">
+          <div class="login-form">
+               <form action="" method="post" class="" name="_user">
+                    @Html.AntiForgeryToken()
+                    <span class="form-tittle">Register</span>
+                    <div class="username">
+                         <input type="text" name="username" placeholder="Username" id="username">
+                    </div>
+                    <div class="password">
+                         <input type="password" name="passw" placeholder="Password" id="password">
+                    </div>
+                    
+                    <button type="submit" name="btn-register" class=" login-btn">Sign Up</button>
+               </form>
+               <p class="text-center text-danger mt-3">@ViewBag.error</p>
+               <a href="@Url.Action("Index","Login")">Return to Login</a>
+          </div>
+          
+          <div id="login-background">
+
+          </div>
+     </div>
+</body>
+
+</html>

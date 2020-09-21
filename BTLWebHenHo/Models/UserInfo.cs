@@ -9,6 +9,12 @@ namespace BTLWebHenHo.Models
     [Table("UserInfo")]
     public partial class UserInfo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserInfo()
+        {
+            Profile_User = new HashSet<Profile_User>();
+        }
+
         [Key]
         public int UserID { get; set; }
 
@@ -19,5 +25,8 @@ namespace BTLWebHenHo.Models
         [Required]
         [StringLength(50)]
         public string passw { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Profile_User> Profile_User { get; set; }
     }
 }

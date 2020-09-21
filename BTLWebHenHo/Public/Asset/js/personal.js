@@ -52,4 +52,17 @@ $(document).ready(function() {
             $("#side-bar").css("transform", "translateX(25rem)");
         }
     });
+    //Đỗ văn hoàng làm
+    $("#tab-half-1-slide").carousel({
+        interval: 3000, // thiet lap thoi gian
+        ride: "carousel" // cho no tu dong chay ngay khi vao
+    });
+    $("#run-modal").click(function() {
+        $("#spoid-modal").modal();
+        return false;
+    });
+    $("#run-modal").click(function() {
+        $("#spoid3-modal").modal();
+        return false;
+    });
 });
