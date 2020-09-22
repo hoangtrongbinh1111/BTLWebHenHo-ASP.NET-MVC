@@ -59,6 +59,7 @@ namespace BTLWebHenHo.Controllers
                     else
                     {
                          ViewBag.error = "Login failed";
+                         TempData["error"]= "Login failed";
                          return RedirectToAction("Index");
                     }
                }
@@ -106,6 +107,7 @@ namespace BTLWebHenHo.Controllers
 
           }
           //Logout
+          [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
           public ActionResult Logout()
           {
                Session.Clear();//delete all session but keep current session
