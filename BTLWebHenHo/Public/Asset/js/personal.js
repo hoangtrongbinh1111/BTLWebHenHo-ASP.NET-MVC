@@ -1,4 +1,5 @@
-$(document).ready(function() {
+
+$(document).ready(function () {
     var isSwitch = false;
     $("input#switch-ios").click(function() {
         if (!isSwitch) {
@@ -66,3 +67,22 @@ $(document).ready(function() {
         return false;
     });
 });
+
+//$(document).ready(function () {
+//     //update info user
+//     $('#fix_ind_self').click(function () {
+//          var x = "s";
+//          $.ajax({
+//               url: '/Profile/Update_Info',
+//               data: x ,
+//               dataType: 'json',
+//               success: function (data) {
+//                    if (data) {
+//                         alert(data);
+//                    }
+//               }
+//          });
+         
+//     });
+     
+//});

@@ -12,16 +12,103 @@ namespace BTLWebHenHo.Models
         public int stt { get; set; }
 
         [StringLength(50)]
-        public string fullname { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? ngsinh { get; set; }
+        public string NickName { get; set; }
 
         [StringLength(50)]
-        public string diachi { get; set; }
+        public string email { get; set; }
 
-        [StringLength(3)]
-        public string gioitinh { get; set; }
+        [StringLength(50)]
+        public string phone { get; set; }
+
+        [StringLength(50)]
+        public string address_user { get; set; }
+
+        [StringLength(50)]
+        public string coins { get; set; }
+
+        public string avatar { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? birthday { get; set; }
+
+        public int? height { get; set; }
+
+        [StringLength(50)]
+        public string body { get; set; }
+
+        [StringLength(50)]
+        public string blood { get; set; }
+
+        [StringLength(50)]
+        public string national_user { get; set; }
+
+        [StringLength(50)]
+        public string language_user { get; set; }
+
+        [StringLength(50)]
+        public string education { get; set; }
+
+        [StringLength(50)]
+        public string job { get; set; }
+
+        [StringLength(50)]
+        public string income { get; set; }
+
+        [StringLength(50)]
+        public string martial_status { get; set; }
+
+        [StringLength(50)]
+        public string baby_status { get; set; }
+
+        [StringLength(50)]
+        public string want_baby_status { get; set; }
+
+        [StringLength(50)]
+        public string live_status { get; set; }
+
+        [StringLength(100)]
+        public string hobbies { get; set; }
+
+        [StringLength(50)]
+        public string character_user { get; set; }
+
+        [StringLength(50)]
+        public string public_relationship { get; set; }
+
+        [StringLength(50)]
+        public string want_meet { get; set; }
+
+        [StringLength(50)]
+        public string want_marry { get; set; }
+
+        [StringLength(50)]
+        public string ready_do_homework { get; set; }
+
+        [StringLength(50)]
+        public string freeday { get; set; }
+
+        [StringLength(50)]
+        public string wine { get; set; }
+
+        [StringLength(50)]
+        public string smoke { get; set; }
+
+        [StringLength(50)]
+        public string pay_first_meet { get; set; }
+
+        [StringLength(50)]
+        public string vip { get; set; }
+
+        [StringLength(50)]
+        public string date_vip { get; set; }
+
+        [StringLength(50)]
+        public string family { get; set; }
+
+        [StringLength(50)]
+        public string country { get; set; }
+
+        public int? hide_age { get; set; }
 
         public int? UserID { get; set; }
 

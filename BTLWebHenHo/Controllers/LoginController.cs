@@ -13,9 +13,6 @@ namespace BTLWebHenHo.Controllers
     public class LoginController : Controller
     {
           private WebHenHoDbContext _db = new WebHenHoDbContext();//khởi tạo 1 đối tượng của database
-
-          
-
           // GET: Login
 
           public ActionResult Index()
@@ -46,11 +43,12 @@ namespace BTLWebHenHo.Controllers
                               //add cookies
                               usercredentialsCookie.Values["username"] = username;
                               usercredentialsCookie.Values["password"] = password;
+                              usercredentialsCookie.Values["UserID"] = data.FirstOrDefault().UserID.ToString();
                               //set expired
                               usercredentialsCookie.Expires = DateTime.Now.AddDays(10);
                               Response.Cookies.Add(usercredentialsCookie);
                          }                         
-                         Session["idUser"] = data.FirstOrDefault().UserID;//lấy IDUser vào Session 
+                         Session["UserID"] = data.FirstOrDefault().UserID;//lấy IDUser vào Session 
                          return RedirectToAction("Index", "Profile");
                          //add session                        
                          //Session["idUser"] = data.FirstOrDefault().UserID;//lấy IDUser vào Session
