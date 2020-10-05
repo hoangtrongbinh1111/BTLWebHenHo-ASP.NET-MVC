@@ -168,14 +168,14 @@
                     <div class="col-md-12">
                          <div class="row">
                               <div class="col-md-6">
-                                   <div class="row">
+                                   <form class="row" action="/Home/feedback_web" method="post" name="Collect">
                                         <div class="col-md-12">
                                              <div class="row">
                                                   <div class="col-md-6">
-                                                       <input type="text" name="firstName" placeholder="Họ">
+                                                       <input type="text" name="first_name" placeholder="Họ">
                                                   </div>
                                                   <div class="col-md-6">
-                                                       <input type="text" name="lasttName" placeholder="Tên">
+                                                       <input type="text" name="last_name" placeholder="Tên">
                                                   </div>
                                              </div>
                                         </div>
@@ -189,9 +189,9 @@
                                              <textarea rows="10" cols="40" name="content" placeholder="Nội dung" id="content-input"></textarea>
                                         </div>
                                         <div class="col-md-12 text-center">
-                                             <button type="submit" name="btn-submit" class="btn btn-success" id="btn-submit">Gửi</button>
+                                             <button type="submit" name="btn-submit" class="btn btn-success" id="btn_submit">Gửi</button>
                                         </div>
-                                   </div>
+                                   </form>
                               </div>
                               <div class="col-md-6">
                                    <div id="send-feedback" class="text-right">
@@ -271,3 +271,10 @@
 @section back_top{
      <a id="back-to-top" href="#" class="btn btn-danger btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
 }
+<script>
+     $(document).ready(function () {
+          $("#btn_submit").click(function () {
+               alert("Gửi feedback thành công!");
+          });
+     });
+</script>

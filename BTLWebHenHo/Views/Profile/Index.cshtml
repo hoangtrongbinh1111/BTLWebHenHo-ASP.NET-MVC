@@ -14,6 +14,8 @@
 @Html.Partial("head")
 <link rel="stylesheet" href="~/Public/Asset/css/personal.css">
 <script src="~/Public/Asset/js/personal.js"></script>
+<script src="~/Public/Asset/js/vendor/jquery.ui.widget.js"></script>
+<script src="~/Public/Asset/js/vendor/jquery.fileupload.js"></script>
 <body>
      <div id="wrapper">
           <ul class="nav nav-pills nav-fill" id="myPill" role="tablist">
@@ -763,11 +765,20 @@
                <div class="tab-pane fade show active" id="content-personal" role="tabpanel" aria-labelledby="tab-personal">
                     <div class="text-center my-5">
                          <a href="" class="card_link">
-                              <img src="~/Public/Asset/img/male_default_large.jpg" alt="">
+                              @{
+                                   if (info.avatar != null)
+                                   {
+                                        <img src="~/Public/Asset/img/Avatar/@info.avatar" alt="" width="400px" height="400px">
+                                   }
+                                   else
+                                   {
+                                        <img src="~/Public/Asset/img/male_default_large.jpg" alt="" width="400px" height="400px">
+                                   }
+                              }
                               <form action="/Profile/Upload_Img" class="card_meta" method="post" enctype="multipart/form-data">
-                                   <label for="change-avt">Thay ảnh đại diện</label>
-                                   <input type="file" name="imageFile" id="change-avt" class="d-none" required>                                   
-                                   <input type="submit" id="btn_upload"/>
+                                   <label for="change_avt" id="lb_change_avt">Thay ảnh đại diện</label>
+                                   <input type="file" name="imageFile" id="change_avt" class="d-none" required>
+                                   <input type="submit" id="btn_upload" value="Upload" style="display:none;" class="btn btn-primary" />
                               </form>
                               <!-- <p class="card_meta">Thay ảnh đại diện</p> -->
                          </a>
@@ -777,9 +788,37 @@
                               Ảnh
                          </div>
                          <p class="sub-tittle-item">Chia sẻ những hình ảnh mới nhất của bạn</p>
-                         <div class="btn-item text-center">
-                              <button class="btn btn-info">Tải ảnh lên</button>
-                         </div>
+                         @if (info.list_img != null)
+                         {
+                              string[] list_img = info.list_img.Split('/');                             
+                              <div id="list_your_image">
+                                   <ul class="list-unstyled d-flex flex-wrap justify-content-around">
+                                        @for(int i = 0; i < list_img.Count()-1; i++)
+                                        {
+                                        <li class="mr-2 mb-2" data-name_img="@list_img[i]">
+                                             <img src="~/Public/Asset/img/List_image_upload/@list_img[i]" class="img-fluid" />
+                                             <i class="fas fa-times-circle del_img_user"></i>
+                                        </li>
+                                        }
+                                   </ul>
+                              </div>
+                         }
+                         
+                    <div>
+                         
+                         <form action="/Profile/Upload_List_Img" class="text-center" method="post" enctype="multipart/form-data">
+                              @if (info.list_img != null)
+                              {
+                                   <button class="btn btn-dark" id="del_all_img">Xóa hết ảnh</button>
+                              }
+                              <label for="upl_file" id="lb_upl_img" class="btn btn-danger mb-0 ">Tải ảnh lên</label>
+                              <input type="file" name="file" id="upl_file" class="d-none" required multiple>
+                              <label style="display:none;" id="unUpload" class="btn btn-secondary mb-0">Hủy</label>
+                              <input type="submit" id="btn_upload_list_img" value="Tải lên" style="display:none;" class="btn btn-primary" />
+                         </form>
+                    </div>
+
+
                          <div class="wp-item-info d-flex
                             justify-content-between">
                               <div class="item-info-user ml-3 font-weight-bolder">
@@ -834,7 +873,7 @@
                                         <tr>
                                              <td class=" txt-light f-18 w-40">Tuổi</td>
                                              <td id="age">
-                                                  <span>@age</span>}
+                                                  <span>@age</span>
                                              </td>
                                         </tr>
                                         <tr>
@@ -1958,11 +1997,61 @@
                ischangeBirth = true;
           });
           //upload
-          $("#btn_upload").click(function () {
-               alert($("#change-avt").val());
+          $("input#change_avt").change(function () {
+               $("#lb_change_avt").css("display", "none");
+               $("#btn_upload").css("display", "inline-block");
+               alert("Cập nhật avatar thành công!");
           });
+          //upload multi img
+          $("input#upl_file").change(function () {
+               $("#btn_upload_list_img").css("display", "inline-block");              
+               $("#lb_upl_img").css("display", "none");
+               $("#unUpload").css("display", "inline-block");
+               
+          });
+          $("#btn_upload_list_img").click(function () {
+               alert("Tải ảnh lên thành công!");
+          });
+          $("#unUpload").click(function () {
+               $(this).css("display", "none");
+               $("#lb_upl_img").css("display", "inline-block");
+               $("#btn_upload_list_img").css("display", "none");    
+          });
+          //delete img from list image
+          $("i.del_img_user").on('click', function () {               
+               $.ajax({
+                    url: '/Profile/Delete_image_user',
+                    data: {
+                         name_img: $(this).parent().data('name_img')                         
+                    },
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (status) {
+                         if (status) {
+                              alert("Xóa ảnh thành công");
+                              window.location.reload();
+                         }
 
+                    }
 
+               })
+          })
+          //delete all image
+          $("#del_all_img").on('click', function () {
+               $.ajax({
+                    url: '/Profile/Delete_all_img',                    
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (status) {
+                         if (status) {
+                              alert("Xóa ảnh thành công");
+                              window.location.reload();
+                         }
+
+                    }
+
+               })
+          });
      });
 </script>
 </body>

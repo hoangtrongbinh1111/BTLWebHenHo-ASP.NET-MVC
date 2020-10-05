@@ -67,13 +67,30 @@ ul#myPill>li a i {
 
 
 /* List-img */
-
+#list_your_image li {
+    
+     border: 1px solid #e1e1e1;
+     cursor: pointer;
+     position:relative;
+}
+#list_your_image img {
+     width: 9rem;
+     height: 9rem;    
+}
+.del_img_user{
+     position:absolute;
+     right:0;
+     display:none;
+}
+#list_your_image li:hover i{
+     display:inline-block;
+}
 .tittle-item {
-    font-size: 1.16667rem;
-    font-weight: 700;
-    color: #777580;
-    padding: 1rem 1.25rem;
-    background: #f0f0f0;
+     font-size: 1.16667rem;
+     font-weight: 700;
+     color: #777580;
+     padding: 1rem 1.25rem;
+     background: #f0f0f0;
 }
 
 p.sub-tittle-item {

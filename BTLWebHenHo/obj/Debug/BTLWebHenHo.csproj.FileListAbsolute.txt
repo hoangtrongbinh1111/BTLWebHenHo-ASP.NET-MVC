@@ -90,3 +90,15 @@ C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\Microsoft.AspNet.SignalR.Sy
 C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\Microsoft.Owin.xml
 C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\Microsoft.Owin.Security.xml
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\DevExpress.Data.v20.1.dll
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\DevExpress.Xpo.v20.1.dll
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\DevExpress.Data.v20.1.xml
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\DevExpress.Xpo.v20.1.xml
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\de\DevExpress.Data.v20.1.resources.dll
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\es\DevExpress.Data.v20.1.resources.dll
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\ja\DevExpress.Data.v20.1.resources.dll
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\ru\DevExpress.Data.v20.1.resources.dll
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\de\DevExpress.Xpo.v20.1.resources.dll
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\es\DevExpress.Xpo.v20.1.resources.dll
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\ja\DevExpress.Xpo.v20.1.resources.dll
+C:\Users\ms\source\repos\BTLWebHenHo\BTLWebHenHo\bin\ru\DevExpress.Xpo.v20.1.resources.dll

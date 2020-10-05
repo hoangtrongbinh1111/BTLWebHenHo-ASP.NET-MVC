@@ -9,28 +9,17 @@ using System.Web.Mvc;
 
 namespace BTLWebHenHo.Controllers
 {
-    public class ProfileController : Controller
+     public class ProfileController : Controller
     {
           BTLWebHenHo.Models.WebHenHoDbContext db = new Models.WebHenHoDbContext();
-          int? id = 0;
         // GET: Profile
         public ActionResult Index()
         {
                if (Session["UserID"] != null || Request.Cookies["usercredentials"] != null)
                {
-                    var id_user=0;
-                    if (Request.Cookies["usercredentials"] != null)
-                    {
-                         HttpCookie reqCookie = Request.Cookies["usercredentials"];                    
-                         id_user = Convert.ToInt32(reqCookie["UserID"].ToString());
-                         id = id_user;
-                    }
-                    else//if not have cookies
-                    {                        
-                         id_user = Convert.ToInt32(Session["UserID"].ToString());
-                         id = id_user;
-                    }
-                    var info = db.Profile_User.Where(x => x.UserID == id_user).FirstOrDefault();
+                    int id_user=get_ID_User();
+                    
+                    var info = db.Profile_User.Where(x => x.UserID == id_user.ToString()).FirstOrDefault();
                     ViewBag.info = info;
                     return View();
                }
@@ -93,10 +82,22 @@ namespace BTLWebHenHo.Controllers
           {
                F_Profile_User fpu = new F_Profile_User();
                Profile_User pu = new Profile_User();
-               pu.NickName = fpu.GetSingleByCondition(x => x.UserID == userID).NickName;
+               pu.NickName = fpu.GetSingleByCondition(x => x.UserID == userID.ToString()).NickName;
                return pu.NickName;
           }
-
+          [NonAction]
+          public int get_ID_User()
+          {
+               if (Request.Cookies["usercredentials"] != null)
+               {
+                    HttpCookie reqCookie = Request.Cookies["usercredentials"];
+                    return Convert.ToInt32(reqCookie["UserID"].ToString());
+               }
+               else//if not have cookies
+               {
+                    return Convert.ToInt32(Session["UserID"].ToString());
+               }
+          }
           [HttpPost]
           public JsonResult Update_Info(BTLWebHenHo.Models.Profile_User obj)
           {
@@ -152,26 +153,52 @@ namespace BTLWebHenHo.Controllers
                     imageFile.SaveAs(path);                    
                     if (path != null)
                     {
-                         var upd = db.Profile_User.Where(x => x.UserID == 1).FirstOrDefault();
+                         int id_user=get_ID_User();                        
+                         var upd = db.Profile_User.Where(x => x.UserID == id_user.ToString()).FirstOrDefault();
                          upd.avatar = fileName;
                          db.SaveChanges();
                          
                     }
                     
+               }                           
+               return RedirectToAction("Index","Profile");
+               //return View();
+          }
+          [HttpPost]
+          public ActionResult Upload_List_Img(HttpPostedFileBase[] file)
+          {
+               foreach(var imageFile in file)
+               {
+                    string fileName = Path.GetFileName(imageFile.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Public/Asset/img/List_image_upload"), fileName);
+                    imageFile.SaveAs(path);
+
+                    int id_user=get_ID_User();                   
+                    var upd = db.Profile_User.Where(x => x.UserID == id_user.ToString()).FirstOrDefault();
+                    //country is list image
+                    upd.list_img += fileName+"/";
+                    db.SaveChanges();
                }
-               
-               //string fileName = Path.GetFileNameWithoutExtension(imageFile.ImageFile.FileName);
-               //string extension = Path.GetExtension(imageFile.ImageFile.FileName);
-               //fileName=fileName+ DateTime.Now.ToString("yymmssfff") + extension;
-               //imageFile.ImagePath = "~/Public/Asset/img/"+fileName;
-               //fileName = Path.Combine(Server.MapPath("~/Public/Asset/img/"),fileName);
-               //imageFile.ImageFile.SaveAs(fileName);
 
-               //F_Profile_User fpu = new F_Profile_User();
-               //var row_upd=fpu.GetSingleByCondition(x => x.UserID == Convert.ToInt32(Session["UserID"].ToString()));
-
-               //return RedirectToAction("Index","Profile");
-               return View();
+               return RedirectToAction("Index", "Profile");
+          }
+          [HttpPost]
+          public ActionResult Delete_image_user(string name_img)
+          {
+               int id_user = get_ID_User();
+               var upd = db.Profile_User.Where(x => x.UserID == id_user.ToString()).FirstOrDefault();
+               upd.list_img = upd.list_img.Replace(name_img+"/","");
+               db.SaveChanges();
+               return Json(new { status=true});
+          }
+          [HttpPost]
+          public ActionResult Delete_all_img()
+          {
+               int id_user = get_ID_User();
+               var upd = db.Profile_User.Where(x => x.UserID == id_user.ToString()).FirstOrDefault();
+               upd.list_img = null;
+               db.SaveChanges();
+               return Json(new { status = true });
           }
      }
 }

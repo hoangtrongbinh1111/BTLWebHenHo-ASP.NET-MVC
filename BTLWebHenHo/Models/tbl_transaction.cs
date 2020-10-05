@@ -25,7 +25,8 @@ namespace BTLWebHenHo.Models
         [StringLength(50)]
         public string status { get; set; }
 
-        public int? UserID { get; set; }
+        [StringLength(50)]
+        public string UserID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_order> tbl_order { get; set; }

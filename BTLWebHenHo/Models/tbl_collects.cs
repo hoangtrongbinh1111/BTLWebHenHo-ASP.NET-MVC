@@ -11,10 +11,18 @@ namespace BTLWebHenHo.Models
         [Key]
         public int id_collect { get; set; }
 
-        public string img_link { get; set; }
+        [StringLength(50)]
+        public string first_name { get; set; }
 
-        public int? UserID { get; set; }
+        [StringLength(50)]
+        public string last_name { get; set; }
 
-        public virtual UserInfo UserInfo { get; set; }
+        [StringLength(50)]
+        public string email { get; set; }
+
+        [StringLength(50)]
+        public string tittle { get; set; }
+
+        public string content { get; set; }
     }
 }

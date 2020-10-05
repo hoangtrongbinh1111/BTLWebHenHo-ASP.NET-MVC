@@ -2,6 +2,10 @@
 @{
      ViewBag.Title = "Blog";
      Layout = "~/Views/Shared/_Layout.cshtml";
+     var hottest = ViewBag.hottest;
+     var blog = ViewBag.list_blog;
+     var popular_blog = ViewBag.popular_blog;
+     var count = 0;
 }
 
 <link rel="stylesheet" href="~/Public/Asset/css/blog.css">
@@ -105,13 +109,13 @@
                     <div class="col-md-12">
                          <div id="hottest-blog" class="blog-item text-center">
                               <a href="">
-                                   <img src="~/Public/Asset/img/Pic-3-180924.jpg" alt="" class="w-100 d-block mt-5">
+                                   <img src="~/Public/Asset/img/@hottest.link_img" alt="" class="w-100 d-block mt-5">
                               </a>
                               <div class="content-blog">
-                                   <h6 class="categories-blog text-uppercase mt-5">phong cách sống</h6>
-                                   <a href="" class="tittle-blog">Đánh giá 7 ứng dụng hẹn hò với người nước ngoài phổ biến nhất 2020<sup>Featured</sup></a>
-                                   <p class="date-blog">08/05/2020</p>
-                                   <p class="entry-blog text-left">Trong xu thế hội nhập quốc tế, nhu cầu kết bạn, làm quen hẹn hò với người nước ngoài đang ngày càng trở nên phổ biến hơn bao giờ hết. Vậy còn bạn thì sao! Với sự phát triển của…</p>
+                                   <h6 class="categories-blog text-uppercase mt-5">@hottest.tittle</h6>
+                                   <a href="" class="tittle-blog">@hottest.description<sup>Featured</sup></a>
+                                   <p class="date-blog">@hottest.create_date</p>
+                                   <p class="entry-blog text-left">@hottest.content</p>
                                    <button class="detail-blog btn btn-info">Đọc thêm</button>
                               </div>
                               <div class="leave-comment-blog mt-5">
@@ -119,67 +123,28 @@
                               </div>
                          </div>
                     </div>
-                    <div class="col-md-6 blog-item text-center">
-                         <a href="">
-                              <img src="~/Public/Asset/img/Attractive-1.png" alt="" class="w-100 d-block mt-5">
-                         </a>
-                         <div class="content-blog">
-                              <h6 class="categories-blog text-uppercase mt-5">hẹn hò online</h6>
-                              <a href="" class="tittle-blog">Cách để bạn trở nên thu hút trong mắt bạn gái khi hẹn hò online<sup>Featured</sup></a>
-                              <p class="date-blog">09/06/2020</p>
-                              <p class="entry-blog text-left">Bước đầu để có thể một cuộc hẹn hò có thể hình thành chính là sự thu hút từ cả hai phía. Trở nên thu hút trong mắt bạn gái giúp bạn có được cơ hội trò chuyện cùng người…</p>
-                              <button class="detail-blog btn btn-info">Đọc thêm</button>
-                         </div>
-                         <div class="leave-comment-blog mt-5">
-                              <a href="">Leave a comment</a>
-                         </div>
-                    </div>
-                    <div class="col-md-6 blog-item text-center">
-                         <a href="">
-                              <img src="~/Public/Asset/img/blog.jpg" alt="" class="w-100 d-block mt-5">
-                         </a>
-                         <div class="content-blog">
-                              <h6 class="categories-blog text-uppercase mt-5">hẹn hò online</h6>
-                              <a href="" class="tittle-blog">TOP 6 WEB CHAT BẠN NÊN BIẾT NẾU MUỐN HẸN HÒ THÀNH CÔNG TRONG NĂM 2019<sup>Featured</sup></a>
-                              <p class="date-blog">08/06/2020</p>
-                              <p class="entry-blog text-left">Hẹn hò luôn là một đề tài hấp dẫn nhưng cũng không kém phần ngại ngùng mỗi khi được đề cập tới. Dù vậy, ngày nay, cả nam và nữ đều đã chủ động hơn rất nhiều trong chuyện tình…</p>
-                              <button class="detail-blog btn btn-info">Đọc thêm</button>
-                         </div>
-                         <div class="leave-comment-blog mt-5">
-                              <a href="">Leave a comment</a>
-                         </div>
-                    </div>
-                    <div class="col-md-6 blog-item text-center">
-                         <a href="">
-                              <img src="~/Public/Asset/img/Cam-ki-1.jpg" alt="" class="w-100 d-block mt-5">
-                         </a>
-                         <div class="content-blog">
-                              <h6 class="categories-blog text-uppercase mt-5">câu chuyện tình yêu</h6>
-                              <a href="" class="tittle-blog">5 lý do vì sao bạn nên thử một lần hẹn hò với người sống nội tâm<sup>Featured</sup></a>
-                              <p class="date-blog">20/08/2020</p>
-                              <p class="entry-blog text-left">Giữa người sống nội tâm và người có xu hướng hướng ngoại, bạn thường sẽ thích đối tượng nào để hẹn hò? Có một điều rất dễ nhận thấy là bạn sẽ dễ có cảm tình với những người hướng…</p>
-                              <button class="detail-blog btn btn-info">Đọc thêm</button>
-                         </div>
-                         <div class="leave-comment-blog mt-5">
-                              <a href="">Leave a comment</a>
-                         </div>
-                    </div>
-                    <div class="col-md-6 blog-item text-center">
-                         <a href="">
-                              <img src="~/Public/Asset/img/tình-cảm-12-con-giáp-3.jpg" alt="" class="w-100 d-block mt-5">
-                         </a>
-                         <div class="content-blog">
-                              <h6 class="categories-blog text-uppercase mt-5">CHIÊM TINH VUI</h6>
-                              <a href="" class="tittle-blog">Chuyện tình yêu của 12 con giáp những tháng cuối năm 2019 này sẽ như thế nào?<sup>Featured</sup></a>
-                              <p class="date-blog">29/10/2020</p>
-                              <p class="entry-blog text-left">Bạn có dự định gì cho dịp cuối năm hay chưa? Sẽ là một chuyến du lịch phương xa cùng bạn bè và người ấy hay tìm kiếm một cơ hội cho chuyện tình cảm của mình Cùng YmeetMe khám…</p>
-                              <button class="detail-blog btn btn-info">Đọc thêm</button>
-                         </div>
-                         <div class="leave-comment-blog mt-5">
-                              <a href="">Leave a comment</a>
-                         </div>
-                    </div>
-                    <div class="col-md-12 text-center" id="older-post">
+                    @{                             
+                              foreach (var bl in blog)
+                              {
+                              count++;
+                              <div class="col-md-6 blog-item text-center">
+                                   <a href="">
+                                        <img src="~/Public/Asset/img/@bl.link_img" alt="" class="w-100 d-block mt-5">
+                                   </a>
+                                   <div class="content-blog">
+                                        <h6 class="categories-blog text-uppercase mt-5">@bl.tittle</h6>
+                                        <a href="" class="tittle-blog">@bl.description</a>
+                                        <p class="date-blog">@bl.create_date</p>
+                                        <p class="entry-blog text-left">@bl.content</p>
+                                        <button class="detail-blog btn btn-info">Đọc thêm</button>
+                                   </div>
+                                   <div class="leave-comment-blog mt-5">
+                                        <a href="">Leave a comment</a>
+                                   </div>
+                              </div>
+                         }
+                    }
+                    <div class="col-md-12 text-center" id="older_post">
                          <a href="" class="text-uppercase">older post</a>
                     </div>
                </div>
@@ -190,62 +155,30 @@
           <div class="container">
                <div class="row">
                     <div class="col-md-12">
-                         <div class="row">
-                              <div class="col-md-6 post-center px-5">
-                                   <div class="content-blog ">
-                                        <h6 class="categories-blog text-uppercase mt-5">hẹn hò online</h6>
-                                        <a href="" class="tittle-blog">5 lời khuyên giúp bạn phòng tránh lừa đảo khi hẹn hò qua mạng</a>
-                                        <p class="date-blog">12/11/2020</p>
-                                        <p class="entry-blog content-post">Sự bùng nổ của mạng xã hội và các ứng dụng hẹn hò online trong vòng một thập kỷ trở lại đây giúp cho con người kết nối, giao...</p>
-                                   </div>
-                              </div>
-                              <div class="col-md-3 post-left">
-                                   <img src="~/Public/Asset/img/Success-story_1-1 (1).jpg" alt="" class="img-fluid">
-                                   <div class="content-blog-left-header">
-                                        <h6 class="categories-blog text-uppercase mt-2">câu chuyện tình yêu</h6>
-                                        <a href="" class="tittle-blog">#tinhyeuMTAhub Tháng Mười có gì?</a>
-                                        <p class="date-blog mt-2">08/05/2020</p>
-                                   </div>
-                              </div>
+                         <div class="row">                             
+                              @{
+                                   foreach (var bl in popular_blog)
+                                   {
+                                        foreach (var a in blog)
+                                        {
+                                             if (a.id_blog == bl.id_blog)
+                                             {
+                                                  <div class="col-md-3 post-left">
+                                                       <img src="~/Public/Asset/img/@a.link_img" alt="" class="img-fluid">
+                                                       <div class="content-blog-left-header" style="min-height:13rem;">
+                                                            <h6 class="categories-blog text-uppercase mt-2">@a.tittle</h6>
+                                                            <a href="" class="tittle-blog">@a.description</a>
+                                                            <p class="date-blog mt-2">@a.create_date</p>
+                                                       </div>
+                                                  </div>
+                                             }
+                                        }
 
-                              <div class="col-md-3 post-right text-center">
-                                   <img src="~/Public/Asset/img/tinh-yeu-cua-nguoi-cung-ma-ket-2018.jpeg" alt="" class="img-fluid">
-                                   <div class="content-blog-left-header">
-                                        <h6 class="categories-blog text-uppercase mt-2">chiêm tinh vui</h6>
-                                        <a href="" class="tittle-blog">MA KẾT | Cung hoàng đạo chung thủy nhất 2018</a>
-                                        <p class="date-blog mt-2">28/12/2020</p>
-                                   </div>
-                              </div>
+                                   }
+                              }
                          </div>
                     </div>
-                    <div class="col-md-12 mt-5">
-                         <div class="row">
-                              <div class="col-md-3 post-left">
-                                   <img src="~/Public/Asset/img/hesjustnotthatintoyoupic1.jpg" alt="" class="img-fluid">
-                                   <div class="content-blog-left-header">
-                                        <h6 class="categories-blog text-uppercase mt-2">bí kíp yêu</h6>
-                                        <a href="" class="tittle-blog">9 dấu hiệu để thấy chàng thực sự không thích bạn</a>
-                                        <p class="date-blog mt-2">13/04/2020</p>
-                                   </div>
-                              </div>
-                              <div class="col-md-6 post-center px-5">
-                                   <div class="content-blog ">
-                                        <h6 class="categories-blog text-uppercase mt-5">câu chuyện tình yêu</h6>
-                                        <a href="" class="tittle-blog">7 dấu hiệu của người đàn ông chung thủy tuyệt đối trong tình yêu</a>
-                                        <p class="date-blog">12/04/2020</p>
-                                        <p class="entry-blog content-post">Trong tình yêu, chung thủy luôn là mong muốn lớn nhất từ cả 2 phía đặc biệt đối với phụ nữ. Một người đàn ông chung thủy sẽ là...</p>
-                                   </div>
-                              </div>
-                              <div class="col-md-3 post-right text-center">
-                                   <img src="~/Public/Asset/img/blog.jpg" alt="" class="img-fluid">
-                                   <div class="content-blog-left-header">
-                                        <h6 class="categories-blog text-uppercase mt-2">phong cách sống</h6>
-                                        <a href="" class="tittle-blog">Đánh giá 7 ứng dụng hẹn hò với người nước ngoài phổ biến nhất 2020</a>
-                                        <p class="date-blog mt-2">28/09/2020</p>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
+                    
                </div>
           </div>
      </div>
@@ -344,3 +277,22 @@
 @section back_top{
      <a id="back-to-top" href="#" class="btn btn-danger btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
 }
+<script>
+     $(document).ready(function () {
+          $("#older_post").on('click', function () {
+               //$.ajax({
+               //     url: '/Home/Older_Post',
+               //     data:,
+               //     type: 'post',
+               //     dataType: 'json',
+               //     success: function (data) {
+
+               //     }
+               //});
+               @{ 
+                    count = 10;
+               }
+               alert('@count');
+          });
+     });
+</script>

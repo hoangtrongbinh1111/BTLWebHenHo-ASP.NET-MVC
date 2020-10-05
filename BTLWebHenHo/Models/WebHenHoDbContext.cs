@@ -26,6 +26,7 @@ namespace BTLWebHenHo.Models
           public virtual DbSet<tbl_products> tbl_products { get; set; }
           public virtual DbSet<tbl_shares> tbl_shares { get; set; }
           public virtual DbSet<tbl_transaction> tbl_transaction { get; set; }
+          public virtual DbSet<tbl_view_blog> tbl_view_blog { get; set; }
           public virtual DbSet<UserInfo> UserInfoes { get; set; }
 
           protected override void OnModelCreating(DbModelBuilder modelBuilder)

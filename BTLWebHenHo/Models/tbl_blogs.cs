@@ -8,8 +8,16 @@ namespace BTLWebHenHo.Models
 
     public partial class tbl_blogs
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_blogs()
+        {
+            tbl_view_blog = new HashSet<tbl_view_blog>();
+        }
+
         [Key]
         public int id_blog { get; set; }
+
+        public string link_img { get; set; }
 
         [StringLength(100)]
         public string tittle { get; set; }
@@ -18,7 +26,12 @@ namespace BTLWebHenHo.Models
 
         public string content { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? create_date { get; set; }
+        [StringLength(50)]
+        public string create_date { get; set; }
+
+        public int? hottest { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_view_blog> tbl_view_blog { get; set; }
     }
 }

@@ -105,12 +105,12 @@ namespace BTLWebHenHo.Models
         [StringLength(50)]
         public string family { get; set; }
 
-        [StringLength(50)]
-        public string country { get; set; }
+        public string list_img { get; set; }
 
         public int? hide_age { get; set; }
 
-        public int? UserID { get; set; }
+        [StringLength(50)]
+        public string UserID { get; set; }
 
         public virtual UserInfo UserInfo { get; set; }
     }

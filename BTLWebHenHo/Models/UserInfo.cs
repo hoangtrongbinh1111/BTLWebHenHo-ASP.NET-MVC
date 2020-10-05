@@ -13,12 +13,12 @@ namespace BTLWebHenHo.Models
         public UserInfo()
         {
             Profile_User = new HashSet<Profile_User>();
-            tbl_collects = new HashSet<tbl_collects>();
             tbl_transaction = new HashSet<tbl_transaction>();
         }
 
         [Key]
-        public int UserID { get; set; }
+        [StringLength(50)]
+        public string UserID { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -30,9 +30,6 @@ namespace BTLWebHenHo.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Profile_User> Profile_User { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_collects> tbl_collects { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_transaction> tbl_transaction { get; set; }
