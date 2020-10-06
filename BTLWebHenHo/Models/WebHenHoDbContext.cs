@@ -17,6 +17,7 @@ namespace BTLWebHenHo.Models
           public virtual DbSet<tbl_admin> tbl_admin { get; set; }
           public virtual DbSet<tbl_blogs> tbl_blogs { get; set; }
           public virtual DbSet<tbl_catalogs> tbl_catalogs { get; set; }
+          public virtual DbSet<tbl_category> tbl_category { get; set; }
           public virtual DbSet<tbl_chat> tbl_chat { get; set; }
           public virtual DbSet<tbl_codes> tbl_codes { get; set; }
           public virtual DbSet<tbl_collects> tbl_collects { get; set; }
@@ -26,7 +27,6 @@ namespace BTLWebHenHo.Models
           public virtual DbSet<tbl_products> tbl_products { get; set; }
           public virtual DbSet<tbl_shares> tbl_shares { get; set; }
           public virtual DbSet<tbl_transaction> tbl_transaction { get; set; }
-          public virtual DbSet<tbl_view_blog> tbl_view_blog { get; set; }
           public virtual DbSet<UserInfo> UserInfoes { get; set; }
 
           protected override void OnModelCreating(DbModelBuilder modelBuilder)

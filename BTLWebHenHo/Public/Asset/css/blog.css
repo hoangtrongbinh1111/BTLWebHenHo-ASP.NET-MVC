@@ -136,18 +136,18 @@
 }
 
 #older_post {
-    margin-top: 2rem;
+     margin-top: 2rem;
+     width: 100%;
+     display: block;
+     padding: 1rem;
+     font-weight: bold;
+     border: 1px solid #8b8383;
+     cursor:pointer;
 }
 
-#older_post>a {
-    width: 100%;
-    display: block;
-    padding: 1rem;
-    font-weight: bold;
-    border: 1px solid #8b8383;
-}
 
-#older_post a:hover {
+
+#older_post:hover {
     text-decoration: none;
     color: #fff;
     background: #688fd1;

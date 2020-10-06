@@ -5,7 +5,11 @@
      var hottest = ViewBag.hottest;
      var blog = ViewBag.list_blog;
      var popular_blog = ViewBag.popular_blog;
+     var category = ViewBag.category;
+     var all_blog = ViewBag.all_blog;
      var count = 0;
+     var id_cate = 0;
+     var Name_cate = "";
 }
 
 <link rel="stylesheet" href="~/Public/Asset/css/blog.css">
@@ -108,14 +112,22 @@
                <div class="row">
                     <div class="col-md-12">
                          <div id="hottest-blog" class="blog-item text-center">
-                              <a href="">
+                              <a href="/Home/Blog_Detail/@hottest.id_blog">
                                    <img src="~/Public/Asset/img/@hottest.link_img" alt="" class="w-100 d-block mt-5">
                               </a>
                               <div class="content-blog">
-                                   <h6 class="categories-blog text-uppercase mt-5">@hottest.tittle</h6>
-                                   <a href="" class="tittle-blog">@hottest.description<sup>Featured</sup></a>
+                                   <h6 class="categories-blog text-uppercase mt-5">@{
+                                        foreach (var cate in category)
+                                         {
+                                             if (cate.id_category == hottest.id_category)
+                                             {
+                                                  Name_cate = cate.Name;
+                                             }
+                                          }
+                                   }@Name_cate</h6>
+                                   <a href="/Home/Blog_Detail/@hottest.id_blog" class="tittle-blog">@hottest.tittle<sup>Featured</sup></a>
                                    <p class="date-blog">@hottest.create_date</p>
-                                   <p class="entry-blog text-left">@hottest.content</p>
+                                   <p class="entry-blog text-left">@hottest.description</p>
                                    <button class="detail-blog btn btn-info">Đọc thêm</button>
                               </div>
                               <div class="leave-comment-blog mt-5">
@@ -123,29 +135,41 @@
                               </div>
                          </div>
                     </div>
-                    @{                             
+                    <div id="list_blog" class="row">
+                         @{
                               foreach (var bl in blog)
                               {
-                              count++;
-                              <div class="col-md-6 blog-item text-center">
-                                   <a href="">
-                                        <img src="~/Public/Asset/img/@bl.link_img" alt="" class="w-100 d-block mt-5">
-                                   </a>
-                                   <div class="content-blog">
-                                        <h6 class="categories-blog text-uppercase mt-5">@bl.tittle</h6>
-                                        <a href="" class="tittle-blog">@bl.description</a>
-                                        <p class="date-blog">@bl.create_date</p>
-                                        <p class="entry-blog text-left">@bl.content</p>
-                                        <button class="detail-blog btn btn-info">Đọc thêm</button>
+                                   
+                                   foreach (var cate in category)
+                                   {
+                                        if (cate.id_category == bl.id_category)
+                                        {
+                                             Name_cate = cate.Name;
+                                        }
+                                   }
+                                   count++;
+                                   <div class="col-md-6 blog-item text-center">
+                                        <a href="/Home/Blog_Detail/@bl.id_blog">
+                                             <img src="~/Public/Asset/img/@bl.link_img" alt="" class="w-100 d-block mt-5">
+                                        </a>
+                                        <div class="content-blog">
+                                             <h6 class="categories-blog text-uppercase mt-5">@Name_cate</h6>
+                                             <a href="/Home/Blog_Detail/@bl.id_blog" class="tittle-blog">@bl.tittle</a>
+                                             <p class="date-blog">@bl.create_date</p>
+                                             <p class="entry-blog text-left">@bl.description</p>
+                                             <a href="/Home/Blog_Detail/@bl.id_blog" class="detail-blog btn btn-info">Đọc thêm</a>
+                                        </div>
+                                        <div class="leave-comment-blog mt-5">
+                                             <a href="/Home/Blog_Detail/@bl.id_blog">Leave a comment</a>
+                                        </div>
                                    </div>
-                                   <div class="leave-comment-blog mt-5">
-                                        <a href="">Leave a comment</a>
-                                   </div>
-                              </div>
+                              }
                          }
-                    }
-                    <div class="col-md-12 text-center" id="older_post">
-                         <a href="" class="text-uppercase">older post</a>
+                    </div>
+                    
+                    <div class="col-md-12 text-center text-uppercase" id="older_post">
+                         @*<a href="" class="text-uppercase">older post</a>*@
+                         older post
                     </div>
                </div>
           </div>
@@ -159,18 +183,29 @@
                               @{
                                    foreach (var bl in popular_blog)
                                    {
-                                        foreach (var a in blog)
+                                        foreach (var a in all_blog)
                                         {
                                              if (a.id_blog == bl.id_blog)
                                              {
+                                                  foreach(var c in category)
+                                                  {
+                                                       if (c.id_category == a.id_category)
+                                                       {
+                                                            Name_cate = c.Name;
+                                                            break;
+                                                       }
+                                                  }
                                                   <div class="col-md-3 post-left">
-                                                       <img src="~/Public/Asset/img/@a.link_img" alt="" class="img-fluid">
+                                                       <a href="/Home/Blog_Detail/@a.id_blog">
+                                                            <img src="~/Public/Asset/img/@a.link_img" alt="" class="img-fluid">
+                                                       </a>                                                     
                                                        <div class="content-blog-left-header" style="min-height:13rem;">
-                                                            <h6 class="categories-blog text-uppercase mt-2">@a.tittle</h6>
-                                                            <a href="" class="tittle-blog">@a.description</a>
+                                                            <h6 class="categories-blog text-uppercase mt-2">@Name_cate</h6>
+                                                            <a href="/Home/Blog_Detail/@a.id_blog" class="tittle-blog">@a.tittle</a>
                                                             <p class="date-blog mt-2">@a.create_date</p>
                                                        </div>
                                                   </div>
+                                                  break;
                                              }
                                         }
 
@@ -279,20 +314,30 @@
 }
 <script>
      $(document).ready(function () {
+          var count = '@count';
+          var num_count = Number(count);
           $("#older_post").on('click', function () {
-               //$.ajax({
-               //     url: '/Home/Older_Post',
-               //     data:,
-               //     type: 'post',
-               //     dataType: 'json',
-               //     success: function (data) {
-
-               //     }
-               //});
-               @{ 
-                    count = 10;
-               }
-               alert('@count');
+               num_count += 2;
+               $.ajax({
+                    url: '@Url.Action("older_Post","Home")',
+                    data: { count: num_count },
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                         var res = "";                        
+                         if (data) {                             
+                              $.each(data, function (count, bl) {                                 
+                                   res += "<div class='col-md-6 blog-item text-center'><a href='/Home/Blog_Detail/"+bl.id_blog+"'> <img src='/Public/Asset/img/" + bl.link_img + "' alt='' class='w-100 d-block mt-5'></a>" +
+                                        "<div class='content-blog'><h6 class='categories-blog text-uppercase mt-5'>" + bl.content + "</h6> <a href='/Home/Blog_Detail/"+bl.id_blog+"' class='tittle-blog'>" + bl.tittle + "</a>" +
+                                        "<p class='date-blog'>" + bl.create_date + "</p><p class='entry-blog text-left'>" + bl.description + "</p><button class='detail-blog btn btn-info'>Đọc thêm</button>" +
+                                        "</div><div class='leave-comment-blog mt-5'><a href='/Home/Blog_Detail/"+bl.id_blog+"'>Leave a comment</a></div></div>";
+                              })
+                              
+                              $("#list_blog").html(res);
+                         }
+                    }
+               });              
+               
           });
      });
 </script>

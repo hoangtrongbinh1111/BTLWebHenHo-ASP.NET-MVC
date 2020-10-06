@@ -172,6 +172,7 @@
     <Compile Include="Models\tbl_admin.cs" />
     <Compile Include="Models\tbl_blogs.cs" />
     <Compile Include="Models\tbl_catalogs.cs" />
+    <Compile Include="Models\tbl_category.cs" />
     <Compile Include="Models\tbl_chat.cs" />
     <Compile Include="Models\tbl_codes.cs" />
     <Compile Include="Models\tbl_collects.cs" />
@@ -181,7 +182,6 @@
     <Compile Include="Models\tbl_products.cs" />
     <Compile Include="Models\tbl_shares.cs" />
     <Compile Include="Models\tbl_transaction.cs" />
-    <Compile Include="Models\tbl_view_blog.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Models\WebHenHoDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +197,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Public\Asset\css\blog.css" />
+    <Content Include="Public\Asset\css\blog_detail.css" />
     <Content Include="Public\Asset\css\branding.css" />
     <Content Include="Public\Asset\css\buy-coin.css" />
     <Content Include="Public\Asset\css\chat-group.css" />
@@ -1283,6 +1284,7 @@
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Profile\Chat_Group.cshtml" />
     <Content Include="Views\Profile\Upload_Img.cshtml" />
+    <Content Include="Views\Home\Blog_Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
