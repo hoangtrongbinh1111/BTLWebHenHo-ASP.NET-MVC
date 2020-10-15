@@ -28,8 +28,8 @@ namespace BTLWebHenHo.Models
 
         public string avatar { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? birthday { get; set; }
+        [StringLength(50)]
+        public string birthday { get; set; }
 
         public int? height { get; set; }
 
@@ -111,6 +111,9 @@ namespace BTLWebHenHo.Models
 
         [StringLength(50)]
         public string UserID { get; set; }
+
+        [StringLength(10)]
+        public string gender { get; set; }
 
         public virtual UserInfo UserInfo { get; set; }
     }

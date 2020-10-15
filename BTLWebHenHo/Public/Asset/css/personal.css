@@ -829,14 +829,15 @@ a.media {
      padding: 1rem;
 }
 
-     a.media:hover {
-          background-color: #e1e1e1;
-          text-decoration: none;
-     }
+a.media:hover {
+     background-color: #e1e1e1;
+     text-decoration: none;
+}
 
-     a.media > img {
-          width: 5rem;
-     }
+a.media > img {
+     width: 5rem;
+     height:5rem;
+}
 
 .media-body {
     padding-left: 15px;

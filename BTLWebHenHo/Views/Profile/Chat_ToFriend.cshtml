@@ -1,7 +1,9 @@
 ﻿
 @{
      Layout = null;
-     
+     var id_chat = ViewBag.id_chat;
+     var stt = ViewBag.stt_id_chat;
+     var NickName_other = ViewBag.NickName_other;
 }
 
 <!DOCTYPE html>
@@ -13,19 +15,20 @@
 <script src="~/signalr/hubs"></script>
 @*<script src="~/Public/Asset/js/chat_group.js"></script>*@
 <body>
-     
+
      <div id="wrapper">
           <div class="header">
                <a href="~/Profile">
                     <i class="fas fa-chevron-left"></i>
                </a>
-               <h3>Group chat MTAhub</h3>               
+               <h3>Chat cùng: <strong>@NickName_other</strong></h3>
           </div>
           <div class="chat-panel">
-               <ul id="contentMsg">
+               <ul id="contentMsg_@stt" class="msg_chatbox">
                     @foreach (var a in ViewBag.list_chat)
-                    {                    
-                        <li><strong>@a.NickName</strong>: @a.msg</li>                     
+                    {
+                         <li><strong>@a.NickName</strong>: @a.msg</li>
+
                     }
                </ul>
           </div>
@@ -39,47 +42,62 @@
                Developed by Bình + Hoàng CNTT1
           </div>
      </div>
-     <script>          
+     <script>
+          var con_ID = "";          
           $(document).ready(function () {
                //scroll down
-               var height = $('#contentMsg').get(0).scrollHeight;
-               $('#contentMsg').animate({scrollTop:height});
-               
-               var name = $('#hName').val();    
+               var height = $('#contentMsg_@stt').get(0).scrollHeight;
+               $('#contentMsg_@stt').animate({scrollTop:height});
+
+               var name = $('#hName').val();
                var UserID = $('#hUserID').val();
                var chatHub = $.connection.chat;
               
-               loadClient(chatHub);    
-          
+               loadClient(chatHub);
+               
      //start connect hub
-          $.connection.hub.start().done(function () {
-               chatHub.server.connect(name);              
+               $.connection.hub.start().done(function () {
+
+               chatHub.server.connect(name);
+               
               $.ajax({
                          type: "POST",
                          data: { UserID: UserID, con_ID: $.connection.hub.id },
                          url: '@Url.Action("Update_ConID","Profile")',
                          dataType: "json",
                          success: function (data) {
-                              //alert(data);
+                              
                          }
                     });
-          
+                
                $('#txtMessage').bind("enterKey", function (e) {
-                        
+
                     //do stuff here
                     //scroll down
-                    var height = $('#contentMsg').get(0).scrollHeight;
-                    $('#contentMsg').animate({ scrollTop: height });
+                    var height = $('#contentMsg_@stt').get(0).scrollHeight;
+                    $('#contentMsg_@stt').animate({ scrollTop: height });
 
-                    var msg = $('#txtMessage').val();                    
-                    chatHub.server.message(name, msg);
-                   
-                    //$('#contentMsg>li:last-child')
-                    $('#txtMessage').val('').focus();     
+                    var msg = $('#txtMessage').val();
                     $.ajax({
                          type: "POST",
-                         data: { UserID: UserID, msg: msg },
-                         url: '@Url.Action("History_Chat","Profile")',
+                         data: { chat_id: '@id_chat' },
+                         url: '@Url.Action("Get_ConID","Profile")',
+                         dataType: "json",
+                         success: function (data) {                             
+                              setCon_Id(data);
+                              $('#contentMsg_@stt').append("<li><strong>" + name + "</strong>: " + msg + "  </li>");
+                           
+                              chatHub.server.message(name, msg, data,'@stt',UserID);
+                         }
+                    });
+                   
+
+                    //$('#contentMsg_@stt>li:last-child')
+                    $('#txtMessage').val('').focus();
+                    $.ajax({
+                         type: "POST",
+                         data: { from_id_user: UserID, stt: '@stt', msg: msg },
+                         url: '@Url.Action("History_Chat_Private","Profile")',
                          dataType: "json",
                          success: function (data) {
                               //alert(data);
@@ -92,20 +110,20 @@
                        $(this).trigger("enterKey");
                    }
                });
-          
+
                $('#btnSend').click(function () {
-                    
+
                     //scroll down
-                    var height = $('#contentMsg').get(0).scrollHeight;
-                    $('#contentMsg').animate({ scrollTop: height });
+                    var height = $('#contentMsg_@stt').get(0).scrollHeight;
+                    $('#contentMsg_@stt').animate({ scrollTop: height });
 
                     var msg = $('#txtMessage').val();
-               
-                    chatHub.server.message(name, msg);     
-                    //$('#contentMsg>li:last-child')
+
+                    chatHub.server.message(name, msg);
+                    //$('#contentMsg_@stt>li:last-child')
                     $('#txtMessage').val('').focus();
 
-               
+
                     $.ajax({
                          type: "POST",
                          data: { UserID: UserID, msg: msg },
@@ -116,20 +134,22 @@
                          }
                     });
                });
-            
+
                });
           });
           function loadClient(chatHub) {
-               
-     chatHub.client.message = function (name, msg) {       
-           $('#contentMsg').append("<li><strong>" + name + "</strong>: " + msg + "  </li>");
-          
+
+               chatHub.client.message = function (name, msg, stt) {                                                        
+                    $('#contentMsg_'+stt).append("<li><strong>" + name + "</strong>: " + msg + "  </li>");                   
                }
-               
+
      chatHub.client.connect = function (name) {
           $('#hName').val(name);
      }
-}
+          }
+          function setCon_Id(data) {
+               con_ID = data;
+          }          
      </script>
 </body>
 </html>

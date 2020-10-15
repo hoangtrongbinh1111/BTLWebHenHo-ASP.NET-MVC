@@ -49,8 +49,25 @@ ul#contentMsg > li {
      list-style-type:none;
      
 }
+ul.msg_chatbox {
+     height: inherit;
+     overflow-y: scroll;
+     padding-bottom: 1.5rem;
+     padding-left: 1rem;
+}
+     ul.msg_chatbox > li {
+          max-width: 350px;
+          background: #e1e1e1;
+          word-wrap: break-word;
+          word-break: keep-all;
+          margin-bottom: 2rem;
+          padding: 1rem;
+          border-radius: 2rem;
+          clear: both;
+          list-style-type: none;
+     }
 .chat-panel {
-    height: 750px;
+     height: 750px;
 }
 
 .chat-send>input {

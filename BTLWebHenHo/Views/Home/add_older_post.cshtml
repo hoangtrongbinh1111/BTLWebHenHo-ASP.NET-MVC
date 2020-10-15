@@ -1,0 +1,52 @@
+﻿@model List<BTLWebHenHo.Models.tbl_blogs>
+@{
+     Layout = null;
+     var category = ViewBag.category;
+     var Name_cate = "";
+}
+
+<!DOCTYPE html>
+@{
+     foreach (var bl in Model)
+     {
+
+          foreach (var cate in category)
+          {
+               if (cate.id_category == bl.id_category)
+               {
+                    Name_cate = cate.Name;
+               }
+          }
+          <div class="col-md-6 blog-item text-center item_each_blog" data-id="@bl.id_blog">
+               <a href="/Home/Blog_Detail/@bl.id_blog">
+                    <img src="~/Public/Asset/img/@bl.link_img" alt="" class="w-100 d-block mt-5">
+               </a>
+               <div class="content-blog">
+                    <h6 class="categories-blog text-uppercase mt-5">@Name_cate</h6>
+                    <a href="/Home/Blog_Detail/@bl.id_blog" class="tittle-blog">@bl.tittle</a>
+                    <p class="date-blog">@bl.create_date<i class="fas fa-eye ml-2">@bl.qty_view</i></p>
+                    <p class="entry-blog text-left">@bl.description</p>
+                    <a href="/Home/Blog_Detail/@bl.id_blog" class="detail_blog btn btn-info">Đọc thêm</a>
+               </div>
+               <div class="leave-comment-blog mt-5">
+                    <a href="/Home/Blog_Detail/@bl.id_blog">Leave a comment</a>
+               </div>
+          </div>
+     }
+}
+<script>
+     $(document).ready(function () {         
+          $(".item_each_blog").click(function () {
+               var id = $(this).data("id");
+               $.ajax({
+                    url: '/Home/update_view?id=' + id,
+                    type: 'get',
+                    dataType:'json',
+                    cache: false,
+                    success: function (data) {
+
+                    }
+               });
+          });
+     });
+</script>

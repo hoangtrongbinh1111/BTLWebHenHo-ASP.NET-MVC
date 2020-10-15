@@ -14,5 +14,8 @@ namespace BTLWebHenHo.Models
         public string list_id_User { get; set; }
 
         public string list_msg { get; set; }
+
+        [StringLength(50)]
+        public string content { get; set; }
     }
 }

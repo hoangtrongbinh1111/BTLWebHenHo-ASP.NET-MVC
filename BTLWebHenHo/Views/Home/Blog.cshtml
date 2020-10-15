@@ -7,6 +7,7 @@
      var popular_blog = ViewBag.popular_blog;
      var category = ViewBag.category;
      var all_blog = ViewBag.all_blog;
+     var is_sort_cate = ViewBag.sort_cate;
      var count = 0;
      var id_cate = 0;
      var Name_cate = "";
@@ -111,28 +112,30 @@
           <div class="container">
                <div class="row">
                     <div class="col-md-12">
-                         <div id="hottest-blog" class="blog-item text-center">
+                         <div id="hottest-blog" class="blog-item text-center" data-id="@hottest.id_blog">
                               <a href="/Home/Blog_Detail/@hottest.id_blog">
                                    <img src="~/Public/Asset/img/@hottest.link_img" alt="" class="w-100 d-block mt-5">
-                              </a>
+                              </a>                              
                               <div class="content-blog">
-                                   <h6 class="categories-blog text-uppercase mt-5">@{
-                                        foreach (var cate in category)
-                                         {
-                                             if (cate.id_category == hottest.id_category)
+                                   <h6 class="categories-blog text-uppercase mt-5">
+                                        @{
+                                             foreach (var cate in category)
                                              {
-                                                  Name_cate = cate.Name;
+                                                  if (cate.id_category == hottest.id_category)
+                                                  {
+                                                       Name_cate = cate.Name;
+                                                  }
                                              }
-                                          }
-                                   }@Name_cate</h6>
-                                   <a href="/Home/Blog_Detail/@hottest.id_blog" class="tittle-blog">@hottest.tittle<sup>Featured</sup></a>
-                                   <p class="date-blog">@hottest.create_date</p>
-                                   <p class="entry-blog text-left">@hottest.description</p>
-                                   <button class="detail-blog btn btn-info">Đọc thêm</button>
-                              </div>
-                              <div class="leave-comment-blog mt-5">
-                                   <a href="">Leave a comment</a>
-                              </div>
+                                   }@Name_cate
+                              </h6>
+                              <a href="/Home/Blog_Detail/@hottest.id_blog" class="tittle-blog">@hottest.tittle<sup>Featured</sup></a>
+                              <p class="date-blog">@hottest.create_date <i class="fas fa-eye ml-2">@hottest.qty_view</i></p>
+                              <p class="entry-blog text-left">@hottest.description</p>
+                              <a href="/Home/Blog_Detail/@hottest.id_blog" class="detail_blog btn btn-info">Đọc thêm</a>
+                         </div>
+                         <div class="leave-comment-blog mt-5">
+                              <a href="/Home/Blog_Detail/@hottest.id_blog">Leave a comment</a>
+                         </div>
                          </div>
                     </div>
                     <div id="list_blog" class="row">
@@ -148,16 +151,16 @@
                                         }
                                    }
                                    count++;
-                                   <div class="col-md-6 blog-item text-center">
+                                   <div class="col-md-6 blog-item text-center item_each_blog" data-id="@bl.id_blog">
                                         <a href="/Home/Blog_Detail/@bl.id_blog">
                                              <img src="~/Public/Asset/img/@bl.link_img" alt="" class="w-100 d-block mt-5">
                                         </a>
                                         <div class="content-blog">
                                              <h6 class="categories-blog text-uppercase mt-5">@Name_cate</h6>
                                              <a href="/Home/Blog_Detail/@bl.id_blog" class="tittle-blog">@bl.tittle</a>
-                                             <p class="date-blog">@bl.create_date</p>
+                                             <p class="date-blog">@bl.create_date<i class="fas fa-eye ml-2">@bl.qty_view</i></p>
                                              <p class="entry-blog text-left">@bl.description</p>
-                                             <a href="/Home/Blog_Detail/@bl.id_blog" class="detail-blog btn btn-info">Đọc thêm</a>
+                                             <a href="/Home/Blog_Detail/@bl.id_blog" class="detail_blog btn btn-info">Đọc thêm</a>
                                         </div>
                                         <div class="leave-comment-blog mt-5">
                                              <a href="/Home/Blog_Detail/@bl.id_blog">Leave a comment</a>
@@ -316,11 +319,12 @@
      $(document).ready(function () {
           var count = '@count';
           var num_count = Number(count);
+          var is_sort_cate = '@is_sort_cate';
           $("#older_post").on('click', function () {
                num_count += 2;
-               $.ajax({
+               @*$.ajax({
                     url: '@Url.Action("older_Post","Home")',
-                    data: { count: num_count },
+                    data: { count: num_count, is_sort_cate: is_sort_cate },
                     type: 'post',
                     dataType: 'json',
                     success: function (data) {
@@ -329,15 +333,48 @@
                               $.each(data, function (count, bl) {                                 
                                    res += "<div class='col-md-6 blog-item text-center'><a href='/Home/Blog_Detail/"+bl.id_blog+"'> <img src='/Public/Asset/img/" + bl.link_img + "' alt='' class='w-100 d-block mt-5'></a>" +
                                         "<div class='content-blog'><h6 class='categories-blog text-uppercase mt-5'>" + bl.content + "</h6> <a href='/Home/Blog_Detail/"+bl.id_blog+"' class='tittle-blog'>" + bl.tittle + "</a>" +
-                                        "<p class='date-blog'>" + bl.create_date + "</p><p class='entry-blog text-left'>" + bl.description + "</p><button class='detail-blog btn btn-info'>Đọc thêm</button>" +
+                                        "<p class='date-blog'>" + bl.create_date + "</p><p class='entry-blog text-left'>" + bl.description + "</p><a class='detail_blog btn btn-info'>Đọc thêm</a>" +
                                         "</div><div class='leave-comment-blog mt-5'><a href='/Home/Blog_Detail/"+bl.id_blog+"'>Leave a comment</a></div></div>";
                               })
                               
                               $("#list_blog").html(res);
                          }
                     }
-               });              
+               });*@     
+
+               $.ajax({
+                    url: '/Home/add_older_post?count=' + num_count + '&is_sort_cate=' + is_sort_cate,                   
+                    type: 'get',
+                    cache: false,
+                    success: function (data) {
+                         $("#list_blog").html(data);
+                    }
+               });      
                
+          });
+          $("#hottest-blog").click(function () {
+               var id = $(this).data("id");
+               $.ajax({
+                    url: '/Home/update_view?id=' + id,                   
+                    type: 'get',
+                    dataType:'json',
+                    cache: false,
+                    success: function (data) {
+                         
+                    }
+               });
+          });
+          $(".item_each_blog").click(function () {
+               var id = $(this).data("id");
+               $.ajax({
+                    url: '/Home/update_view?id=' + id,                   
+                    type: 'get',
+                    dataType:'json',
+                    cache: false,
+                    success: function (data) {
+                         
+                    }
+               });
           });
      });
 </script>

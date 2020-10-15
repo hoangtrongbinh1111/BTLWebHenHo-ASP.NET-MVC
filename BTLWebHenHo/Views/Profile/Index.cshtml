@@ -3,9 +3,18 @@
      ViewBag.Tittle = "My Profile";
      Layout = null;
      var info = ViewBag.info;
-     string[] spl = info.birthday.ToString().Split(' ');
-     var birthday = spl[0];
-     var age = DateTime.Now.Year - info.birthday.Year;
+     var birthday = "";
+     var age = 0;
+     if (info.birthday != null)
+     {
+          string[] spl = info.birthday.Split('-');
+          birthday = spl[0];
+          age = DateTime.Now.Year - Convert.ToInt32(birthday);
+          birthday = spl[2] + "/" + spl[1] + "/" + spl[0];
+     }
+     var list_user_chat = ViewBag.list_user_chat;
+     //cal percent profile done
+     var cal_percent = ViewBag.cal_percent;
 }
 
 <!DOCTYPE html>
@@ -14,8 +23,8 @@
 @Html.Partial("head")
 <link rel="stylesheet" href="~/Public/Asset/css/personal.css">
 <script src="~/Public/Asset/js/personal.js"></script>
-<script src="~/Public/Asset/js/vendor/jquery.ui.widget.js"></script>
-<script src="~/Public/Asset/js/vendor/jquery.fileupload.js"></script>
+@*<script src="~/Public/Asset/js/vendor/jquery.ui.widget.js"></script>
+     <script src="~/Public/Asset/js/vendor/jquery.fileupload.js"></script>*@
 <body>
      <div id="wrapper">
           <ul class="nav nav-pills nav-fill" id="myPill" role="tablist">
@@ -717,6 +726,19 @@
                                                        <p>Group chat MTAhub</p>
                                                   </div>
                                              </a>
+                                             @foreach (var item in list_user_chat)
+                                             {
+                                                  if (item.image_link == null)
+                                                  { item.image_link = "thumb_811567_20181121_023719_59.png"; }
+                                                  <a class="media" href="/Profile/Chat_ToFriend?id_other_user=@item.tc.id_other_user&stt_id_chat=@item.tc.content">
+                                                       <img class="img-fluid" src="~/Public/Asset/img/Avatar/@item.image_link" alt="">
+                                                       <div class="media-body">
+                                                            <h5>@item.Nickname</h5>
+                                                            <p>@item.address</p>
+                                                       </div>
+                                                  </a>
+                                             }
+
                                         </div>
                                         <div class="tab-pane fade" id="tab3-2">
                                              <div class="row">
@@ -790,33 +812,33 @@
                          <p class="sub-tittle-item">Chia sẻ những hình ảnh mới nhất của bạn</p>
                          @if (info.list_img != null)
                          {
-                              string[] list_img = info.list_img.Split('/');                             
+                              string[] list_img = info.list_img.Split('/');
                               <div id="list_your_image">
                                    <ul class="list-unstyled d-flex flex-wrap justify-content-around">
-                                        @for(int i = 0; i < list_img.Count()-1; i++)
+                                        @for (int i = 0; i < list_img.Count() - 1; i++)
                                         {
-                                        <li class="mr-2 mb-2" data-name_img="@list_img[i]">
-                                             <img src="~/Public/Asset/img/List_image_upload/@list_img[i]" class="img-fluid" />
-                                             <i class="fas fa-times-circle del_img_user"></i>
-                                        </li>
+                                             <li class="mr-2 mb-2" data-name_img="@list_img[i]">
+                                                  <img src="~/Public/Asset/img/List_image_upload/@list_img[i]" class="img-fluid" />
+                                                  <i class="fas fa-times-circle del_img_user"></i>
+                                             </li>
                                         }
                                    </ul>
                               </div>
                          }
-                         
-                    <div>
-                         
-                         <form action="/Profile/Upload_List_Img" class="text-center" method="post" enctype="multipart/form-data">
-                              @if (info.list_img != null)
-                              {
-                                   <button class="btn btn-dark" id="del_all_img">Xóa hết ảnh</button>
-                              }
-                              <label for="upl_file" id="lb_upl_img" class="btn btn-danger mb-0 ">Tải ảnh lên</label>
-                              <input type="file" name="file" id="upl_file" class="d-none" required multiple>
-                              <label style="display:none;" id="unUpload" class="btn btn-secondary mb-0">Hủy</label>
-                              <input type="submit" id="btn_upload_list_img" value="Tải lên" style="display:none;" class="btn btn-primary" />
-                         </form>
-                    </div>
+
+                         <div>
+
+                              <form action="/Profile/Upload_List_Img" class="text-center" method="post" enctype="multipart/form-data">
+                                   @if (info.list_img != null)
+                                   {
+                                        <button class="btn btn-dark" id="del_all_img">Xóa hết ảnh</button>
+                                   }
+                                   <label for="upl_file" id="lb_upl_img" class="btn btn-danger mb-0 ">Tải ảnh lên</label>
+                                   <input type="file" name="file" id="upl_file" class="d-none" required multiple>
+                                   <label style="display:none;" id="unUpload" class="btn btn-secondary mb-0">Hủy</label>
+                                   <input type="submit" id="btn_upload_list_img" value="Tải lên" style="display:none;" class="btn btn-primary" />
+                              </form>
+                         </div>
 
 
                          <div class="wp-item-info d-flex
@@ -871,6 +893,18 @@
                                              </td>
                                         </tr>
                                         <tr>
+                                             <td class=" txt-light f-18 w-40">Giới tính</td>
+                                             <td id="gender">
+                                                  <select name="gender" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.gender != null){ <span>@info.gender</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Nam</option>
+                                                       <option value="2">Nữ</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
                                              <td class=" txt-light f-18 w-40">Tuổi</td>
                                              <td id="age">
                                                   <span>@age</span>
@@ -879,7 +913,7 @@
                                         <tr>
                                              <td class=" txt-light f-18 w-40">Ngày sinh</td>
                                              <td id="birthday">
-                                                  <span>@birthday</span>
+                                                  @{if (info.birthday != null){ <span>@birthday</span>}else{<span>Không có</span>} }
                                                   <i class="fas fa-pencil-alt float-right" style="cursor:pointer;"></i>
                                              </td>
                                         </tr>
@@ -903,1052 +937,995 @@
                                              <td id="body">
                                                   <select name="body-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.body != null)
-                                                                 { <span>@info.body</span>}
-                                                            else
-                                                            {<span>Không có</span>} }
-                                                  </option>
-                                                  <option value="1">Mảnh mai</option>
-                                                  <option value="2">Thể thao</option>
-                                                  <option value="3">Trung bình</option>
-                                                  <option value="4">Cơ bắp</option>
-                                                  <option value="5">Hơi mập</option>
-                                                  <option value="6">Đậm</option>
-                                                  <option value="7">Cao lớn</option>
-                                             </select>
-                                        </td>
-                                   </tr>
-                                   <tr>
-                                        <td class=" txt-light f-18 w-40 pt-15">
-                                             Nhóm máu
-                                        </td>
-                                        <td id="blood">
-                                             <select name="blood-user" class="select-properties-user">
-                                                  <option value="0" selected>
-                                                       @{if (info.blood != null)
-                                                            { <span>@info.blood</span>}
-                                                       else
-                                                       {<span>Không có</span>} }
-                                             </option>
-                                             <option value="1">A</option>
-                                             <option value="2">B</option>
-                                             <option value="3">O</option>
-                                             <option value="4">AB</option>
-                                        </select>
-                                   </td>
-                              </tr>
-                              <tr>
-                                   <td class=" txt-light f-18 w-40 pt-15">
-                                        Quốc gia
-                                   </td>
-                                   <td id="national_user">
-                                        <select name="national-user" class="select-properties-user">
-                                             <option value="0" selected>
-                                                  @{if (info.national_user != null)
-                                                       { <span>@info.national_user</span>}
-                                                  else
-                                                  {<span>Không có</span>} }
-                                        </option>
-                                        <option value="1">Việt Nam</option>
-                                        <option value="2">Nhật Bản</option>
-                                        <option value="3">Trung Quốc</option>
-                                        <option value="4">Hàn Quốc</option>
-                                   </select>
-                              </td>
-                         </tr>
-                         <tr>
-                              <td class=" txt-light f-18 w-40 pt-15">
-                                   Quê quán
-                              </td>
-                              <td id="address_user">
-                                   <select name="country-user" class="select-properties-user">
-                                        <option value="0" selected>
-                                             @{if (info.address_user != null)
-                                                  { <span>@info.address_user</span>}
-                                             else
-                                             {<span>Không có</span>} }
-                                   </option>
-                                   <option value="1">
-                                        An Giang
-                                   </option>
-                                   <option value="2">
-                                        Bà
-                                        Rịa - Vũng Tàu
-                                   </option>
-                                   <option value="3">
-                                        Bạc
-                                        Liêu
-                                   </option>
-                                   <option value="4">
-                                        Bắc
-                                        Kạn
-                                   </option>
-                                   <option value="5">
-                                        Bắc
-                                        Giang
-                                   </option>
-                                   <option value="6">
-                                        Bắc
-                                        Ninh
-                                   </option>
-                                   <option value="7">
-                                        Bến
-                                        Tre
-                                   </option>
-                                   <option value="8">
-                                        Bình
-                                        Dương
-                                   </option>
-                                   <option value="9">
-                                        Bình
-                                        Định
-                                   </option>
-                                   <option value="10">
-                                        Bình
-                                        Phước
-                                   </option>
-                                   <option value="11">
-                                        Bình
-                                        Thuận
-                                   </option>
-                                   <option value="12">
-                                        Cà
-                                        Mau
-                                   </option>
-                                   <option value="13">
-                                        Cao
-                                        Bằng
-                                   </option>
-                                   <option value="14">
-                                        Cần
-                                        Thơ
-                                   </option>
-                                   <option value="15">
-                                        Đà
-                                        Nẵng
-                                   </option>
-                                   <option value="16">
-                                        Đắk
-                                        Lắk
-                                   </option>
-                                   <option value="17">
-                                        Đắk
-                                        Nông
-                                   </option>
-                                   <option value="18">
-                                        Đồng
-                                        Nai
-                                   </option>
-                                   <option value="19">
-                                        Đồng
-                                        Tháp
-                                   </option>
-                                   <option value="20">
-                                        Điện
-                                        Biên
-                                   </option>
-                                   <option value="21">
-                                        Gia
-                                        Lai
-                                   </option>
-                                   <option value="22">
-                                        Hà
-                                        Giang
-                                   </option>
-                                   <option value="23">
-                                        Hà
-                                        Nam
-                                   </option>
-                                   <option value="24">
-                                        Hà
-                                        Nội
-                                   </option>
-                                   <option value="25">
-                                        Hà
-                                        Tĩnh
-                                   </option>
-                                   <option value="26">
-                                        Hải
-                                        Dương
-                                   </option>
-                                   <option value="27">
-                                        Hải
-                                        Phòng
-                                   </option>
-                                   <option value="28">
-                                        Hòa
-                                        Bình
-                                   </option>
-                                   <option value="29">
-                                        Hậu
-                                        Giang
-                                   </option>
-                                   <option value="30">
-                                        Hưng
-                                        Yên
-                                   </option>
-                                   <option value="31">
-                                        TP.
-                                        Hồ Chí Minh
-                                   </option>
-                                   <option value="32">
-                                        Khánh
-                                        Hòa
-                                   </option>
-                                   <option value="33">
-                                        Kiên
-                                        Giang
-                                   </option>
-                                   <option value="34">
-                                        Kon
-                                        Tum
-                                   </option>
-                                   <option value="35">
-                                        Lai
-                                        Châu
-                                   </option>
-                                   <option value="36">
-                                        Lào
-                                        Cai
-                                   </option>
-                                   <option value="37">
-                                        Lạng
-                                        Sơn
-                                   </option>
-                                   <option value="38">
-                                        Lâm
-                                        Đồng
-                                   </option>
-                                   <option value="39">
-                                        Long
-                                        An
-                                   </option>
-                                   <option value="40">
-                                        Nam
-                                        Định
-                                   </option>
-                                   <option value="41">
-                                        Nghệ
-                                        An
-                                   </option>
-                                   <option value="42">
-                                        Ninh
-                                        Bình
-                                   </option>
-                                   <option value="43">
-                                        Ninh
-                                        Thuận
-                                   </option>
-                                   <option value="44">
-                                        Phú
-                                        Thọ
-                                   </option>
-                                   <option value="45">
-                                        Phú
-                                        Yên
-                                   </option>
-                                   <option value="46">
-                                        Quảng
-                                        Bình
-                                   </option>
-                                   <option value="47">
-                                        Quảng
-                                        Nam
-                                   </option>
-                                   <option value="48">
-                                        Quảng
-                                        Ngãi
-                                   </option>
-                                   <option value="49">
-                                        Quảng
-                                        Ninh
-                                   </option>
-                                   <option value="50">
-                                        Quảng
-                                        Trị
-                                   </option>
-                                   <option value="51">
-                                        Sóc
-                                        Trăng
-                                   </option>
-                                   <option value="52">
-                                        Sơn
-                                        La
-                                   </option>
-                                   <option value="53">
-                                        Tây
-                                        Ninh
-                                   </option>
-                                   <option value="54">
-                                        Thái
-                                        Bình
-                                   </option>
-                                   <option value="55">
-                                        Thái
-                                        Nguyên
-                                   </option>
-                                   <option value="56">
-                                        Thanh
-                                        Hóa
-                                   </option>
-                                   <option value="57">
-                                        Thừa
-                                        Thiên - Huế
-                                   </option>
-                                   <option value="58">
-                                        Tiền
-                                        Giang
-                                   </option>
-                                   <option value="59">
-                                        Trà
-                                        Vinh
-                                   </option>
-                                   <option value="60">
-                                        Tuyên
-                                        Quang
-                                   </option>
-                                   <option value="61">
-                                        Vĩnh
-                                        Long
-                                   </option>
-                                   <option value="62">
-                                        Vĩnh
-                                        Phúc
-                                   </option>
-                                   <option value="63">
-                                        Yên
-                                        Bái
-                                   </option>
-                                   <option value="110">
-                                        Tokyo
-                                   </option>
-                                   <option value="109">
-                                        Aichi
-                                   </option>
-                                   <option value="108">
-                                        Saitama
-                                   </option>
-                                   <option value="107">
-                                        Osaka
-                                   </option>
-                                   <option value="106">
-                                        Kanagawa
-                                   </option>
-                                   <option value="105">
-                                        Chiba
-                                   </option>
-                                   <option value="104">
-                                        Hyogo
-                                   </option>
-                                   <option value="103">
-                                        Fukuoka
-                                   </option>
-                                   <option value="102">
-                                        Hiroshima
-                                   </option>
-                                   <option value="101">
-                                        Gunma
-                                   </option>
-                                   <option value="100">
-                                        Shizuoka
-                                   </option>
-                                   <option value="99">
-                                        Ibaraki
-                                   </option>
-                                   <option value="98">
-                                        Okayama
-                                   </option>
-                                   <option value="97">
-                                        Gifu
-                                   </option>
-                                   <option value="96">
-                                        Tochigi
-                                   </option>
-                                   <option value="95">
-                                        Mie
-                                   </option>
-                                   <option value="94">
-                                        Hokkaido
-                                   </option>
-                                   <option value="93">
-                                        Miyagi
-                                   </option>
-                                   <option value="92">
-                                        Kumamoto
-                                   </option>
-                                   <option value="91">
-                                        Kyoto
-                                   </option>
-                                   <option value="90">
-                                        Nagano
-                                   </option>
-                                   <option value="89">
-                                        Yamaguchi
-                                   </option>
-                                   <option value="88">
-                                        Toyama
-                                   </option>
-                                   <option value="87">
-                                        Ishikawa
-                                   </option>
-                                   <option value="86">
-                                        Ehime
-                                   </option>
-                                   <option value="85">
-                                        Kagoshima
-                                   </option>
-                                   <option value="84">
-                                        Kagawa
-                                   </option>
-                                   <option value="83">
-                                        Nagasaki
-                                   </option>
-                                   <option value="82">
-                                        Fukushima
-                                   </option>
-                                   <option value="81">
-                                        Oita
-                                   </option>
-                                   <option value="80">
-                                        Shiga
-                                   </option>
-                                   <option value="79">
-                                        Niigata
-                                   </option>
-                                   <option value="78">
-                                        Fukui
-                                   </option>
-                                   <option value="77">
-                                        Yamanashi
-                                   </option>
-                                   <option value="76">
-                                        Iwate
-                                   </option>
-                                   <option value="75">
-                                        Tokushima
-                                   </option>
-                                   <option value="74">
-                                        Saga
-                                   </option>
-                                   <option value="73">
-                                        Nara
-                                   </option>
-                                   <option value="72">
-                                        Miyazaki
-                                   </option>
-                                   <option value="71">
-                                        Okinawa
-                                   </option>
-                                   <option value="70">
-                                        Aomori
-                                   </option>
-                                   <option value="69">
-                                        Yamagata
-                                   </option>
-                                   <option value="68">
-                                        Tottori
-                                   </option>
-                                   <option value="67">
-                                        Shimane
-                                   </option>
-                                   <option value="66">
-                                        Kochi
-                                   </option>
-                                   <option value="65">
-                                        Wakayama
-                                   </option>
-                                   <option value="64">
-                                        Akita
-                                   </option>
-                              </select>
-                         </td>
-                    </tr>
-                    <tr>
-                         <td class=" txt-light f-18 w-40 pt-15">
-                              Anh chị em
-                         </td>
-                         <td id="family">
-                              <select name="family-user" class="select-properties-user">
-                                   <option value="0" selected>
-                                        @{if (info.family != null)
-                                             { <span>@info.family</span>}
-                                        else
-                                        {<span>Không có</span>} }
-                              </option>
-                              <option value="1">Con trai cả</option>
-                              <option value="2">Con trai thứ</option>
-                              <option value="3">Con trai út</option>
-                         </select>
-                    </td>
-               </tr>
-               <tr>
-                    <td class=" txt-light f-18 w-40 pt-15">
-                         Ngôn ngữ
-                    </td>
-                    <td id="language">
-                         <select name="language-user" class="select-properties-user">
-                              <option value="0" selected>
-                                   @{if (info.language_user != null)
-                                        { <span>@info.language_user</span>}
-                                   else
-                                   {<span>Không có</span>} }
-                         </option>
-                         <option value="1">Tiếng Việt</option>
-                         <option value="2">Tiếng Anh</option>
-                         <option value="3">Tiếng khác</option>
-                    </select>
-               </td>
-          </tr>
-     </tbody>
-</table>
-</div>
-<div id="Info-job-username">
-     <div class="tittle-item">
-          Học vấn - Nghề nghiệp
-     </div>
-     <table class="table">
-          <tbody>
-               <tr>
-                    <td class=" txt-light f-18 w-40">Học vấn</td>
-                    <td id="education">
-                         <select name="qualify-user" class="select-properties-user">
-                              <option value="0" selected>
-                                   @{if (info.education != null)
-                                        { <span>@info.education</span>}
-                                   else
-                                   {<span>Không có</span>} }
-                         </option>
-                         <option value="1">Chưa tốt nghiệp PT</option>
-                         <option value="2">Tốt nghiệp PT</option>
-                         <option value="3">Học nghề</option>
-                         <option value="4">Trung cấp</option>
-                         <option value="5">Cao đẳng</option>
-                         <option value="6">Đại học</option>
-                         <option value="7">Thạc sĩ</option>
-                         <option value="8">Tiến sĩ</option>
-                    </select>
-               </td>
-          </tr>
-          <tr>
-               <td class=" txt-light f-18 w-40">Nghề nghiệp</td>
-               <td id="job">
-                    <select name="job-user" class="select-properties-user">
-                         <option value="0" selected>
-                              @{if (info.job != null)
-                                   { <span>@info.job</span>}
-                              else
-                              {<span>Không có</span>} }
-                    </option>
-                    <option value="1">Nghệ thuật</option>
-                    <option value="2">Kinh doanh</option>
-                    <option value="3">Kỹ thuật</option>
-                    <option value="4">Luật pháp</option>
-                    <option value="5">Y dược</option>
-                    <option value="6">Giáo dục</option>
-                    <option value="7">Báo chí</option>
-                    <option value="8">Giải trí</option>
-                    <option value="15">Truyền thông</option>
-                    <option value="9">Ẩm thực</option>
-                    <option value="10">Hành chính</option>
-                    <option value="11">Thể thao</option>
-                    <option value="12">Công an</option>
-                    <option value="16">Quân đội</option>
-                    <option value="17">Xây dựng</option>
-                    <option value="18">Tài chính</option>
-                    <option value="19">Ngân hàng</option>
-                    <option value="20">CNTT</option>
-                    <option value="21">Nông nghiệp</option>
-                    <option value="22">Vận tải</option>
-                    <option value="23">Du lịch</option>
-                    <option value="14">Sinh viên</option>
-                    <option value="24">Chưa đi làm</option>
-                    <option value="13">Khác</option>
-               </select>
-          </td>
-     </tr>
-     <tr>
-          <td class=" txt-light f-18 w-40">Thu nhập hàng tháng</td>
-          <td id="income">
-               <select name="salary-user" class="select-properties-user">
-                    <option value="0" selected>
-                         @{if (info.income != null)
-                              { <span>@info.income</span>}
-                         else
-                         {<span>Không có</span>} }
-               </option>
-               <option value="1">Dưới 5 Triệu VNĐ</option>
-               <option value="2">5 đến 10 Triệu VNĐ</option>
-               <option value="3">10 đến 15 Triệu VNĐ</option>
-               <option value="4">15 đến 20 Triệu VNĐ</option>
-               <option value="5">Trên 20 Triệu VNĐ</option>
-          </select>
-     </td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="Info-family-username">
-     <div class="tittle-item">
-          Gia đình
-     </div>
-     <table class="table">
-          <tbody>
-               <tr>
-                    <td class=" txt-light f-18 w-40">Tình trạng hôn nhân</td>
-                    <td id="martial_status">
-                         <select name="marriage-user" class="select-properties-user">
-                              <option value="0" selected>
-                                   @{if (info.martial_status != null)
-                                        { <span>@info.martial_status</span>}
-                                   else
-                                   {<span>Không có</span>} }
-                         </option>
-                         <option value="1">Độc thân</option>
-                         <option value="2">Độc thân(Đã ly hôn)</option>
-                         <option value="3">Độc thân(Người kia đã mất)</option>
-                    </select>
-               </td>
-          </tr>
-          <tr>
-               <td class=" txt-light f-18 w-40">Đã có con</td>
-               <td id="baby_status">
-                    <select name="children-user" class="select-properties-user">
-                         <option value="0" selected>
-                              @{if (info.baby_status != null)
-                                   { <span>@info.baby_status</span>}
-                              else
-                              {<span>Không có</span>} }
-                    </option>
-                    <option value="1">Chưa có con</option>
-                    <option value="2">Có. Đang sống cùng</option>
-                    <option value="3">Có. Không sống cùng</option>
-               </select>
-          </td>
-     </tr>
-     <tr>
-          <td class=" txt-light f-18 w-40">Mong muốn có con</td>
-          <td id="want_baby_status">
-               <select name="need-children-user" class="select-properties-user">
-                    <option value="0" selected>
-                         @{if (info.want_baby_status != null)
-                              { <span>@info.want_baby_status</span>}
-                         else
-                         {<span>Không có</span>} }
-               </option>
-               <option value="1">Không muốn có con</option>
-               <option value="2">Có từ 1 đến 2 con</option>
-               <option value="3">Có từ 3 con trở lên</option>
-               <option value="4">Chưa rõ</option>
-          </select>
-     </td>
-</tr>
-<tr>
-     <td class=" txt-light f-18 w-40">Tình trạng sinh sống</td>
-     <td id="live_status">
-          <select name="live-user" class="select-properties-user">
-               <option value="0" selected>
-                    @{if (info.live_status != null)
-                         { <span>@info.live_status</span>}
-                    else
-                    {<span>Không có</span>} }
-          </option>
-          <option value="1">Một mình</option>
-          <option value="2">Cùng bạn</option>
-          <option value="3">Cùng vật nuôi</option>
-          <option value="4">Cùng gia đình</option>
-          <option value="5">Khác</option>
-     </select>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="Info-family-username">
-     <div class="tittle-item">
-          Quan điểm - Phong cách sống
-     </div>
-     <table class="table">
-          <tbody>
-               <tr>
-                    <td class=" txt-light f-18 w-40">Sở thích</td>
-                    <td id="hobbies">
-                         <input type="text" name="hobbies-user" value=" @info.hobbies" />
-                    </td>
-               </tr>
-               <tr>
-                    <td class=" txt-light f-18 w-40">Tính cách</td>
-                    <td id="character_user">
-                         <select name="character-user" class="select-properties-user">
-                              <option value="0" selected>
-                                   @{if (info.character_user != null)
-                                        { <span>@info.character_user</span>}
-                                   else
-                                   {<span>Không có</span>} }
-                         </option>
-                         <option value="1">Tốt bụng</option>
-                         <option value="2">Quyết đoán</option>
-                         <option value="3">Kỹ tính</option>
-                         <option value="4">Trung thực</option>
-                         <option value="5">Thông minh</option>
-                         <option value="6">Nhút nhát</option>
-                         <option value="7">Bình tĩnh</option>
-                    </select>
-               </td>
-          </tr>
-          <tr>
-               <td class=" txt-light f-18 w-40">Quan hệ xã hội</td>
-               <td id="public_relationship">
-                    <select name="relationship-user" class="select-properties-user">
-                         <option value="0" selected>
-                              @{if (info.public_relationship != null)
-                                   { <span>@info.public_relationship</span>}
-                              else
-                              {<span>Không có</span>} }
-                    </option>
-                    <option value="1">Thích chỗ đông người</option>
-                    <option value="2">Thích chỗ vắng người</option>
-                    <option value="3">Thích một mình</option>
-                    <option value="4">Dễ dàng để trở thành bạn bè</option>
-                    <option value="5">Cần thời gian để trở thành bạn bè</option>
-               </select>
-          </td>
-     </tr>
-     <tr>
-          <td class=" txt-light f-18 w-40">Mong muốn gặp mặt</td>
-          <td id="want_meet">
-               <select name="language-user" class="select-properties-user">
-                    <option value="0" selected>
-                         @{if (info.want_meet != null)
-                              { <span>@info.want_meet</span>}
-                         else
-                         {<span>Không có</span>} }
-               </option>
-               <option value="1">Sau khi kết bạn</option>
-               <option value="2">Kết bạn và thấy quan tâm</option>
-               <option value="3">Kết bạn và nói chuyện hợp</option>
-          </select>
-     </td>
-</tr>
-<tr>
-     <td class=" txt-light f-18 w-40">Mong muốn kết hôn</td>
-     <td id="want_marry">
-          <select name="need-marry-user" class="select-properties-user">
-               <option value="0" selected>
-                    @{if (info.want_marry != null)
-                         { <span>@info.want_marry</span>}
-                    else
-                    {<span>Không có</span>} }
-          </option>
-          <option value="1">Kết hôn sớm</option>
-          <option value="2">Trong vòng 2-3 năm tới</option>
-          <option value="3">Khi gặp người phù hợp</option>
-          <option value="4">Không muốn kết hôn</option>
-          <option value="5">Chưa rõ lắm</option>
-     </select>
-</td>
-</tr>
-<tr>
-     <td class=" txt-light f-18 w-40">Sẵn sàng làm việc nhà</td>
-     <td id="ready_do_hw">
-          <select name="do-homework-user" class="select-properties-user">
-               <option value="0" selected>
-                    @{if (info.ready_do_homework != null)
-                         { <span>@info.ready_do_homework</span>}
-                    else
-                    {<span>Không có</span>} }
-          </option>
-          <option value="1">Tự làm</option>
-          <option value="2">Có thể làm</option>
-          <option value="3">Muốn cùng làm</option>
-          <option value="4">Muốn đối tác làm</option>
-     </select>
-</td>
-</tr>
-<tr>
-     <td class=" txt-light f-18 w-40">Ngày nghỉ</td>
-     <td id="freeday">
-          <select name="dayoff-user" class="select-properties-user">
-               <option value="0" selected>
-                    @{if (info.freeday != null)
-                         { <span>@info.freeday</span>}
-                    else
-                    {<span>Không có</span>} }
-          </option>
-          <option value="1">Thứ 7 và chủ nhật</option>
-          <option value="2">Ngày trong tuần</option>
-          <option value="3">Không cố định</option>
-          <option value="4">Khác</option>
-     </select>
-</td>
-</tr>
-<tr>
-     <td class=" txt-light f-18 w-40">Uống rượu</td>
-     <td id="wine">
-          <select name="drink-wine-user" class="select-properties-user">
-               <option value="0" selected>
-                    @{if (info.wine != null)
-                         { <span>@info.wine</span>}
-                    else
-                    {<span>Không có</span>} }
-          </option>
-          <option value="1">Có</option>
-          <option value="2">Không</option>
-          <option value="3">Thi thoảng</option>
-     </select>
-</td>
-</tr>
-<tr>
-     <td class=" txt-light f-18 w-40">Hút thuốc</td>
-     <td id="smoke">
-          <select name="language-user" class="select-properties-user">
-               <option value="0" selected>
-                    @{if (info.smoke != null)
-                         { <span>@info.smoke</span>}
-                    else
-                    {<span>Không có</span>} }
-          </option>
-          <option value="1">Có</option>
-          <option value="2">Không</option>
-          <option value="3">Thi thoảng</option>
-     </select>
-</td>
-</tr>
-<tr>
-     <td class=" txt-light f-18 w-40">Chi phí cho lần hẹn đầu</td>
-     <td id="pay_first_meet">
-          <select name="cost-first-user" class="select-properties-user">
-               <option value="0" selected>
-                    @{if (info.pay_first_meet != null)
-                         { <span>@info.pay_first_meet</span>}
-                    else
-                    {<span>Không có</span>} }
-          </option>
-          <option value="1">Nam giới trả</option>
-          <option value="2">Nam giới trả nhiều hơn</option>
-          <option value="3">Chia đều</option>
-          <option value="4">Không quan trọng</option>
-          <option value="">Sẽ thảo luận rồi quyết định sau</option>
-     </select>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-@*<div class="text-center pb-2" id="func_ind_fix">
-          <button class="btn btn-danger mr-2">Save</button>
-          <button class="btn btn-danger">Unsave</button>
-     </div>*@
+                                                            @{if (info.body != null){ <span>@info.body</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Mảnh mai</option>
+                                                       <option value="2">Thể thao</option>
+                                                       <option value="3">Trung bình</option>
+                                                       <option value="4">Cơ bắp</option>
+                                                       <option value="5">Hơi mập</option>
+                                                       <option value="6">Đậm</option>
+                                                       <option value="7">Cao lớn</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40 pt-15">
+                                                  Nhóm máu
+                                             </td>
+                                             <td id="blood">
+                                                  <select name="blood-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.blood != null){ <span>@info.blood</span>} else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">A</option>
+                                                       <option value="2">B</option>
+                                                       <option value="3">O</option>
+                                                       <option value="4">AB</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40 pt-15">
+                                                  Quốc gia
+                                             </td>
+                                             <td id="national_user">
+                                                  <select name="national-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.national_user != null){ <span>@info.national_user</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Việt Nam</option>
+                                                       <option value="2">Nhật Bản</option>
+                                                       <option value="3">Trung Quốc</option>
+                                                       <option value="4">Hàn Quốc</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40 pt-15">
+                                                  Quê quán
+                                             </td>
+                                             <td id="address_user">
+                                                  <select name="country-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.address_user != null){ <span>@info.address_user</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">
+                                                            An Giang
+                                                       </option>
+                                                       <option value="2">
+                                                            Bà
+                                                            Rịa - Vũng Tàu
+                                                       </option>
+                                                       <option value="3">
+                                                            Bạc
+                                                            Liêu
+                                                       </option>
+                                                       <option value="4">
+                                                            Bắc
+                                                            Kạn
+                                                       </option>
+                                                       <option value="5">
+                                                            Bắc
+                                                            Giang
+                                                       </option>
+                                                       <option value="6">
+                                                            Bắc
+                                                            Ninh
+                                                       </option>
+                                                       <option value="7">
+                                                            Bến
+                                                            Tre
+                                                       </option>
+                                                       <option value="8">
+                                                            Bình
+                                                            Dương
+                                                       </option>
+                                                       <option value="9">
+                                                            Bình
+                                                            Định
+                                                       </option>
+                                                       <option value="10">
+                                                            Bình
+                                                            Phước
+                                                       </option>
+                                                       <option value="11">
+                                                            Bình
+                                                            Thuận
+                                                       </option>
+                                                       <option value="12">
+                                                            Cà
+                                                            Mau
+                                                       </option>
+                                                       <option value="13">
+                                                            Cao
+                                                            Bằng
+                                                       </option>
+                                                       <option value="14">
+                                                            Cần
+                                                            Thơ
+                                                       </option>
+                                                       <option value="15">
+                                                            Đà
+                                                            Nẵng
+                                                       </option>
+                                                       <option value="16">
+                                                            Đắk
+                                                            Lắk
+                                                       </option>
+                                                       <option value="17">
+                                                            Đắk
+                                                            Nông
+                                                       </option>
+                                                       <option value="18">
+                                                            Đồng
+                                                            Nai
+                                                       </option>
+                                                       <option value="19">
+                                                            Đồng
+                                                            Tháp
+                                                       </option>
+                                                       <option value="20">
+                                                            Điện
+                                                            Biên
+                                                       </option>
+                                                       <option value="21">
+                                                            Gia
+                                                            Lai
+                                                       </option>
+                                                       <option value="22">
+                                                            Hà
+                                                            Giang
+                                                       </option>
+                                                       <option value="23">
+                                                            Hà
+                                                            Nam
+                                                       </option>
+                                                       <option value="24">
+                                                            Hà
+                                                            Nội
+                                                       </option>
+                                                       <option value="25">
+                                                            Hà
+                                                            Tĩnh
+                                                       </option>
+                                                       <option value="26">
+                                                            Hải
+                                                            Dương
+                                                       </option>
+                                                       <option value="27">
+                                                            Hải
+                                                            Phòng
+                                                       </option>
+                                                       <option value="28">
+                                                            Hòa
+                                                            Bình
+                                                       </option>
+                                                       <option value="29">
+                                                            Hậu
+                                                            Giang
+                                                       </option>
+                                                       <option value="30">
+                                                            Hưng
+                                                            Yên
+                                                       </option>
+                                                       <option value="31">
+                                                            TP.
+                                                            Hồ Chí Minh
+                                                       </option>
+                                                       <option value="32">
+                                                            Khánh
+                                                            Hòa
+                                                       </option>
+                                                       <option value="33">
+                                                            Kiên
+                                                            Giang
+                                                       </option>
+                                                       <option value="34">
+                                                            Kon
+                                                            Tum
+                                                       </option>
+                                                       <option value="35">
+                                                            Lai
+                                                            Châu
+                                                       </option>
+                                                       <option value="36">
+                                                            Lào
+                                                            Cai
+                                                       </option>
+                                                       <option value="37">
+                                                            Lạng
+                                                            Sơn
+                                                       </option>
+                                                       <option value="38">
+                                                            Lâm
+                                                            Đồng
+                                                       </option>
+                                                       <option value="39">
+                                                            Long
+                                                            An
+                                                       </option>
+                                                       <option value="40">
+                                                            Nam
+                                                            Định
+                                                       </option>
+                                                       <option value="41">
+                                                            Nghệ
+                                                            An
+                                                       </option>
+                                                       <option value="42">
+                                                            Ninh
+                                                            Bình
+                                                       </option>
+                                                       <option value="43">
+                                                            Ninh
+                                                            Thuận
+                                                       </option>
+                                                       <option value="44">
+                                                            Phú
+                                                            Thọ
+                                                       </option>
+                                                       <option value="45">
+                                                            Phú
+                                                            Yên
+                                                       </option>
+                                                       <option value="46">
+                                                            Quảng
+                                                            Bình
+                                                       </option>
+                                                       <option value="47">
+                                                            Quảng
+                                                            Nam
+                                                       </option>
+                                                       <option value="48">
+                                                            Quảng
+                                                            Ngãi
+                                                       </option>
+                                                       <option value="49">
+                                                            Quảng
+                                                            Ninh
+                                                       </option>
+                                                       <option value="50">
+                                                            Quảng
+                                                            Trị
+                                                       </option>
+                                                       <option value="51">
+                                                            Sóc
+                                                            Trăng
+                                                       </option>
+                                                       <option value="52">
+                                                            Sơn
+                                                            La
+                                                       </option>
+                                                       <option value="53">
+                                                            Tây
+                                                            Ninh
+                                                       </option>
+                                                       <option value="54">
+                                                            Thái
+                                                            Bình
+                                                       </option>
+                                                       <option value="55">
+                                                            Thái
+                                                            Nguyên
+                                                       </option>
+                                                       <option value="56">
+                                                            Thanh
+                                                            Hóa
+                                                       </option>
+                                                       <option value="57">
+                                                            Thừa
+                                                            Thiên - Huế
+                                                       </option>
+                                                       <option value="58">
+                                                            Tiền
+                                                            Giang
+                                                       </option>
+                                                       <option value="59">
+                                                            Trà
+                                                            Vinh
+                                                       </option>
+                                                       <option value="60">
+                                                            Tuyên
+                                                            Quang
+                                                       </option>
+                                                       <option value="61">
+                                                            Vĩnh
+                                                            Long
+                                                       </option>
+                                                       <option value="62">
+                                                            Vĩnh
+                                                            Phúc
+                                                       </option>
+                                                       <option value="63">
+                                                            Yên
+                                                            Bái
+                                                       </option>
+                                                       <option value="110">
+                                                            Tokyo
+                                                       </option>
+                                                       <option value="109">
+                                                            Aichi
+                                                       </option>
+                                                       <option value="108">
+                                                            Saitama
+                                                       </option>
+                                                       <option value="107">
+                                                            Osaka
+                                                       </option>
+                                                       <option value="106">
+                                                            Kanagawa
+                                                       </option>
+                                                       <option value="105">
+                                                            Chiba
+                                                       </option>
+                                                       <option value="104">
+                                                            Hyogo
+                                                       </option>
+                                                       <option value="103">
+                                                            Fukuoka
+                                                       </option>
+                                                       <option value="102">
+                                                            Hiroshima
+                                                       </option>
+                                                       <option value="101">
+                                                            Gunma
+                                                       </option>
+                                                       <option value="100">
+                                                            Shizuoka
+                                                       </option>
+                                                       <option value="99">
+                                                            Ibaraki
+                                                       </option>
+                                                       <option value="98">
+                                                            Okayama
+                                                       </option>
+                                                       <option value="97">
+                                                            Gifu
+                                                       </option>
+                                                       <option value="96">
+                                                            Tochigi
+                                                       </option>
+                                                       <option value="95">
+                                                            Mie
+                                                       </option>
+                                                       <option value="94">
+                                                            Hokkaido
+                                                       </option>
+                                                       <option value="93">
+                                                            Miyagi
+                                                       </option>
+                                                       <option value="92">
+                                                            Kumamoto
+                                                       </option>
+                                                       <option value="91">
+                                                            Kyoto
+                                                       </option>
+                                                       <option value="90">
+                                                            Nagano
+                                                       </option>
+                                                       <option value="89">
+                                                            Yamaguchi
+                                                       </option>
+                                                       <option value="88">
+                                                            Toyama
+                                                       </option>
+                                                       <option value="87">
+                                                            Ishikawa
+                                                       </option>
+                                                       <option value="86">
+                                                            Ehime
+                                                       </option>
+                                                       <option value="85">
+                                                            Kagoshima
+                                                       </option>
+                                                       <option value="84">
+                                                            Kagawa
+                                                       </option>
+                                                       <option value="83">
+                                                            Nagasaki
+                                                       </option>
+                                                       <option value="82">
+                                                            Fukushima
+                                                       </option>
+                                                       <option value="81">
+                                                            Oita
+                                                       </option>
+                                                       <option value="80">
+                                                            Shiga
+                                                       </option>
+                                                       <option value="79">
+                                                            Niigata
+                                                       </option>
+                                                       <option value="78">
+                                                            Fukui
+                                                       </option>
+                                                       <option value="77">
+                                                            Yamanashi
+                                                       </option>
+                                                       <option value="76">
+                                                            Iwate
+                                                       </option>
+                                                       <option value="75">
+                                                            Tokushima
+                                                       </option>
+                                                       <option value="74">
+                                                            Saga
+                                                       </option>
+                                                       <option value="73">
+                                                            Nara
+                                                       </option>
+                                                       <option value="72">
+                                                            Miyazaki
+                                                       </option>
+                                                       <option value="71">
+                                                            Okinawa
+                                                       </option>
+                                                       <option value="70">
+                                                            Aomori
+                                                       </option>
+                                                       <option value="69">
+                                                            Yamagata
+                                                       </option>
+                                                       <option value="68">
+                                                            Tottori
+                                                       </option>
+                                                       <option value="67">
+                                                            Shimane
+                                                       </option>
+                                                       <option value="66">
+                                                            Kochi
+                                                       </option>
+                                                       <option value="65">
+                                                            Wakayama
+                                                       </option>
+                                                       <option value="64">
+                                                            Akita
+                                                       </option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40 pt-15">
+                                                  Anh chị em
+                                             </td>
+                                             <td id="family">
+                                                  <select name="family-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.family != null){ <span>@info.family</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Con trai cả</option>
+                                                       <option value="2">Con trai thứ</option>
+                                                       <option value="3">Con trai út</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40 pt-15">
+                                                  Ngôn ngữ
+                                             </td>
+                                             <td id="language">
+                                                  <select name="language-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.language_user != null){ <span>@info.language_user</span>} else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Tiếng Việt</option>
+                                                       <option value="2">Tiếng Anh</option>
+                                                       <option value="3">Tiếng khác</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                   </tbody>
+                              </table>
+                         </div>
+                         <div id="Info-job-username">
+                              <div class="tittle-item">
+                                   Học vấn - Nghề nghiệp
+                              </div>
+                              <table class="table">
+                                   <tbody>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Học vấn</td>
+                                             <td id="education">
+                                                  <select name="qualify-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.education != null){ <span>@info.education</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Chưa tốt nghiệp PT</option>
+                                                       <option value="2">Tốt nghiệp PT</option>
+                                                       <option value="3">Học nghề</option>
+                                                       <option value="4">Trung cấp</option>
+                                                       <option value="5">Cao đẳng</option>
+                                                       <option value="6">Đại học</option>
+                                                       <option value="7">Thạc sĩ</option>
+                                                       <option value="8">Tiến sĩ</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Nghề nghiệp</td>
+                                             <td id="job">
+                                                  <select name="job-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.job != null){ <span>@info.job</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Nghệ thuật</option>
+                                                       <option value="2">Kinh doanh</option>
+                                                       <option value="3">Kỹ thuật</option>
+                                                       <option value="4">Luật pháp</option>
+                                                       <option value="5">Y dược</option>
+                                                       <option value="6">Giáo dục</option>
+                                                       <option value="7">Báo chí</option>
+                                                       <option value="8">Giải trí</option>
+                                                       <option value="15">Truyền thông</option>
+                                                       <option value="9">Ẩm thực</option>
+                                                       <option value="10">Hành chính</option>
+                                                       <option value="11">Thể thao</option>
+                                                       <option value="12">Công an</option>
+                                                       <option value="16">Quân đội</option>
+                                                       <option value="17">Xây dựng</option>
+                                                       <option value="18">Tài chính</option>
+                                                       <option value="19">Ngân hàng</option>
+                                                       <option value="20">CNTT</option>
+                                                       <option value="21">Nông nghiệp</option>
+                                                       <option value="22">Vận tải</option>
+                                                       <option value="23">Du lịch</option>
+                                                       <option value="14">Sinh viên</option>
+                                                       <option value="24">Chưa đi làm</option>
+                                                       <option value="13">Khác</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Thu nhập hàng tháng</td>
+                                             <td id="income">
+                                                  <select name="salary-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.income != null){ <span>@info.income</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Dưới 5 Triệu VNĐ</option>
+                                                       <option value="2">5 đến 10 Triệu VNĐ</option>
+                                                       <option value="3">10 đến 15 Triệu VNĐ</option>
+                                                       <option value="4">15 đến 20 Triệu VNĐ</option>
+                                                       <option value="5">Trên 20 Triệu VNĐ</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                   </tbody>
+                              </table>
+                         </div>
+                         <div id="Info-family-username">
+                              <div class="tittle-item">
+                                   Gia đình
+                              </div>
+                              <table class="table">
+                                   <tbody>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Tình trạng hôn nhân</td>
+                                             <td id="martial_status">
+                                                  <select name="marriage-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.martial_status != null){ <span>@info.martial_status</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Độc thân</option>
+                                                       <option value="2">Độc thân(Đã ly hôn)</option>
+                                                       <option value="3">Độc thân(Người kia đã mất)</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Đã có con</td>
+                                             <td id="baby_status">
+                                                  <select name="children-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.baby_status != null){ <span>@info.baby_status</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Chưa có con</option>
+                                                       <option value="2">Có. Đang sống cùng</option>
+                                                       <option value="3">Có. Không sống cùng</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Mong muốn có con</td>
+                                             <td id="want_baby_status">
+                                                  <select name="need-children-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.want_baby_status != null){ <span>@info.want_baby_status</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Không muốn có con</option>
+                                                       <option value="2">Có từ 1 đến 2 con</option>
+                                                       <option value="3">Có từ 3 con trở lên</option>
+                                                       <option value="4">Chưa rõ</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Tình trạng sinh sống</td>
+                                             <td id="live_status">
+                                                  <select name="live-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.live_status != null){ <span>@info.live_status</span>} else {<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Một mình</option>
+                                                       <option value="2">Cùng bạn</option>
+                                                       <option value="3">Cùng vật nuôi</option>
+                                                       <option value="4">Cùng gia đình</option>
+                                                       <option value="5">Khác</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                   </tbody>
+                              </table>
+                         </div>
+                         <div id="Info-family-username">
+                              <div class="tittle-item">
+                                   Quan điểm - Phong cách sống
+                              </div>
+                              <table class="table">
+                                   <tbody>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Sở thích</td>
+                                             <td id="hobbies">
+                                                  <input type="text" name="hobbies-user" value=" @info.hobbies" />
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Tính cách</td>
+                                             <td id="character_user">
+                                                  <select name="character-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.character_user != null){ <span>@info.character_user</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Tốt bụng</option>
+                                                       <option value="2">Quyết đoán</option>
+                                                       <option value="3">Kỹ tính</option>
+                                                       <option value="4">Trung thực</option>
+                                                       <option value="5">Thông minh</option>
+                                                       <option value="6">Nhút nhát</option>
+                                                       <option value="7">Bình tĩnh</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Quan hệ xã hội</td>
+                                             <td id="public_relationship">
+                                                  <select name="relationship-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.public_relationship != null){ <span>@info.public_relationship</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Thích chỗ đông người</option>
+                                                       <option value="2">Thích chỗ vắng người</option>
+                                                       <option value="3">Thích một mình</option>
+                                                       <option value="4">Dễ dàng để trở thành bạn bè</option>
+                                                       <option value="5">Cần thời gian để trở thành bạn bè</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Mong muốn gặp mặt</td>
+                                             <td id="want_meet">
+                                                  <select name="language-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.want_meet != null){ <span>@info.want_meet</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Sau khi kết bạn</option>
+                                                       <option value="2">Kết bạn và thấy quan tâm</option>
+                                                       <option value="3">Kết bạn và nói chuyện hợp</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Mong muốn kết hôn</td>
+                                             <td id="want_marry">
+                                                  <select name="need-marry-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.want_marry != null){ <span>@info.want_marry</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Kết hôn sớm</option>
+                                                       <option value="2">Trong vòng 2-3 năm tới</option>
+                                                       <option value="3">Khi gặp người phù hợp</option>
+                                                       <option value="4">Không muốn kết hôn</option>
+                                                       <option value="5">Chưa rõ lắm</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Sẵn sàng làm việc nhà</td>
+                                             <td id="ready_do_hw">
+                                                  <select name="do-homework-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.ready_do_homework != null){ <span>@info.ready_do_homework</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Tự làm</option>
+                                                       <option value="2">Có thể làm</option>
+                                                       <option value="3">Muốn cùng làm</option>
+                                                       <option value="4">Muốn đối tác làm</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Ngày nghỉ</td>
+                                             <td id="freeday">
+                                                  <select name="dayoff-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.freeday != null){ <span>@info.freeday</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Thứ 7 và chủ nhật</option>
+                                                       <option value="2">Ngày trong tuần</option>
+                                                       <option value="3">Không cố định</option>
+                                                       <option value="4">Khác</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Uống rượu</td>
+                                             <td id="wine">
+                                                  <select name="drink-wine-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.wine != null){ <span>@info.wine</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Có</option>
+                                                       <option value="2">Không</option>
+                                                       <option value="3">Thi thoảng</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Hút thuốc</td>
+                                             <td id="smoke">
+                                                  <select name="language-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.smoke != null){ <span>@info.smoke</span>}else{<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Có</option>
+                                                       <option value="2">Không</option>
+                                                       <option value="3">Thi thoảng</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Chi phí cho lần hẹn đầu</td>
+                                             <td id="pay_first_meet">
+                                                  <select name="cost-first-user" class="select-properties-user">
+                                                       <option value="0" selected>
+                                                            @{if (info.pay_first_meet != null) { <span>@info.pay_first_meet</span>}else {<span>Không có</span>} }
+                                                       </option>
+                                                       <option value="1">Nam giới trả</option>
+                                                       <option value="2">Nam giới trả nhiều hơn</option>
+                                                       <option value="3">Chia đều</option>
+                                                       <option value="4">Không quan trọng</option>
+                                                       <option value="">Sẽ thảo luận rồi quyết định sau</option>
+                                                  </select>
+                                             </td>
+                                        </tr>
+                                   </tbody>
+                              </table>
+                         </div>
+                         @*<div class="text-center pb-2" id="func_ind_fix">
+                                   <button class="btn btn-danger mr-2">Save</button>
+                                   <button class="btn btn-danger">Unsave</button>
+                              </div>*@
 
-</form>
-</div>
-<!-- Side bar right -->
-<div id="side-bar">
-     <div id="side-header" class="d-flex m-3">
-          <a href="" class="w-25 mr-3">
-               <img src="~/Public/Asset/img/male_default_large.jpg" alt="" class="img-fluid">
-          </a>
-          <div id="info-user-header">
-               <div class="username-header f-18 mb-2">
-                    <a href="" class="font-weight-bold">Bình Looper</a>
-                    <span class="id-username text-info">ID - 261599</span>
+                    </form>
                </div>
-               <!-- Hoàn thiện hồ sơ -->
-               <div class="percent-profile d-flex justify-content-between f-18 mb-2">
-                    <i class="fas fa-battery-empty text-danger"><span class="text-info"> 0% hoàn thiện hồ sơ</span></i>
-                    <a href=""><i class="fas fa-pencil-alt"></i></a>
-               </div>
-               <!-- Xu -->
-               <div class="coin-user">
-                    <i class="fas fa-coins"><span>160</span></i>
-               </div>
-          </div>
-     </div>
-     <div id="button-function">
-          <a href="buy-coin.html" class="w-45 d-inline-block buy-coin">
-               <img src="~/Public/Asset//img/Coin.png" alt="" class="img-fluid">Mua xu
-          </a>
-          <a href="" class="w-45 d-inline-block highlight-now buy-coin">
-               <i class="fas fa-rocket"></i>Nổi bật ngay
-          </a>
-          <a href="" class="d-block buy-coin mt-2 authentic-account">
-               <i class="fas fa-check-circle mr-2"></i>Xác thực tài khoản
-          </a>
-     </div>
-     <div id="list-function" class="mt-5">
-          <ul class="list-unstyled">
-               <li>
-                    <a href="" class="d-flex">
-                         <img src="~/Public/Asset/img/Upgrade.png" alt="" class="img-fluid"> Nâng cấp tài khoản
-                    </a>
-               </li>
-               <li>
-                    <a href="" class="d-flex">
-                         <i class="fas fa-university"></i> Hỗ trợ CK ngân hàng, ATM
-                    </a>
-               </li>
-               <li>
-                    <a href="" class="d-flex">
-                         <img src="~/Public/Asset/img/match-list-icon.png" alt="" class="img-fluid"> Danh sách kết đôi
-                    </a>
-               </li>
-               <li>
-                    <a href="" class="d-flex">
-                         <i class="far fa-eye"></i> Khách thăm
-                    </a>
-               </li>
-               <li>
-                    <a href="" class="d-flex">
-                         <i class="fas fa-heartbeat"></i> Ai đã quan tâm tôi?
-                    </a>
-               </li>
-               <li>
-                    <a href="" class="d-flex">
-                         <img src="~/Public/Asset/img/KM_2.png" alt="" class="img-fluid"> Khuyến mãi
-                    </a>
-               </li>
-               <li>
-                    <a href="" class="d-flex">
-                         <i class="fas fa-list-ol"></i> Danh sách mở rộng
-                    </a>
-               </li>
-               <li>
-                    <a href="" class="d-flex">
-                         <img src="~/Public/Asset/img/tarot-icon.png" alt="" class="img-fluid"> Bói bài Tarot
-                    </a>
-               </li>
-               <li>
-                    <a href="" class="d-flex">
-                         <i class="far fa-question-circle"></i> Khám phá bản thân
-                    </a>
-               </li>
-               <li>
-                    <a href="" class="d-flex">
-                         <i class="fas fa-share-alt"></i> Giới thiệu bạn bè & ưu đãi
-                    </a>
-               </li>
-               <li>
-                    <a href="" class="d-flex">
-                         <i class="fas fa-cog"></i> Cài đặt hệ thống
-                    </a>
-               </li>
-               <li>
-                    <a href="" class="d-flex">
-                         <i class="fas fa-brain"></i> Tôi muốn hỏi
-                    </a>
-               </li>
-               <li class="border-bottom-0">
-                    <a href="@Url.Action("Logout","Login")" class="d-flex ">
-                         <i class="fas fa-sign-out-alt"></i> Đăng xuất
-                    </a>
-               </li>
-          </ul>
-          <h3 class="font-weight-bold text-info download-app">Tải ứng dụng hẹn hò miễn phí MTAhub</h3>
-          <div id="download-app-in-store" class="d-flex ml-2">
-               <a href="">
-                    <img src="~/Public/Asset/img/app_store.svg" alt="" class="w-100">
-               </a>
-               <a href="">
-                    <img src="~/Public/Asset/img/google_play.svg" alt="" class="w-100">
-               </a>
-          </div>
-     </div>
-     <div id="list-menu-footer" class="mt-5">
-          <ul class="list-unstyled d-flex flex-wrap">
-               <li>
-                    <a href="">Điều khoản</a>
-               </li>
-               <li>
-                    <a href="">Bảo mật</a>
-               </li>
-               <li>
-                    <a href="">Trợ giúp</a>
-               </li>
-               <li>
-                    <a href="">Liên hệ</a>
-               </li>
-               <li>
-                    <a href="">Blog</a>
-               </li>
-          </ul>
-     </div>
-</div>
-</div>
-<!-- Modal thông báo ẩn tuổi -->
-<div class="modal" id="myModal-info-hide-age">
-     <div class="modal-dialog">
-          <div class="modal-content">
-               <!-- Modal Header -->
-               <div class="modal-header">
-                    <h4 class="modal-title">Ẩn số tuổi của bạn</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-               </div>
-               <!-- Modal body -->
-               <div class="modal-body">
-                    Nếu bạn kích hoạt tính năng này, khi người khác xem hồ sơ của bạn, tuổi của bạn sẽ được ẩn đi.
-               </div>
-               <!-- Modal footer -->
-               <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-               </div>
-          </div>
-     </div>
-</div>
-<!-- Modal thông báo có hiện tuổi hay không -->
-<div class="modal" id="myModal-hide-age">
-     <div class="modal-dialog">
-          <div class="modal-content text-center">
-               <!-- Modal Header -->
-               <div class="modal-header d-flex flex-column">
-                    <img src="~/Public/Asset/img/hide_age.png" alt="" class="mx-auto">
-                    <h4 class="modal-title mx-auto">Ẩn số tuổi của bạn</h4>
-               </div>
-               <!-- Modal body -->
-               <div class="modal-body">
-                    Nếu bạn kích hoạt tính năng này, khi người khác xem hồ sơ của bạn, tuổi của bạn sẽ được ẩn đi.
-                    <p>Bạn cần nâng cấp tài khoản hoặc sử dụng xu</p>
-                    <p>Tính năng sẽ khả dụng trong suốt thời hạn gói Nâng cấp hoặc khả dụng vĩnh viễn nếu được mua bằng Xu.</p>
-                    <div class="btn-item text-center">
-                         <button class="btn btn-info">Nâng cấp ngay</button>
+               <!-- Side bar right -->
+               <div id="side-bar">
+                    <div id="side-header" class="d-flex m-3">
+                         <a href="" class="w-25 mr-3">
+                              @{
+                                   if (info.avatar != null)
+                                   {
+                                        <img src="~/Public/Asset/img/Avatar/@info.avatar" alt="" style="height:6rem;" class="img-fluid" height="6rem">
+                                   }
+                                   else
+                                   {
+                                        <img src="~/Public/Asset/img/male_default_large.jpg" alt="" style="height:6rem;" class="img-fluid" height="6rem">
+                                   }
+                              }
+                         </a>
+                         <div id="info-user-header">
+                              <div class="username-header f-18 mb-2">
+                                   <a href="" class="font-weight-bold">@info.NickName</a>
+                                   <span class="id-username text-info">ID - @info.stt</span>
+                              </div>
+                              <!-- Hoàn thiện hồ sơ -->
+                              <div class="percent-profile d-flex justify-content-between f-18 mb-2">
+                                   <i class="fas fa-battery-empty text-danger"><span class="text-info"> @cal_percent% hoàn thiện hồ sơ</span></i>
+                                   <a href=""><i class="fas fa-pencil-alt"></i></a>
+                              </div>
+                              <!-- Xu -->
+                              <div class="coin-user">
+                                   <i class="fas fa-coins"><span>160</span></i>
+                              </div>
+                         </div>
                     </div>
-                    <a href="">Sử dụng xu</a>
+                    <div id="button-function">
+                         <a href="/Profile/buy_coin" class="w-45 d-inline-block buy-coin">
+                              <img src="~/Public/Asset//img/Coin.png" alt="" class="img-fluid">Mua xu
+                         </a>
+                         <a href="" class="w-45 d-inline-block highlight-now buy-coin">
+                              <i class="fas fa-rocket"></i>Nổi bật ngay
+                         </a>
+                         <a href="" class="d-block buy-coin mt-2 authentic-account">
+                              <i class="fas fa-check-circle mr-2"></i>Xác thực tài khoản
+                         </a>
+                    </div>
+                    <div id="list-function" class="mt-5">
+                         <ul class="list-unstyled">
+                              <li>
+                                   <a href="/Profile/buy_coin" class="d-flex">
+                                        <img src="~/Public/Asset/img/Upgrade.png" alt="" class="img-fluid"> Nâng cấp tài khoản
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="" class="d-flex">
+                                        <i class="fas fa-university"></i> Hỗ trợ CK ngân hàng, ATM
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="" class="d-flex">
+                                        <img src="~/Public/Asset/img/match-list-icon.png" alt="" class="img-fluid"> Danh sách kết đôi
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="" class="d-flex">
+                                        <i class="far fa-eye"></i> Khách thăm
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="" class="d-flex">
+                                        <i class="fas fa-heartbeat"></i> Ai đã quan tâm tôi?
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="" class="d-flex">
+                                        <img src="~/Public/Asset/img/KM_2.png" alt="" class="img-fluid"> Khuyến mãi
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="" class="d-flex">
+                                        <i class="fas fa-list-ol"></i> Danh sách mở rộng
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="" class="d-flex">
+                                        <img src="~/Public/Asset/img/tarot-icon.png" alt="" class="img-fluid"> Bói bài Tarot
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="" class="d-flex">
+                                        <i class="far fa-question-circle"></i> Khám phá bản thân
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="" class="d-flex">
+                                        <i class="fas fa-share-alt"></i> Giới thiệu bạn bè & ưu đãi
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="" class="d-flex">
+                                        <i class="fas fa-cog"></i> Cài đặt hệ thống
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="" class="d-flex">
+                                        <i class="fas fa-brain"></i> Tôi muốn hỏi
+                                   </a>
+                              </li>
+                              <li class="border-bottom-0">
+                                   <a href="@Url.Action("Logout","Login")" class="d-flex ">
+                                        <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                                   </a>
+                              </li>
+                         </ul>
+                         <h3 class="font-weight-bold text-info download-app">Tải ứng dụng hẹn hò miễn phí MTAhub</h3>
+                         <div id="download-app-in-store" class="d-flex ml-2">
+                              <a href="">
+                                   <img src="~/Public/Asset/img/app_store.svg" alt="" class="w-100">
+                              </a>
+                              <a href="">
+                                   <img src="~/Public/Asset/img/google_play.svg" alt="" class="w-100">
+                              </a>
+                         </div>
+                    </div>
+                    <div id="list-menu-footer" class="mt-5">
+                         <ul class="list-unstyled d-flex flex-wrap">
+                              <li>
+                                   <a href="">Điều khoản</a>
+                              </li>
+                              <li>
+                                   <a href="">Bảo mật</a>
+                              </li>
+                              <li>
+                                   <a href="">Trợ giúp</a>
+                              </li>
+                              <li>
+                                   <a href="">Liên hệ</a>
+                              </li>
+                              <li>
+                                   <a href="">Blog</a>
+                              </li>
+                         </ul>
+                    </div>
                </div>
-               <!-- Modal footer -->
-               <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+          <!-- Modal thông báo ẩn tuổi -->
+          <div class="modal" id="myModal-info-hide-age">
+               <div class="modal-dialog">
+                    <div class="modal-content">
+                         <!-- Modal Header -->
+                         <div class="modal-header">
+                              <h4 class="modal-title">Ẩn số tuổi của bạn</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         </div>
+                         <!-- Modal body -->
+                         <div class="modal-body">
+                              Nếu bạn kích hoạt tính năng này, khi người khác xem hồ sơ của bạn, tuổi của bạn sẽ được ẩn đi.
+                         </div>
+                         <!-- Modal footer -->
+                         <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <!-- Modal thông báo có hiện tuổi hay không -->
+          <div class="modal" id="myModal-hide-age">
+               <div class="modal-dialog">
+                    <div class="modal-content text-center">
+                         <!-- Modal Header -->
+                         <div class="modal-header d-flex flex-column">
+                              <img src="~/Public/Asset/img/hide_age.png" alt="" class="mx-auto">
+                              <h4 class="modal-title mx-auto">Ẩn số tuổi của bạn</h4>
+                         </div>
+                         <!-- Modal body -->
+                         <div class="modal-body">
+                              Nếu bạn kích hoạt tính năng này, khi người khác xem hồ sơ của bạn, tuổi của bạn sẽ được ẩn đi.
+                              <p>Bạn cần nâng cấp tài khoản hoặc sử dụng xu</p>
+                              <p>Tính năng sẽ khả dụng trong suốt thời hạn gói Nâng cấp hoặc khả dụng vĩnh viễn nếu được mua bằng Xu.</p>
+                              <div class="btn-item text-center">
+                                   <button class="btn btn-info">Nâng cấp ngay</button>
+                              </div>
+                              <a href="">Sử dụng xu</a>
+                         </div>
+                         <!-- Modal footer -->
+                         <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <!-- Modal nổi bật ngay -->
+          <div class="modal" id="myModal-highlight-now">
+               <div class="modal-dialog">
+                    <div class="modal-content text-center">
+                         <!-- Modal Header -->
+                         <div class="modal-header d-flex flex-column">
+                              <img src="~/Public/Asset/img/hide_age.png" alt="" class="mx-auto">
+                              <h4 class="modal-title mx-auto">Nổi bật ngay</h4>
+                         </div>
+                         <!-- Modal body -->
+                         <div class="modal-body">
+                              Bạn sẽ được ON TOP trong vòng 24h, mọi người có thể thấy và làm quen với bạn một cách nhanh chóng hơn
+                              <a href="">Nổi bật ngay</a>
+                         </div>
+                         <!-- Modal footer -->
+                         <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                         </div>
+                    </div>
                </div>
           </div>
      </div>
-</div>
-<!-- Modal nổi bật ngay -->
-<div class="modal" id="myModal-highlight-now">
-     <div class="modal-dialog">
-          <div class="modal-content text-center">
-               <!-- Modal Header -->
-               <div class="modal-header d-flex flex-column">
-                    <img src="~/Public/Asset/img/hide_age.png" alt="" class="mx-auto">
-                    <h4 class="modal-title mx-auto">Nổi bật ngay</h4>
-               </div>
-               <!-- Modal body -->
-               <div class="modal-body">
-                    Bạn sẽ được ON TOP trong vòng 24h, mọi người có thể thấy và làm quen với bạn một cách nhanh chóng hơn
-                    <a href="">Nổi bật ngay</a>
-               </div>
-               <!-- Modal footer -->
-               <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-               </div>
-          </div>
-     </div>
-</div>
-</div>
-<a id="back-to-top" href="#" class="btn btn-danger btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
-<script>
+     <a id="back-to-top" href="#" class="btn btn-danger btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+     <script>
      $(document).ready(function () {
           var Nname = $("td#NickName>span").text();
           var Nbirthday = $("td#birthday>span").text();
           var ischangeName = false;
           var ischangeBirth = false;
-          $('#fix_ind_self').click(function () {
+          $('#fix_ind_self').click(function () {               
                if (ischangeName == true) {
                     Nname = $("input#NickName").val();
                }
@@ -1957,7 +1934,7 @@
                }
                var obj = {
                     UserID: '@info.UserID', height: $("td#height>input").val(),
-                    NickName: Nname, birthday: Nbirthday, body: $("td#body>select option:selected").text(),
+                    NickName: Nname,birthday: Nbirthday,gender:$("td#gender>select option:selected").text(), body: $("td#body>select option:selected").text(),
                     blood: $("td#blood>select option:selected").text(), national_user: $("td#national_user>select option:selected").text(),
                     address_user: $("td#address_user>select option:selected").text(), family: $("td#family>select option:selected").text(),
                     language_user: $("td#languge>select option:selected").text(), education: $("td#education>select option:selected").text(),
@@ -2004,10 +1981,10 @@
           });
           //upload multi img
           $("input#upl_file").change(function () {
-               $("#btn_upload_list_img").css("display", "inline-block");              
+               $("#btn_upload_list_img").css("display", "inline-block");
                $("#lb_upl_img").css("display", "none");
                $("#unUpload").css("display", "inline-block");
-               
+
           });
           $("#btn_upload_list_img").click(function () {
                alert("Tải ảnh lên thành công!");
@@ -2015,14 +1992,14 @@
           $("#unUpload").click(function () {
                $(this).css("display", "none");
                $("#lb_upl_img").css("display", "inline-block");
-               $("#btn_upload_list_img").css("display", "none");    
+               $("#btn_upload_list_img").css("display", "none");
           });
           //delete img from list image
-          $("i.del_img_user").on('click', function () {               
+          $("i.del_img_user").on('click', function () {
                $.ajax({
                     url: '/Profile/Delete_image_user',
                     data: {
-                         name_img: $(this).parent().data('name_img')                         
+                         name_img: $(this).parent().data('name_img')
                     },
                     type: 'post',
                     dataType: 'json',
@@ -2039,7 +2016,7 @@
           //delete all image
           $("#del_all_img").on('click', function () {
                $.ajax({
-                    url: '/Profile/Delete_all_img',                    
+                    url: '/Profile/Delete_all_img',
                     type: 'post',
                     dataType: 'json',
                     success: function (status) {
@@ -2053,6 +2030,6 @@
                })
           });
      });
-</script>
+     </script>
 </body>
 </html>

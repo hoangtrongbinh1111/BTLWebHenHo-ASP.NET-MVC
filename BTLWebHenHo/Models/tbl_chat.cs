@@ -16,5 +16,7 @@ namespace BTLWebHenHo.Models
         public int? id_other_user { get; set; }
 
         public string content { get; set; }
+
+        public string history { get; set; }
     }
 }

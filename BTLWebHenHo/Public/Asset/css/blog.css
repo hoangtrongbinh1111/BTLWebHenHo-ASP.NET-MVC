@@ -112,11 +112,12 @@
     margin-top: 15px;
 }
 
-.content-blog>button.detail-blog {
+.content-blog>a.detail_blog {
     padding: 13px 30px;
     margin-top: 16px;
     line-height: 1;
     letter-spacing: 2px;
+    color:#fff;
 }
 
 .leave-comment-blog {

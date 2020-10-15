@@ -4,6 +4,10 @@
      Layout = "~/Views/Shared/_Layout.cshtml";
      var blog = ViewBag.blog;
      var nameCategory = ViewBag.category;
+     var popular_blog = ViewBag.popular_blog;
+     var category = ViewBag.cate;
+     var qty_blog = ViewBag.qty_blog;
+     
 }
 <link rel="stylesheet" href="~/Public/Asset/css/blog_detail.css"/>
 <div id="wp_content">
@@ -19,56 +23,37 @@
                          <div class="row">
                               <div class="col-md-9">
                                    <img src="~/Public/Asset/img/@blog.link_img" alt="" class="w-100">
-                                   <div class="content_blog">
-                                        <p>Dù vậy, ngày nay, cả nam và nữ đều đã chủ động hơn rất nhiều trong chuyện tình cảm. Nếu bạn còn đang hoang mang cách mà mọi người tìm kiếm một nửa trong thời đại 4.0 </p>
-                                        <p>hello</p>
+                                   <div class="content_blog mt-5">
+                                                                           
                                    </div>
                               </div>
                               <div class="col-md-3">
                                    <div id="recent_blog">
                                         <h5 class="font-weight-bold text-center text-uppercase">Các bài viết gần đây</h5>
                                         <ul class="list-unstyled">
-                                             <li class=" mt-3">
-                                                  <a href="" class="d-flex">
-                                                       <img src="~/Public/Asset/img/Cam-ki-1.jpg" alt="" class=" mr-2">
-                                                       <p>Cách để bạn trở nên thu hút trong mắt bạn gái khi hẹn hò online</p>
-                                                  </a>
-                                             </li>
-                                             <li class=" mt-3">
-                                                  <a href="" class="d-flex">
-                                                       <img src="~/Public/Asset/img/Cam-ki-1.jpg" alt="" class=" mr-2">
-                                                       <p>Cách để bạn trở nên thu hút trong mắt bạn gái khi hẹn hò online</p>
-                                                  </a>
-                                             </li>
-                                             <li class=" mt-3">
-                                                  <a href="" class="d-flex">
-                                                       <img src="~/Public/Asset/img/Cam-ki-1.jpg" alt="" class=" mr-2">
-                                                       <p>Cách để bạn trở nên thu hút trong mắt bạn gái khi hẹn hò online</p>
-                                                  </a>
-                                             </li>
+                                             @foreach (var item in popular_blog)
+                                             {
+                                                  <li class=" mt-3 item_each_blog" data-id="@item.id_blog">
+                                                       <a href="/Home/Blog_Detail/@item.id_blog" class="d-flex">
+                                                            <img src="~/Public/Asset/img/@item.link_img" alt="" class=" mr-2">
+                                                            <p>@item.tittle</p>
+                                                       </a>
+                                                  </li>
+                                             }                                            
                                         </ul>
                                    </div>
                                    <div id="category_blog">
                                         <h3 class="font-weight-bold text-center text-uppercase">Chuyên mục</h3>
                                         <ul class="list-unstyled">
-                                             <li class=" mt-3">
-                                                  <a href="" class="text-uppercase">
-                                                       bí kíp yêu
-                                                  </a>
-                                                  <span class="qty_blog">(138)</span>
-                                             </li>
-                                             <li class=" mt-3">
-                                                  <a href="" class="text-uppercase">
-                                                       bí kíp yêu
-                                                  </a>
-                                                  <span class="qty_blog">(138)</span>
-                                             </li>
-                                             <li class=" mt-3">
-                                                  <a href="" class="text-uppercase">
-                                                       bí kíp yêu
-                                                  </a>
-                                                  <span class="qty_blog">(138)</span>
-                                             </li>
+                                             @for(int i=0;i<category.Count;i++)
+                                             {                                                  
+                                                  <li class=" mt-3">
+                                                       <a href="/Home/Blog/@category[i].id_category" class="text-uppercase">
+                                                            @category[i].Name
+                                                       </a>
+                                                       <span class="qty_blog">(@qty_blog[i])</span>
+                                                  </li>
+                                             }                                            
                                         </ul>
                                    </div>
                               </div>
@@ -78,3 +63,22 @@
           </div>
      </div>
 </div>
+<script>
+     $(document).ready(function () {
+          var content = '@blog.content';     
+          var decodedText = $(".content_blog").html(content).text(); 
+          $(".content_blog").html(decodedText);
+          $(".item_each_blog").click(function () {
+               var id = $(this).data("id");
+               $.ajax({
+                    url: '/Home/update_view?id=' + id,                   
+                    type: 'get',
+                    dataType:'json',
+                    cache: false,
+                    success: function (data) {
+                         
+                    }
+               });
+          });
+     });
+</script>

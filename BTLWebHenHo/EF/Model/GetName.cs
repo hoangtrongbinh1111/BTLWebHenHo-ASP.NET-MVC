@@ -5,7 +5,7 @@ using System.Web;
 
 namespace BTLWebHenHo.EF.Model
 {
-     public class Profile_User
+     public class GetName
      {
           public string NickName { get; set; }
      }

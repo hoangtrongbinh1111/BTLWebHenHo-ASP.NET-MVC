@@ -31,6 +31,13 @@ namespace BTLWebHenHo.Models
 
           protected override void OnModelCreating(DbModelBuilder modelBuilder)
           {
+               modelBuilder.Entity<Profile_User>()
+                   .Property(e => e.birthday)
+                   .IsUnicode(false);
+
+               modelBuilder.Entity<UserInfo>()
+                   .Property(e => e.con_ID)
+                   .IsUnicode(false);
           }
      }
 }
