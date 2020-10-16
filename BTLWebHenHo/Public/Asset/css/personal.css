@@ -100,7 +100,7 @@ p.sub-tittle-item {
     margin: 1.5rem 0;
 }
 
-.btn-item>button {
+.btn-item>button,.btn-item>a {
     margin-bottom: 1rem;
     width: 75%;
     background: #91a7cf;
