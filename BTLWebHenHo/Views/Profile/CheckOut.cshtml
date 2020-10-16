@@ -39,7 +39,7 @@
                                         <p> Nhà ông Hoàng Văn Biện, thôn Đào Viên, xã Dân Tiến, huyện Khoái Châu, tỉnh Hưng Yên</p>
                                    </div>
                                    <div class="col-md-2">
-                                        <button class="btn btn-danger">Thay đổi</button>
+                                        <button class="btn btn-danger" data-toggle="modal" data-target="#change_address">Thay đổi</button>
                                    </div>
                               </div>
                          </div>
@@ -129,16 +129,86 @@
                                                        <button class="btn btn-success w-75 py-2">Đặt hàng</button>
                                                   </div>
                                              </div>
-                                             
+
                                         </div>
                                    </div>
 
                               </div>
-                              
+
                          </div>
                     </div>
                </div>
 
+          </div>
+     </div>
+     <!-- The Modal -->
+     <div class="modal" id="change_address">
+          <div class="modal-dialog">
+               <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                         <h4 class="modal-title">Thêm mới</h4>
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                         <h3>Thêm địa chỉ mới</h3>
+                         <input type="text" name="fullname" id="fullname" placeholder="Họ & tên" class="form-control mb-3" />
+                         <input type="tel" id="telephone" placeholder="Số điện thoại" class="form-control mb-3" />
+                         <select name="province" class="form-control mb-3">
+                              <option value="0" selected>
+                                   Tỉnh/Thành phố
+                              </option>
+                              <option value="1">
+                                   Hà Nội
+                              </option>
+                              <option value="2">
+                                   Thành phố Hồ Chí Minh
+                              </option>
+                              <option value="3">
+                                   Đà Nẵng
+                              </option>
+
+                         </select>
+                         <select name="town" class="form-control mb-3">
+                              <option value="0" selected>
+                                   Quận/Huyện
+                              </option>
+                              <option value="1">
+                                   Cầu Giấy
+                              </option>
+                              <option value="2">
+                                   Bắc Từ Liêm
+                              </option>
+                              <option value="3">
+                                   Khoái Châu
+                              </option>
+
+                         </select>
+                         <select name="" class="form-control mb-3">
+                              <option value="0" selected>
+                                   Phường/Xã
+                              </option>
+                              <option value="1">
+                                   Dân Tiến
+                              </option>
+                              <option value="2">
+                                   Đồng Tiến
+                              </option>
+                              <option value="3">
+                                   Hồng Tiến
+                              </option>
+
+                         </select>
+                         <input type="tel" class="form-control" placeholder="Địa chỉ cụ thể"/>
+                        
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                         <button type="button" class="btn btn-danger" data-dismiss="modal">Hoàn thành</button>
+                    </div>
+               </div>
           </div>
      </div>
 </body>

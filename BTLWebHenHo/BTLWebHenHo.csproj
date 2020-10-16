@@ -204,6 +204,7 @@
     <Content Include="Public\Asset\css\branding.css" />
     <Content Include="Public\Asset\css\buy-coin.css" />
     <Content Include="Public\Asset\css\chat-group.css" />
+    <Content Include="Public\Asset\css\CheckOut.css" />
     <Content Include="Public\Asset\css\footer.css" />
     <Content Include="Public\Asset\css\global.css" />
     <Content Include="Public\Asset\css\header.css" />
