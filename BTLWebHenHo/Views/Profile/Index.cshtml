@@ -20,9 +20,9 @@
                birthday = spl1[2];
                age = DateTime.Now.Year - Convert.ToInt32(birthday);
                birthday = spl1[0] + "/" + spl1[1] + "/" + spl1[2];
-               
+
           }
-          
+
      }
      var list_user_chat = ViewBag.list_user_chat;
      //cal percent profile done
@@ -654,10 +654,13 @@
                                                   <button class="btn  btn-block again" name="btn-again">Thiết lập lại</button>
                                              </div>
                                              <div class="col-6">
-                                                  <button class="btn  btn-block search" name="tab-half-4-btn-search">Tìm kiếm</button>
+                                                  <button class="btn  btn-block search" name="tab-half-4-btn-search" id="tab-half-4-btn-search">Tìm kiếm</button>
                                              </div>
                                         </div>
                                    </div>
+                              </div>
+                              <div class="show_info_find">
+                                   
                               </div>
                          </div>
                     </div>
@@ -870,14 +873,14 @@
                                         <i></i>
                                    </label>
                               </div>
-                         </div>                      
+                         </div>
                     </div>
                     <div id="upgrade-account">
                          <div class="tittle-item">
                               Nâng cấp tài khoản
                          </div>
                          <div class="btn-item text-center py-4">
-                              <a href="/Profile/buy_coin" class="btn btn-info mb-0">Nâng cấp ngay</a>
+                              <a href="/Cart/buy_coin" class="btn btn-info mb-0">Nâng cấp ngay</a>
                          </div>
                     </div>
                     <div id="introduce-self">
@@ -909,7 +912,10 @@
                                              <td id="gender">
                                                   <select name="gender" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.gender != null){ <span>@info.gender</span>}else{<span>Không có</span>} }
+                                                            @{if (info.gender != null)
+                                                                 { <span>@info.gender</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Nam</option>
                                                        <option value="2">Nữ</option>
@@ -925,7 +931,10 @@
                                         <tr>
                                              <td class=" txt-light f-18 w-40">Ngày sinh</td>
                                              <td id="birthday">
-                                                  @{if (info.birthday != null){ <span>@birthday</span>}else{<span>Không có</span>} }
+                                                  @{if (info.birthday != null)
+                                                       { <span>@birthday</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
                                                   <i class="fas fa-pencil-alt float-right" style="cursor:pointer;"></i>
                                              </td>
                                         </tr>
@@ -949,7 +958,10 @@
                                              <td id="body">
                                                   <select name="body-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.body != null){ <span>@info.body</span>}else{<span>Không có</span>} }
+                                                            @{if (info.body != null)
+                                                                 { <span>@info.body</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Mảnh mai</option>
                                                        <option value="2">Thể thao</option>
@@ -968,7 +980,10 @@
                                              <td id="blood">
                                                   <select name="blood-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.blood != null){ <span>@info.blood</span>} else{<span>Không có</span>} }
+                                                            @{if (info.blood != null)
+                                                                 { <span>@info.blood</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">A</option>
                                                        <option value="2">B</option>
@@ -984,7 +999,10 @@
                                              <td id="national_user">
                                                   <select name="national-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.national_user != null){ <span>@info.national_user</span>}else{<span>Không có</span>} }
+                                                            @{if (info.national_user != null)
+                                                                 { <span>@info.national_user</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Việt Nam</option>
                                                        <option value="2">Nhật Bản</option>
@@ -1000,7 +1018,10 @@
                                              <td id="address_user">
                                                   <select name="country-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.address_user != null){ <span>@info.address_user</span>}else{<span>Không có</span>} }
+                                                            @{if (info.address_user != null)
+                                                                 { <span>@info.address_user</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">
                                                             An Giang
@@ -1404,7 +1425,10 @@
                                              <td id="family">
                                                   <select name="family-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.family != null){ <span>@info.family</span>}else{<span>Không có</span>} }
+                                                            @{if (info.family != null)
+                                                                 { <span>@info.family</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Con trai cả</option>
                                                        <option value="2">Con trai thứ</option>
@@ -1419,7 +1443,10 @@
                                              <td id="language">
                                                   <select name="language-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.language_user != null){ <span>@info.language_user</span>} else{<span>Không có</span>} }
+                                                            @{if (info.language_user != null)
+                                                                 { <span>@info.language_user</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Tiếng Việt</option>
                                                        <option value="2">Tiếng Anh</option>
@@ -1441,7 +1468,10 @@
                                              <td id="education">
                                                   <select name="qualify-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.education != null){ <span>@info.education</span>}else{<span>Không có</span>} }
+                                                            @{if (info.education != null)
+                                                                 { <span>@info.education</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Chưa tốt nghiệp PT</option>
                                                        <option value="2">Tốt nghiệp PT</option>
@@ -1459,7 +1489,10 @@
                                              <td id="job">
                                                   <select name="job-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.job != null){ <span>@info.job</span>}else{<span>Không có</span>} }
+                                                            @{if (info.job != null)
+                                                                 { <span>@info.job</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Nghệ thuật</option>
                                                        <option value="2">Kinh doanh</option>
@@ -1493,7 +1526,10 @@
                                              <td id="income">
                                                   <select name="salary-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.income != null){ <span>@info.income</span>}else{<span>Không có</span>} }
+                                                            @{if (info.income != null)
+                                                                 { <span>@info.income</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Dưới 5 Triệu VNĐ</option>
                                                        <option value="2">5 đến 10 Triệu VNĐ</option>
@@ -1517,7 +1553,10 @@
                                              <td id="martial_status">
                                                   <select name="marriage-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.martial_status != null){ <span>@info.martial_status</span>}else{<span>Không có</span>} }
+                                                            @{if (info.martial_status != null)
+                                                                 { <span>@info.martial_status</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Độc thân</option>
                                                        <option value="2">Độc thân(Đã ly hôn)</option>
@@ -1530,7 +1569,10 @@
                                              <td id="baby_status">
                                                   <select name="children-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.baby_status != null){ <span>@info.baby_status</span>}else{<span>Không có</span>} }
+                                                            @{if (info.baby_status != null)
+                                                                 { <span>@info.baby_status</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Chưa có con</option>
                                                        <option value="2">Có. Đang sống cùng</option>
@@ -1543,7 +1585,10 @@
                                              <td id="want_baby_status">
                                                   <select name="need-children-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.want_baby_status != null){ <span>@info.want_baby_status</span>}else{<span>Không có</span>} }
+                                                            @{if (info.want_baby_status != null)
+                                                                 { <span>@info.want_baby_status</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Không muốn có con</option>
                                                        <option value="2">Có từ 1 đến 2 con</option>
@@ -1557,7 +1602,10 @@
                                              <td id="live_status">
                                                   <select name="live-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.live_status != null){ <span>@info.live_status</span>} else {<span>Không có</span>} }
+                                                            @{if (info.live_status != null)
+                                                                 { <span>@info.live_status</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Một mình</option>
                                                        <option value="2">Cùng bạn</option>
@@ -1587,7 +1635,10 @@
                                              <td id="character_user">
                                                   <select name="character-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.character_user != null){ <span>@info.character_user</span>}else{<span>Không có</span>} }
+                                                            @{if (info.character_user != null)
+                                                                 { <span>@info.character_user</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Tốt bụng</option>
                                                        <option value="2">Quyết đoán</option>
@@ -1604,7 +1655,10 @@
                                              <td id="public_relationship">
                                                   <select name="relationship-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.public_relationship != null){ <span>@info.public_relationship</span>}else{<span>Không có</span>} }
+                                                            @{if (info.public_relationship != null)
+                                                                 { <span>@info.public_relationship</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Thích chỗ đông người</option>
                                                        <option value="2">Thích chỗ vắng người</option>
@@ -1619,7 +1673,10 @@
                                              <td id="want_meet">
                                                   <select name="language-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.want_meet != null){ <span>@info.want_meet</span>}else{<span>Không có</span>} }
+                                                            @{if (info.want_meet != null)
+                                                                 { <span>@info.want_meet</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Sau khi kết bạn</option>
                                                        <option value="2">Kết bạn và thấy quan tâm</option>
@@ -1632,7 +1689,10 @@
                                              <td id="want_marry">
                                                   <select name="need-marry-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.want_marry != null){ <span>@info.want_marry</span>}else{<span>Không có</span>} }
+                                                            @{if (info.want_marry != null)
+                                                                 { <span>@info.want_marry</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Kết hôn sớm</option>
                                                        <option value="2">Trong vòng 2-3 năm tới</option>
@@ -1647,7 +1707,10 @@
                                              <td id="ready_do_hw">
                                                   <select name="do-homework-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.ready_do_homework != null){ <span>@info.ready_do_homework</span>}else{<span>Không có</span>} }
+                                                            @{if (info.ready_do_homework != null)
+                                                                 { <span>@info.ready_do_homework</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Tự làm</option>
                                                        <option value="2">Có thể làm</option>
@@ -1661,7 +1724,10 @@
                                              <td id="freeday">
                                                   <select name="dayoff-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.freeday != null){ <span>@info.freeday</span>}else{<span>Không có</span>} }
+                                                            @{if (info.freeday != null)
+                                                                 { <span>@info.freeday</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Thứ 7 và chủ nhật</option>
                                                        <option value="2">Ngày trong tuần</option>
@@ -1675,7 +1741,10 @@
                                              <td id="wine">
                                                   <select name="drink-wine-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.wine != null){ <span>@info.wine</span>}else{<span>Không có</span>} }
+                                                            @{if (info.wine != null)
+                                                                 { <span>@info.wine</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Có</option>
                                                        <option value="2">Không</option>
@@ -1688,7 +1757,10 @@
                                              <td id="smoke">
                                                   <select name="language-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.smoke != null){ <span>@info.smoke</span>}else{<span>Không có</span>} }
+                                                            @{if (info.smoke != null)
+                                                                 { <span>@info.smoke</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Có</option>
                                                        <option value="2">Không</option>
@@ -1701,7 +1773,10 @@
                                              <td id="pay_first_meet">
                                                   <select name="cost-first-user" class="select-properties-user">
                                                        <option value="0" selected>
-                                                            @{if (info.pay_first_meet != null) { <span>@info.pay_first_meet</span>}else {<span>Không có</span>} }
+                                                            @{if (info.pay_first_meet != null)
+                                                                 { <span>@info.pay_first_meet</span>}
+                                                            else
+                                                            {<span>Không có</span>} }
                                                        </option>
                                                        <option value="1">Nam giới trả</option>
                                                        <option value="2">Nam giới trả nhiều hơn</option>
@@ -1753,7 +1828,7 @@
                          </div>
                     </div>
                     <div id="button-function">
-                         <a href="/Profile/buy_coin" class="w-45 d-inline-block buy-coin">
+                         <a href="/Cart/buy_coin" class="w-45 d-inline-block buy-coin">
                               <img src="~/Public/Asset//img/Coin.png" alt="" class="img-fluid">Mua xu
                          </a>
                          <a href="" class="w-45 d-inline-block highlight-now buy-coin">
@@ -1766,7 +1841,7 @@
                     <div id="list-function" class="mt-5">
                          <ul class="list-unstyled">
                               <li>
-                                   <a href="/Profile/buy_coin" class="d-flex">
+                                   <a href="/Cart/buy_coin" class="d-flex">
                                         <img src="~/Public/Asset/img/Upgrade.png" alt="" class="img-fluid"> Nâng cấp tài khoản
                                    </a>
                               </li>
@@ -1937,7 +2012,7 @@
           var Nbirthday = $("td#birthday>span").text();
           var ischangeName = false;
           var ischangeBirth = false;
-          $('#fix_ind_self').click(function () {               
+          $('#fix_ind_self').click(function () {
                if (ischangeName == true) {
                     Nname = $("input#NickName").val();
                }
@@ -2035,6 +2110,27 @@
                          if (status) {
                               alert("Xóa ảnh thành công");
                               window.location.reload();
+                         }
+
+                    }
+
+               })
+          });
+
+          //search info friend
+          $("#tab-half-4-btn-search").on('click', function () {
+               var age_start = $("select#age_min").val();
+               var age_end = $("select#age_max").val();
+               var country_val = $("select#national").val();
+               var country = $("select#national option:selected").val();
+               $.ajax({
+                    url: '/Profile/getInfoFriend_by_find_basic',
+                    type: 'post',
+                    data: { age_start: age_start, age_end: age_end, country_val: country_val, country: country }
+                    success: function (status) {
+                         if (status) {
+                              
+                              
                          }
 
                     }
