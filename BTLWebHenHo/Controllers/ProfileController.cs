@@ -21,7 +21,7 @@ namespace BTLWebHenHo.Controllers
                {
                     int id_user=get_ID_User();
                     
-                    var info = db.Profile_User.Where(x => x.UserID == id_user.ToString()).FirstOrDefault();
+                    var info = db.Profile_User.Where(x => x.UserID == id_user).FirstOrDefault();
                     ViewBag.info = info;
                     ViewBag.cal_percent = cal_percent(info);
                     //get list chat
@@ -30,7 +30,7 @@ namespace BTLWebHenHo.Controllers
                    
                     foreach(var item in list_user_chat)
                     {
-                         var getinf = db.Profile_User.Where(x=>x.UserID==item.id_other_user.ToString()).FirstOrDefault();
+                         var getinf = db.Profile_User.Where(x=>x.UserID==item.id_other_user).FirstOrDefault();
                          Chat_specific cs = new Chat_specific();
                          cs.tc = item;
                          cs.Nickname = getinf.NickName;
@@ -50,66 +50,67 @@ namespace BTLWebHenHo.Controllers
           {
                int count = 0;
                int qty = 0;
-               if(pu.NickName==null ||pu.NickName=="Không có") { count++; } qty++;
+               if(pu.NickName==null ||pu.NickName=="Không có") { count++; }
+               qty++;
                if (pu.email == null || pu.email == "Không có") { count++; }
                qty++;
-               if (pu.phone == null || pu.NickName == "Không có") { count++; }
+               if (pu.phone == null || pu.phone == "Không có") { count++; }
                qty++;
-               if (pu.address_user == null || pu.NickName == "Không có") { count++; }
+               if (pu.address_user == null || pu.address_user == "Không có") { count++; }
                qty++;
-               if (pu.coins == null || pu.NickName == "Không có") { count++; }
+               if (pu.coins == null || pu.coins == "Không có") { count++; }
                qty++;
-               if (pu.avatar == null || pu.NickName == "Không có") { count++; }
+               if (pu.avatar == null || pu.avatar == "Không có") { count++; }
                qty++;
-               if (pu.birthday == null || pu.NickName == "Không có") { count++; }
+               if (pu.birthday == null || pu.birthday == "Không có") { count++; }
                qty++;
                if (pu.height == null ) { count++; }
                qty++;
-               if (pu.body == null || pu.NickName == "Không có") { count++; }
+               if (pu.body == null || pu.body == "Không có") { count++; }
                qty++;
-               if (pu.blood == null || pu.NickName == "Không có") { count++; }
+               if (pu.blood == null || pu.blood == "Không có") { count++; }
                qty++;
-               if (pu.national_user == null || pu.NickName == "Không có") { count++; }
+               if (pu.national_user == null || pu.national_user == "Không có") { count++; }
                qty++;
-               if (pu.language_user == null || pu.NickName == "Không có") { count++; }
+               if (pu.language_user == null || pu.language_user == "Không có") { count++; }
                qty++;
-               if (pu.education == null || pu.NickName == "Không có") { count++; }
+               if (pu.education == null || pu.education == "Không có") { count++; }
                qty++;
-               if (pu.job == null || pu.NickName == "Không có") { count++; }
+               if (pu.job == null || pu.job == "Không có") { count++; }
                qty++;
-               if (pu.income == null || pu.NickName == "Không có") { count++; }
+               if (pu.income == null || pu.income == "Không có") { count++; }
                qty++;
-               if (pu.martial_status == null || pu.NickName == "Không có") { count++; }
+               if (pu.martial_status == null || pu.martial_status == "Không có") { count++; }
                qty++;
-               if (pu.baby_status == null || pu.NickName == "Không có") { count++; }
+               if (pu.baby_status == null || pu.baby_status == "Không có") { count++; }
                qty++;
-               if (pu.want_baby_status == null || pu.NickName == "Không có") { count++; }
+               if (pu.want_baby_status == null || pu.want_baby_status == "Không có") { count++; }
                qty++;
-               if (pu.live_status == null || pu.NickName == "Không có") { count++; }
+               if (pu.live_status == null || pu.live_status == "Không có") { count++; }
                qty++;
-               if (pu.hobbies == null || pu.NickName == "Không có") { count++; }
+               if (pu.hobbies == null || pu.hobbies == "Không có") { count++; }
                qty++;
-               if (pu.character_user == null || pu.NickName == "Không có") { count++; }
+               if (pu.character_user == null || pu.character_user == "Không có") { count++; }
                qty++;
-               if (pu.public_relationship == null || pu.NickName == "Không có") { count++; }
+               if (pu.public_relationship == null || pu.public_relationship == "Không có") { count++; }
                qty++;
-               if (pu.want_meet == null || pu.NickName == "Không có") { count++; }
+               if (pu.want_meet == null || pu.want_meet == "Không có") { count++; }
                qty++;
-               if (pu.want_marry == null || pu.NickName == "Không có") { count++; }
+               if (pu.want_marry == null || pu.want_marry == "Không có") { count++; }
                qty++;
-               if (pu.ready_do_homework == null || pu.NickName == "Không có") { count++; }
+               if (pu.ready_do_homework == null || pu.ready_do_homework == "Không có") { count++; }
                qty++;
-               if (pu.freeday == null || pu.NickName == "Không có") { count++; }
+               if (pu.freeday == null || pu.freeday == "Không có") { count++; }
                qty++;
-               if (pu.wine == null || pu.NickName == "Không có") { count++; }
+               if (pu.wine == null || pu.wine == "Không có") { count++; }
                qty++;
-               if (pu.smoke == null || pu.NickName == "Không có") { count++; }
+               if (pu.smoke == null || pu.smoke == "Không có") { count++; }
                qty++;
-               if (pu.pay_first_meet == null || pu.NickName == "Không có") { count++; }
+               if (pu.pay_first_meet == null || pu.pay_first_meet == "Không có") { count++; }
                qty++;
-               if (pu.family == null || pu.NickName == "Không có") { count++; }
+               if (pu.family == null || pu.family == "Không có") { count++; }
                qty++;
-               if (pu.gender == null || pu.NickName == "Không có") { count++; }
+               if (pu.gender == null || pu.gender == "Không có") { count++; }
                qty++;
                int percentComplete = (int)Math.Round((double)(100 * (qty - count)) / qty);
                return percentComplete;
@@ -191,7 +192,7 @@ namespace BTLWebHenHo.Controllers
                F_History_Chat fhc = new F_History_Chat();
                var row_upd = fhc.GetSingleByCondition(x => x.content == stt_id_chat.ToString());
                List<History_Chat> list_chat = new List<History_Chat>();
-               var name_other_user = db.Profile_User.Where(x => x.UserID == id_other_user.ToString()).Select(x => x.NickName).FirstOrDefault();
+               var name_other_user = db.Profile_User.Where(x => x.UserID == id_other_user).Select(x => x.NickName).FirstOrDefault();
                if (row_upd == null) {
                     ViewBag.list_chat = list_chat;
                     ViewBag.id_chat = id_other_user;
@@ -253,7 +254,7 @@ namespace BTLWebHenHo.Controllers
           {
                F_Profile_User fpu = new F_Profile_User();
                Profile_User pu = new Profile_User();
-               pu.NickName = fpu.GetSingleByCondition(x => x.UserID == userID.ToString()).NickName;
+               pu.NickName = fpu.GetSingleByCondition(x => x.UserID == userID).NickName;
                return pu.NickName;
           }
           [NonAction]
@@ -330,7 +331,7 @@ namespace BTLWebHenHo.Controllers
                     if (path != null)
                     {
                          int id_user=get_ID_User();                        
-                         var upd = db.Profile_User.Where(x => x.UserID == id_user.ToString()).FirstOrDefault();
+                         var upd = db.Profile_User.Where(x => x.UserID == id_user).FirstOrDefault();
                          upd.avatar = fileName;
                          db.SaveChanges();
                          
@@ -350,9 +351,9 @@ namespace BTLWebHenHo.Controllers
                     imageFile.SaveAs(path);
 
                     int id_user=get_ID_User();                   
-                    var upd = db.Profile_User.Where(x => x.UserID == id_user.ToString()).FirstOrDefault();
+                    var upd = db.Profile_User.Where(x => x.UserID == id_user).FirstOrDefault();
                     //country is list image
-                    upd.list_img += fileName+"/";
+                    upd.list_thumb += fileName+"/";
                     db.SaveChanges();
                }
 
@@ -362,8 +363,8 @@ namespace BTLWebHenHo.Controllers
           public ActionResult Delete_image_user(string name_img)
           {
                int id_user = get_ID_User();
-               var upd = db.Profile_User.Where(x => x.UserID == id_user.ToString()).FirstOrDefault();
-               upd.list_img = upd.list_img.Replace(name_img+"/","");
+               var upd = db.Profile_User.Where(x => x.UserID == id_user).FirstOrDefault();
+               upd.list_thumb = upd.list_thumb.Replace(name_img+"/","");
                db.SaveChanges();
                return Json(new { status=true});
           }
@@ -371,13 +372,13 @@ namespace BTLWebHenHo.Controllers
           public ActionResult Delete_all_img()
           {
                int id_user = get_ID_User();
-               var upd = db.Profile_User.Where(x => x.UserID == id_user.ToString()).FirstOrDefault();
-               upd.list_img = null;
+               var upd = db.Profile_User.Where(x => x.UserID == id_user).FirstOrDefault();
+               upd.list_thumb = null;
                db.SaveChanges();
                return Json(new { status = true });
           }
           [HttpPost]
-          public ActionResult Update_ConID(string UserID,string con_ID)
+          public ActionResult Update_ConID(int UserID,string con_ID)
           {
                F_UserInfo fu = new F_UserInfo();
                var row_upd = fu.GetSingleByCondition(x => x.UserID == UserID);
@@ -386,7 +387,7 @@ namespace BTLWebHenHo.Controllers
                return Json(new { status=true});
           }
           [HttpPost]
-          public ActionResult Get_ConID(string chat_id)
+          public ActionResult Get_ConID(int chat_id)
           {
                F_UserInfo fu = new F_UserInfo();
                var row_upd = fu.GetSingleByCondition(x => x.UserID == chat_id);              

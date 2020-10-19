@@ -32,7 +32,7 @@ namespace BTLWebHenHo.Hubs
           public void Message(string name, string message,string conID,string stt,string UserID)
           {
                var get = db.UserInfoes.Where(x => x.con_ID == conID).FirstOrDefault();
-               var get_stt = db.tbl_chat.Where(x => x.id_other_user.ToString() == get.UserID).Where(x=>x.id_main_user.ToString()==UserID).FirstOrDefault();
+               var get_stt = db.tbl_chat.Where(x => x.id_other_user == get.UserID).Where(x=>x.id_main_user.ToString()==UserID).FirstOrDefault();
                if(stt==get_stt.content)
                     Clients.Client(conID).message(name,message,stt);
           }

@@ -26,6 +26,7 @@ namespace BTLWebHenHo.Models
         [StringLength(50)]
         public string coins { get; set; }
 
+        [StringLength(50)]
         public string avatar { get; set; }
 
         [StringLength(50)]
@@ -105,15 +106,14 @@ namespace BTLWebHenHo.Models
         [StringLength(50)]
         public string family { get; set; }
 
-        public string list_img { get; set; }
+        public string list_thumb { get; set; }
 
         public int? hide_age { get; set; }
 
-        [StringLength(50)]
-        public string UserID { get; set; }
-
         [StringLength(10)]
         public string gender { get; set; }
+
+        public int? UserID { get; set; }
 
         public virtual UserInfo UserInfo { get; set; }
     }

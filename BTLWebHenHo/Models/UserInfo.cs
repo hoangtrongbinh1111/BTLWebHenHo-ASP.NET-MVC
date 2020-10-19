@@ -17,8 +17,7 @@ namespace BTLWebHenHo.Models
         }
 
         [Key]
-        [StringLength(50)]
-        public string UserID { get; set; }
+        public int UserID { get; set; }
 
         [Required]
         [StringLength(50)]

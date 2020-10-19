@@ -14,7 +14,7 @@ namespace BTLWebHenHo.Controllers
     {
           private WebHenHoDbContext _db = new WebHenHoDbContext();//khởi tạo 1 đối tượng của database
           // GET: Login
-
+          
           public ActionResult Index()
         {
 

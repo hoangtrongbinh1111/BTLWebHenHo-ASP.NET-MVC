@@ -8,9 +8,21 @@
      if (info.birthday != null)
      {
           string[] spl = info.birthday.Split('-');
-          birthday = spl[0];
-          age = DateTime.Now.Year - Convert.ToInt32(birthday);
-          birthday = spl[2] + "/" + spl[1] + "/" + spl[0];
+          if (spl.Count() > 1)
+          {
+               birthday = spl[0];
+               age = DateTime.Now.Year - Convert.ToInt32(birthday);
+               birthday = spl[2] + "/" + spl[1] + "/" + spl[0];
+          }
+          else
+          {
+               string[] spl1 = info.birthday.Split('/');
+               birthday = spl1[2];
+               age = DateTime.Now.Year - Convert.ToInt32(birthday);
+               birthday = spl1[0] + "/" + spl1[1] + "/" + spl1[2];
+               
+          }
+          
      }
      var list_user_chat = ViewBag.list_user_chat;
      //cal percent profile done
@@ -810,9 +822,9 @@
                               Ảnh
                          </div>
                          <p class="sub-tittle-item">Chia sẻ những hình ảnh mới nhất của bạn</p>
-                         @if (info.list_img != null)
+                         @if (info.list_thumb != null)
                          {
-                              string[] list_img = info.list_img.Split('/');
+                              string[] list_img = info.list_thumb.Split('/');
                               <div id="list_your_image">
                                    <ul class="list-unstyled d-flex flex-wrap justify-content-around">
                                         @for (int i = 0; i < list_img.Count() - 1; i++)
@@ -829,7 +841,7 @@
                          <div>
 
                               <form action="/Profile/Upload_List_Img" class="text-center" method="post" enctype="multipart/form-data">
-                                   @if (info.list_img != null)
+                                   @if (info.list_thumb != null)
                                    {
                                         <button class="btn btn-dark" id="del_all_img">Xóa hết ảnh</button>
                                    }
@@ -858,16 +870,7 @@
                                         <i></i>
                                    </label>
                               </div>
-                         </div>
-                         @* test commit *@
-<<<<<<< HEAD
-                     
-=======
-                         @* test bình bò *@
->>>>>>> aaab1c98de0c8e40442ef4be02d356108bcd577d
-                        @*test hoang*@
-                         @* test tiếp bình *@
-                        @*test tiep hoang*@
+                         </div>                      
                     </div>
                     <div id="upgrade-account">
                          <div class="tittle-item">
