@@ -7,6 +7,7 @@ using BTLWebHenHo.Models;
 using System.Security.Cryptography;
 using System.Web.SessionState;
 using System.Web.UI;
+using BTLWebHenHo.EF.Model;
 
 namespace BTLWebHenHo.Controllers
 {
@@ -73,39 +74,87 @@ namespace BTLWebHenHo.Controllers
           [HttpPost]
           [ValidateAntiForgeryToken]
           
-          public ActionResult Register(UserInfo _user)
+          public ActionResult Register(register _user)
           {
-               if (ModelState.IsValid)
-               {
-                    var check = _db.UserInfoes.FirstOrDefault(s => s.username == _user.username);
-                    if (check == null)
+            if (ModelState.IsValid)
+            {
+                var check = _db.UserInfoes.FirstOrDefault(s => s.username == _user.username);
+                if (check == null)
+                {
+                    if (_user.username == null)
                     {
-                         if (_user.passw == "")
-                         {
-                              ViewBag.error = "Please enter password";
-                              return View();
-                         }
-                         else
-                         {
-                              //_user.Password = GetMD5(_user.Password);
-                              _db.Configuration.ValidateOnSaveEnabled = false;                            
-                              _db.UserInfoes.Add(_user);
-                              _db.SaveChanges();
-                              return RedirectToAction("Index");
-                         }
+                        ViewBag.error = "Please enter username";
+                        return View();
+                    }
+                    else if (_user.passw == null)
+                    {
+                        ViewBag.error = "Please enter password";
+                        return View();
+                    }
+
+                    else if (_user.fullname == null)
+                    {
+
+
+                        ViewBag.error = "Please enter fullname";
+                        return View();
                     }
                     else
                     {
-                         ViewBag.error = "User already exists";
-                         return View();
+                        _db.Configuration.ValidateOnSaveEnabled = false;
+
+                        if (((_user.month == "4" || _user.month == "6" || _user.month == "9" || _user.month == "11" || _user.month == "2") && (_user.day == "31")) || (_user.month == "2" && (_user.day == "30")) || (_user.month == "2" && _user.day == "29" && (Convert.ToInt32(_user.year) % 4 != 0)))
+                        {
+                            ViewBag.error = "Error birthday";
+                            return View();
+                        }
+                        else
+                        {
+                            UserInfo new_user = new UserInfo();
+                            new_user.username = _user.username;
+                            //new_user.passw = GetMD5(_user.passw);
+                            new_user.passw = _user.passw;
+                            _db.UserInfoes.Add(new_user);
+                            _db.SaveChanges();
+                            int id = _db.UserInfoes.Where(x => x.username == _user.username).Select(x => x.UserID).FirstOrDefault();
+                            Profile_User new_info_user = new Profile_User();
+                            new_info_user.NickName = _user.fullname;
+                            new_info_user.gender = _user.gender;
+                            new_info_user.UserID = id;
+                            string birthday = _user.day + "-" + _user.month + "-" + _user.year;
+                            //DateTime date = Convert.ToDateTime(birthday);
+                            //DateTime date = Convert.ToDateTime(birthday);
+                            new_info_user.birthday = birthday;
+                            //new_info_user.UserID = new_user.UserID;
+                            _db.Profile_User.Add(new_info_user);
+                            _db.SaveChanges();
+                            return RedirectToAction("Index");
+                        }
+
+
+
+
                     }
-               }
-               return View();
+                    ////_user.Password = GetMD5(_user.Password);
+                    //_db.Configuration.ValidateOnSaveEnabled = false;                            
+                    ////_db.UserInfoes.Add(_user);
+                    //_db.SaveChanges();
+                    //return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    ViewBag.error = "User already exists";
+                    return View();
+                }
+            }
+            return View();
 
 
-          }
-          //Logout
-          [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+
+        }
+        //Logout
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
           public ActionResult Logout()
           {
                Session.Clear();//delete all session but keep current session
