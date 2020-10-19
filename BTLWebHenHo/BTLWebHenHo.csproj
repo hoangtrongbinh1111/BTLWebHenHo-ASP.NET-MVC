@@ -149,6 +149,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="EF\Model\History_Chat.cs" />
     <Compile Include="EF\Model\Image.cs" />
     <Compile Include="EF\Model\GetName.cs" />
+    <Compile Include="EF\Model\register.cs" />
     <Compile Include="EF\Model\UpdateInfo.cs" />
     <Compile Include="EF\Services\F_History_Chat _Private.cs" />
     <Compile Include="EF\Services\F_Profile_User.cs" />
@@ -1291,10 +1293,11 @@
     <Content Include="Views\Home\Blog_Detail.cshtml" />
     <Content Include="Views\Home\add_older_post.cshtml" />
     <Content Include="Views\Profile\Chat_ToFriend.cshtml" />
-    <Content Include="Views\Profile\buy_coin.cshtml" />
-    <Content Include="Views\Profile\payment.cshtml" />
-    <Content Include="Views\Profile\shop.cshtml" />
-    <Content Include="Views\Profile\CheckOut.cshtml" />
+    <Content Include="Views\Cart\buy_coin.cshtml" />
+    <Content Include="Views\Cart\payment.cshtml" />
+    <Content Include="Views\Cart\shop.cshtml" />
+    <Content Include="Views\Cart\CheckOut.cshtml" />
+    <Content Include="Views\Profile\getInfoFriend_by_find_basic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

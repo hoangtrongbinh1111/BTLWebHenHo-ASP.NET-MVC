@@ -62,3 +62,14 @@ input#remember-me {
     position: relative;
     z-index: 1;
 }
+
+.male_check {
+     border:1px solid #e1e1e1;
+     width:25%;
+          
+}
+     .male_check > input {
+          margin-left:1rem;
+          padding:1rem;
+          display:block;
+     }

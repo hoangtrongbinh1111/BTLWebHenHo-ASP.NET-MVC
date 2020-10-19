@@ -115,22 +115,7 @@ namespace BTLWebHenHo.Controllers
                int percentComplete = (int)Math.Round((double)(100 * (qty - count)) / qty);
                return percentComplete;
           }
-          public ActionResult buy_coin()
-          {
-               return View();
-          }
-          public ActionResult payment()
-          {
-               return View();
-          }
-          public ActionResult shop()
-          {
-               return View();
-          }
-          public ActionResult CheckOut()
-          {
-               return View();
-          }
+          
           public ActionResult Chat_Group()
           {
                
@@ -392,6 +377,41 @@ namespace BTLWebHenHo.Controllers
                F_UserInfo fu = new F_UserInfo();
                var row_upd = fu.GetSingleByCondition(x => x.UserID == chat_id);              
                return Json(row_upd.con_ID);
+          }
+          public ActionResult getInfoFriend_by_find_basic(int age_start,int age_end,string country_val,string country)
+          {
+               List<Profile_User> ui = new List<Profile_User>();
+               var pu = db.Profile_User.ToList();
+               foreach(var info in pu)
+               {                    
+                    var age = 0;
+                    string[] spl = info.birthday.Split('-');
+                    if (spl.Count() > 1)
+                    {                        
+                         age = DateTime.Now.Year - Convert.ToInt32(spl[0]);         
+                    }
+                    else
+                    {
+                         string[] spl1 = info.birthday.Split('/');                        
+                         age = DateTime.Now.Year - Convert.ToInt32(spl[2]);
+                    }
+                    if (country_val == "none")
+                    {
+                         if(age>=age_start && age <= age_end)
+                         {
+                              ui.Add(info);
+                         }
+                    }
+                    else
+                    {
+                         if (age >= age_start && age <= age_end &&info.national_user==country)
+                         {
+                              ui.Add(info);
+                         }
+                    }
+
+               }
+               return View(ui);
           }
      }
 }
