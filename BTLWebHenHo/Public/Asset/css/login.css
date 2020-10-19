@@ -12,7 +12,7 @@ body {
 }
 
 input#username,
-input#password,input#email {
+input#password,input#fullname {
     padding: 23px;
     width: 100%;
     font-size: 20px;

@@ -247,7 +247,7 @@ sup#hide-age:hover {
 .back-to-top {
     position: fixed;
     bottom: 25px;
-    right: 500px;
+    right: 31px;
     display: none;
     z-index: 1;
 }
@@ -256,7 +256,7 @@ sup#hide-age:hover {
 /* ===================================== Sidebar==================================== */
 
 #side-bar {
-    width: 25rem;
+    width: 321px;
     background: #fff;
     position: fixed;
     top: 0;
