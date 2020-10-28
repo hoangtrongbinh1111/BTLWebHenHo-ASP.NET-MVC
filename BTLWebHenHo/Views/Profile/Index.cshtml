@@ -3,30 +3,28 @@
      ViewBag.Tittle = "My Profile";
      Layout = null;
      var info = ViewBag.info;
+     var info_online = ViewBag.info_online;
      var birthday = "";
      var age = 0;
      if (info.birthday != null)
      {
           string[] spl = info.birthday.Split('-');
-          if (spl.Count() > 1)
-          {
-               birthday = spl[0];
-               age = DateTime.Now.Year - Convert.ToInt32(birthday);
-               birthday = spl[2] + "/" + spl[1] + "/" + spl[0];
-          }
-          else
-          {
-               string[] spl1 = info.birthday.Split('/');
-               birthday = spl1[2];
-               age = DateTime.Now.Year - Convert.ToInt32(birthday);
-               birthday = spl1[0] + "/" + spl1[1] + "/" + spl1[2];
-
-          }
-
+          birthday = spl[0];
+          age = DateTime.Now.Year - Convert.ToInt32(birthday);
+          birthday = spl[2] + "/" + spl[1] + "/" + spl[0];
      }
      var list_user_chat = ViewBag.list_user_chat;
      //cal percent profile done
      var cal_percent = ViewBag.cal_percent;
+     var hottest_user = ViewBag.hottest_user;
+     var age_hottest_user = 0;
+     if (hottest_user.birthday != null)
+     {
+          string[] ht_spl = hottest_user.birthday.Split('-');
+          age_hottest_user= DateTime.Now.Year - Convert.ToInt32(ht_spl[0]);
+     }
+     var num_hot_thumb= ViewBag.num_hot_thumb;
+     var new_img = ViewBag.new_img;
 }
 
 <!DOCTYPE html>
@@ -155,22 +153,22 @@
                                    </div>
                                    <div class="simple-filter-content">
                                         <div class="filter-image card-image">
-                                             <a href="" class="d-block"><img src="~/Public/Asset/img/gai.jpg" alt=""></a>
+                                             <a href="" class="d-block"><img src="~/Public/Asset/img/Avatar/@hottest_user.avatar" alt="" style="height:500px;width:400px;"></a>
                                              <div class="info">
                                                   <span class="dot dot--active mrs"></span>
-                                                  <span class="tab-half-1-info">Thùy Dương - 20 - Hà Nội </span><br>
+                                                  <span class="tab-half-1-info">@hottest_user.NickName - @age_hottest_user - @hottest_user.address_user </span><br>
                                                   <i class="far fa-image"></i>
-                                                  <span class="number-image">6 ảnh</span>
+                                                  <span class="number-image">@num_hot_thumb ảnh</span>
                                              </div>
 
 
                                         </div>
                                         <div class="row pt-2 over-like pb-3">
                                              <div class="over col-xl-6 text-center">
-                                                  <button class="btn btn-info">Bỏ qua</button>
+                                                  <button class="btn btn-info" id="skip_hottest_info" data-id="@hottest_user.UserID">Bỏ qua</button>
                                              </div>
                                              <div class="like col-xl-6">
-                                                  <button class="btn btn-info"><img src="~/Public/Asset/img/tym_icon.png">Thích</button>
+                                                  <button class="btn btn-info" id="like_friend" onclick="dislike_func()"><img src="~/Public/Asset/img/tym_icon.png">Thích</button>
                                              </div>
                                         </div>
 
@@ -296,60 +294,22 @@
                               </div>
                               <div class="container">
                                    <div class="row">
-                                        <div class="col-6">
-                                             <div class="card-link card-image">
-                                                  <a href="">
-                                                       <img class="img-fluid" src="~/Public/Asset/img/extra_large_2531551_20200914_064401_30.jpg" alt="">
-                                                  </a>
+                                        @foreach (var item in new_img)
+                                        {
+                                             <div class="col-6">
+                                                  <div class="card-link card-image">
+                                                       <a href="">
+                                                            <img class="img-fluid" src="~/Public/Asset/img/List_image_upload/@item.new_img" alt="" style="height:500px;">
+                                                       </a>
+                                                  </div>
+                                                  <div class="card-vote">
+                                                       <button class="btn btn-vote">
+                                                            <i class="far fa-thumbs-up"></i>
+                                                            1
+                                                       </button>
+                                                  </div>
                                              </div>
-                                             <div class="card-vote">
-                                                  <button class="btn btn-vote">
-                                                       <i class="far fa-thumbs-up"></i>
-                                                       1
-                                                  </button>
-                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                             <div class="card-link card-image">
-                                                  <a href="">
-                                                       <img class="img-fluid" src="~/Public/Asset/img/extra_large_2531551_20200914_064401_69.jpg" alt="">
-
-                                                  </a>
-                                             </div>
-                                             <div class="card-vote">
-                                                  <button class="btn btn-vote">
-                                                       <i class="far fa-thumbs-up"></i>
-                                                       1
-                                                  </button>
-                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                             <div class="card-link card-image">
-                                                  <a href="">
-                                                       <img class="img-fluid" src="~/Public/Asset/img/extra_large_2531551_20200914_064401_75.jpg" alt="">
-
-                                                  </a>
-                                             </div>
-                                             <div class="card-vote">
-                                                  <button class="btn btn-vote">
-                                                       <i class="far fa-thumbs-up"></i>
-                                                       1
-                                                  </button>
-                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                             <div class="card-link card-image">
-                                                  <a href="">
-                                                       <img class="img-fluid" src="~/Public/Asset/img/extra_large_2531551_20200914_064401_90.jpg" alt="">
-                                                  </a>
-                                             </div>
-                                             <div class="card-vote">
-                                                  <button class="btn btn-vote">
-                                                       <i class="far fa-thumbs-up"></i>
-                                                       1
-                                                  </button>
-                                             </div>
-                                        </div>
+                                        }                                    
                                    </div>
                               </div>
                          </div>
@@ -461,98 +421,39 @@
                               <!-- end modal -->
                               <div class="container">
                                    <div class="row">
-                                        <div class="col-6">
-                                             <div class="card-tab-half-3">
-                                                  <div class="card-upper card-image">
-                                                       <a class="d-block" href="">
-                                                            <img class="img-fluid" src="~/Public/Asset/img/extra_large_2188101_20200820_203936_98.jpg" alt="">
-                                                       </a>
-                                                       <div class="card-meta">
-                                                            <span class="dot dot--active mrs"></span>
-                                                            <span class="card-upper-name">Diệu Linh - 18</span>
-                                                            <p class="card-upper-where">Hà Nội</p>
+                                        @foreach (var item in info_online)
+                                        {
+                                             var agee = 0;
+                                             if (item.birthday != null)
+                                             {
+                                                  string[] spl = item.birthday.Split('-');
+                                                  agee = DateTime.Now.Year - Convert.ToInt32(spl[0]);     
+                                             }
+                                             <div class="col-6">
+                                                  <div class="card-tab-half-3">
+                                                       <div class="card-upper card-image">
+                                                            <a class="d-block" href="">
+                                                                 <img class="img-fluid" src="~/Public/Asset/img/Avatar/@item.avatar" alt="" style="height:300px;width:300px;">
+                                                            </a>
+                                                            <div class="card-meta">
+                                                                 <span class="dot dot--active mrs"></span>
+                                                                 <span class="card-upper-name">@item.NickName - @agee</span>
+                                                                 <p class="card-upper-where">@item.address_user</p>
+                                                            </div>
                                                        </div>
-                                                  </div>
-                                                  <div class="card-under">
-                                                       <div class="card-under-text">
-                                                            <p class="card-under-job">Nghề nghiệp</p>
-                                                            <p class="card-under-info-job">Sinh viên</p>
-                                                       </div>
-                                                       <div class="card-under-button">
-                                                            <button class="btn btn-info btn-block"><img class="img-fluid" src="~/Public/Asset/img/tym_icon.png">Thích</button>
-                                                       </div>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                             <div class="card-tab-half-3">
-                                                  <div class="card-upper card-image">
-                                                       <a class="d-block" href="">
-                                                            <img class="img-fluid" src="~/Public/Asset/img/extra_large_2525360_20200913_134116_11.jpg" alt="">
-                                                       </a>
-                                                       <div class="card-meta">
-                                                            <span class="dot dot--active mrs"></span>
-                                                            <span class="card-upper-name">Tố Như - 18</span>
-                                                            <p class="card-upper-where">Hải Phòng</p>
-                                                       </div>
-                                                  </div>
-                                                  <div class="card-under">
-                                                       <div class="card-under-text">
-                                                            <p class="card-under-job">Nghề nghiệp</p>
-                                                            <p class="card-under-info-job">Sinh viên</p>
-                                                       </div>
-                                                       <div class="card-under-button">
-                                                            <button class="btn btn-info btn-block"><img class="img-fluid" src="~/Public/Asset/img/tym_icon.png">Thích</button>
+                                                       <div class="card-under">
+                                                            <div class="card-under-text">
+                                                                 <p class="card-under-job">Nghề nghiệp</p>
+                                                                 <p class="card-under-info-job">@item.job</p>
+                                                            </div>
+                                                            <div class="card-under-button">
+                                                                 <button class="btn btn-info btn-block"><img class="img-fluid" src="~/Public/Asset/img/tym_icon.png">Thích</button>
+                                                            </div>
                                                        </div>
                                                   </div>
                                              </div>
-                                        </div>
-                                        <div class="col-6">
-                                             <div class="card-tab-half-3">
-                                                  <div class="card-upper card-image">
-                                                       <a class="d-block" href="">
-                                                            <img class="img-fluid" src="~/Public/Asset/img/extra_large_2530680_20200913_143732_28.jpg" alt="">
-                                                       </a>
-                                                       <div class="card-meta">
-                                                            <span class="dot dot--active mrs"></span>
-                                                            <span class="card-upper-name">Thảo Ly - 21</span>
-                                                            <p class="card-upper-where">Hưng yên</p>
-                                                       </div>
-                                                  </div>
-                                                  <div class="card-under">
-                                                       <div class="card-under-text">
-                                                            <p class="card-under-job">Nghề nghiệp</p>
-                                                            <p class="card-under-info-job">Sinh viên</p>
-                                                       </div>
-                                                       <div class="card-under-button">
-                                                            <button class="btn btn-info btn-block"><img class="img-fluid" src="~/Public/Asset/img/tym_icon.png">Thích</button>
-                                                       </div>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                             <div class="card-tab-half-3">
-                                                  <div class="card-upper card-image">
-                                                       <a class="d-block" href="">
-                                                            <img class="img-fluid" src="~/Public/Asset/img/extra_large_2531551_20200914_064401_30.jpg" alt="">
-                                                       </a>
-                                                       <div class="card-meta">
-                                                            <span class="dot dot--active mrs"></span>
-                                                            <span class="card-upper-name">Nguyễn Lệ - 18</span>
-                                                            <p class="card-upper-where">Hà Nội</p>
-                                                       </div>
-                                                  </div>
-                                                  <div class="card-under">
-                                                       <div class="card-under-text">
-                                                            <p class="card-under-job">Nghề nghiệp</p>
-                                                            <p class="card-under-info-job">Sinh viên</p>
-                                                       </div>
-                                                       <div class="card-under-button">
-                                                            <button class="btn btn-info btn-block"><img class="img-fluid" src="~/Public/Asset/img/tym_icon.png">Thích</button>
-                                                       </div>
-                                                  </div>
-                                             </div>
-                                        </div>
+                                        }
+                                        
                                    </div>
                               </div>
                          </div>
@@ -631,7 +532,7 @@
                                         <h3>Quốc gia</h3>
                                         <div class="row">
                                              <div class="col-12 form-group">
-                                                  <select name="national" id="national" class="form-control">
+                                                  <select name="national" id="national_find" class="form-control">
                                                        <option class="checkbox" value="none">Chọn quốc gia</option>
                                                        <option class="checkbox" value="vietnam">Việt Nam</option>
                                                        <option class="checkbox" value="nhatban">Nhật Bản</option>
@@ -2007,17 +1908,24 @@
      </div>
      <a id="back-to-top" href="#" class="btn btn-danger btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
      <script>
-     $(document).ready(function () {
-          var Nname = $("td#NickName>span").text();
-          var Nbirthday = $("td#birthday>span").text();
-          var ischangeName = false;
-          var ischangeBirth = false;
+          
+          $(document).ready(function () {
+              
+               var Nname = $("td#NickName>span").text();
+               var Nbirthday = $("td#birthday>span").text();         
+               var ischangeName = false;
+               var ischangeBirth = false;
+              
           $('#fix_ind_self').click(function () {
                if (ischangeName == true) {
                     Nname = $("input#NickName").val();
                }
                if (ischangeBirth == true) {
                     Nbirthday = $("input#Birthday").val();
+               }
+               else {
+                    var spl = Nbirthday.split("/");
+                    Nbirthday = spl[2] + "-" + spl[1] + "-" + spl[0];
                }
                var obj = {
                     UserID: '@info.UserID', height: $("td#height>input").val(),
@@ -2121,23 +2029,47 @@
           $("#tab-half-4-btn-search").on('click', function () {
                var age_start = $("select#age_min").val();
                var age_end = $("select#age_max").val();
-               var country_val = $("select#national").val();
-               var country = $("select#national option:selected").val();
+               var country_val = $("select#national_find").val();
+               var country = $("select#national_find option:selected").text();               
                $.ajax({
                     url: '/Profile/getInfoFriend_by_find_basic',
                     type: 'post',
-                    data: { age_start: age_start, age_end: age_end, country_val: country_val, country: country }
-                    success: function (status) {
-                         if (status) {
-                              
-                              
-                         }
-
+                    data: { age_start: age_start, age_end: age_end, country_val: country_val, country: country },
+                    success: function (data) {
+                         $(".show_info_find").html(data);
                     }
 
                })
           });
-     });
+               //hottest info
+               $("#skip_hottest_info").on('click', function () {
+                    
+                    $.ajax({
+                    url: '/Profile/hottest_info',
+                         type: 'post',
+                         data: { id: $(this).data('id') },
+                         success: function (data) {
+                              $(".simple-filter-content").html(data);
+                    }
+
+                    })
+               });
+               ////like friend
+               //$("#like_friend").off('click').on('click', function () {
+               //     $('.like').html("<button class='btn btn-danger' id='dislike_friend' onclick='dislike_func()'>Bỏ thích</button>");
+               //});
+               ////dislike
+               //$("#dislike_friend").off('click').on('click', function () {
+               //     $('.like').html("<button class='btn btn-info' id='like_friend' onclick='like_func()'><img src='~/Public/Asset/img/tym_icon.png'>Thích</button>");
+               //});
+               
+          });
+          function like_func() {
+                    $('.like').html("<button class='btn btn-info' id='like_friend' onclick='dislike_func()'><img src='/Public/Asset/img/tym_icon.png'>Thích</button>");
+               }
+               function dislike_func() {
+                    $('.like').html("<button class='btn btn-danger' id='dislike_friend' onclick='like_func()'>Bỏ thích</button>");
+               }
      </script>
 </body>
 </html>
