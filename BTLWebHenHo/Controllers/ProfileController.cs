@@ -388,7 +388,7 @@ namespace BTLWebHenHo.Controllers
                     string[] spl = info.birthday.Split('-');
                     if (spl.Count() > 1)
                     {                        
-                         age = DateTime.Now.Year - Convert.ToInt32(spl[0]);         
+                         age = DateTime.Now.Year - Convert.ToInt32(spl[2]);         
                     }
                     else
                     {
