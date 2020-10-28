@@ -20,10 +20,50 @@ namespace BTLWebHenHo.Controllers
                if (Session["UserID"] != null || Request.Cookies["usercredentials"] != null)
                {
                     int id_user=get_ID_User();
-                    
+                    var info_online = db.Profile_User.Where(x=>x.UserID != id_user).ToList();
+                    ViewBag.info_online = info_online.Take(4).ToList();
                     var info = db.Profile_User.Where(x => x.UserID == id_user).FirstOrDefault();
                     ViewBag.info = info;
                     ViewBag.cal_percent = cal_percent(info);
+                    //hottest
+                    var Max_thumb = 0;
+                    int? id_hot = 0;
+                    string[] spl = { };
+                    foreach (var item in info_online)
+                    {
+                         if (item.list_thumb != null)
+                         {
+                              spl = item.list_thumb.Split('/');
+                         }
+                         
+                         if (spl.Count() > Max_thumb)
+                         {
+                              Max_thumb = spl.Count();
+                              id_hot = item.UserID;
+                         }                             
+                    }
+                    if (id_hot == 0)
+                    {
+                         id_hot = id_user;
+                         var hottest = db.Profile_User.Where(x => x.UserID == id_hot).FirstOrDefault();
+                         if (hottest.list_thumb != null)
+                         {
+                              spl = hottest.list_thumb.Split('/');
+                              Max_thumb = spl.Count();
+                         }
+                         ViewBag.hottest_user = hottest;
+                         ViewBag.num_hot_thumb = Max_thumb;
+                    }
+                    else
+                    {
+                         var hottest = db.Profile_User.Where(x => x.UserID == id_hot).FirstOrDefault();
+                         ViewBag.hottest_user = hottest;
+                         ViewBag.num_hot_thumb = Max_thumb;
+                    }     
+                    
+                    //new image
+                    var new_img = db.new_imgage.OrderByDescending(x => x.id_new_img).ToList();
+                    ViewBag.new_img = new_img.Take(4).ToList();
                     //get list chat
                     var list_user_chat = db.tbl_chat.Where(x => x.id_main_user == id_user).ToList();
                     List<Chat_specific> ls = new List<Chat_specific>();
@@ -339,9 +379,14 @@ namespace BTLWebHenHo.Controllers
                     var upd = db.Profile_User.Where(x => x.UserID == id_user).FirstOrDefault();
                     //country is list image
                     upd.list_thumb += fileName+"/";
-                    db.SaveChanges();
-               }
+                    //new image
+                    new_imgage ni = new new_imgage();
+                    ni.new_img = fileName;
+                    db.new_imgage.Add(ni);
 
+                    db.SaveChanges();               
+               }
+               
                return RedirectToAction("Index", "Profile");
           }
           [HttpPost]
@@ -384,27 +429,54 @@ namespace BTLWebHenHo.Controllers
                var pu = db.Profile_User.ToList();
                foreach(var info in pu)
                {                    
-                    var age = 0;
-                    string[] spl = info.birthday.Split('-');
-                    if (spl.Count() > 1)
-                    {                        
-                         age = DateTime.Now.Year - Convert.ToInt32(spl[2]);         
-                    }
-                    else
-                    {
-                         string[] spl1 = info.birthday.Split('/');                        
-                         age = DateTime.Now.Year - Convert.ToInt32(spl[2]);
-                    }
+                   var age = 0;
+//<<<<<<< HEAD
+//                    string[] spl = info.birthday.Split('-');
+//                    if (spl.Count() > 1)
+//                    {                        
+//                         age = DateTime.Now.Year - Convert.ToInt32(spl[2]);         
+//                    }
+//                    else
+//                    {
+//                         string[] spl1 = info.birthday.Split('/');                        
+//                         age = DateTime.Now.Year - Convert.ToInt32(spl[2]);
+//                    }
+//=======
+                    string[] spl = info.birthday.Split('-');                                       
+                    age = DateTime.Now.Year - Convert.ToInt32(spl[0]);                          
+//>>>>>>> 329a9eec7d1765ed4bf95ebeb05543820371205b
                     if (country_val == "none")
                     {
-                         if(age>=age_start && age <= age_end)
+                         if(age_start==age_end && age_end == 0)
+                         {
+                              ui.Add(info);
+                         }
+                         if (age_end == 0)
+                         {
+                              if (age >= age_start)
+                              {
+                                   ui.Add(info);
+                              }
+                         }
+                         else if (age>=age_start && age <= age_end)
                          {
                               ui.Add(info);
                          }
                     }
                     else
                     {
-                         if (age >= age_start && age <= age_end &&info.national_user==country)
+                         if (age_start == age_end && age_end == 0 && info.national_user == country)
+                         {
+                              ui.Add(info);
+                         }
+                         if (age_end == 0)
+                         {
+                              if (age >= age_start  && info.national_user == country)
+                              {
+                                   ui.Add(info);
+                              }
+                         }
+                         else if (age >= age_start && age <= age_end &&info.national_user==country)
                          {
                               ui.Add(info);
                          }
@@ -412,6 +484,25 @@ namespace BTLWebHenHo.Controllers
 
                }
                return View(ui);
+          }
+          public ActionResult hottest_info(int id)
+          {
+               var info_online = db.Profile_User.Where(x => x.UserID == id-2).FirstOrDefault();
+               if (info_online == null)
+               {
+                    info_online = db.Profile_User.Where(x => x.UserID == id + 1).FirstOrDefault();
+               }
+               var Max_thumb = 0;
+               
+               string[] spl = { };
+               if (info_online.list_thumb != null)
+               {
+                    spl = info_online.list_thumb.Split('/');
+                    Max_thumb = spl.Count();
+               }
+               ViewBag.hottest_user = info_online;
+               ViewBag.num_hot_thumb = Max_thumb;
+               return View(info_online);
           }
      }
 }

@@ -1,0 +1,55 @@
+﻿
+@{
+     Layout = null;
+     var hottest_user = ViewBag.hottest_user;
+     var age_hottest_user = 0;
+     if (hottest_user.birthday != null)
+     {
+          string[] ht_spl = hottest_user.birthday.Split('-');
+          age_hottest_user = DateTime.Now.Year - Convert.ToInt32(ht_spl[0]);
+     }
+     var num_hot_thumb = ViewBag.num_hot_thumb;
+}
+
+
+     <div class="filter-image card-image">
+          <a href="" class="d-block"><img src="~/Public/Asset/img/Avatar/@hottest_user.avatar" alt="" style="height:500px;width:400px;"></a>
+          <div class="info">
+               <span class="dot dot--active mrs"></span>
+               <span class="tab-half-1-info">@hottest_user.NickName - @age_hottest_user - @hottest_user.address_user </span><br>
+               <i class="far fa-image"></i>
+               <span class="number-image">@num_hot_thumb ảnh</span>
+          </div>
+
+
+     </div>
+     <div class="row pt-2 over-like pb-3">
+          <div class="over col-xl-6 text-center">
+               <button class="btn btn-info" id="skip_hottest_info" data-id="@hottest_user.UserID">Bỏ qua</button>
+          </div>
+          <div class="like col-xl-6">
+               <button class="btn btn-info" onclick="dislike_func()"><img src="~/Public/Asset/img/tym_icon.png">Thích</button>
+          </div>
+     </div>
+
+<script>
+     $("#skip_hottest_info").on('click', function () {
+          
+          $.ajax({
+          url: '/Profile/hottest_info',
+               type: 'post',
+               data: { id: $(this).data('id') },
+               success: function (data) {
+                    $(".simple-filter-content").html(data);
+          }
+
+          })
+     });
+     
+     function like_func() {
+          $('.like').html("<button class='btn btn-info' id='like_friend' onclick='dislike_func()'><img src='/Public/Asset/img/tym_icon.png'>Thích</button>");
+     }
+     function dislike_func() {
+          $('.like').html("<button class='btn btn-danger' id='dislike_friend' onclick='like_func()'>Bỏ thích</button>");
+     }
+</script>

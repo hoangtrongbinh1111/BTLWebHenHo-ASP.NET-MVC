@@ -1,69 +1,40 @@
-﻿
+﻿@using BTLWebHenHo.Models
+@model List<tbl_quizz>
 @{
      ViewBag.Title = "Quizz";
      Layout = "~/Views/Shared/_Layout.cshtml";
 }
-     <link rel="stylesheet" href="~/Public/Asset/css/quizzvui.css">
+
+<link rel="stylesheet" href="~/Public/Asset/css/quizzvui.css">
 <!-- CONTENT -->
 <div id="wp-content">
      <div class="quizz-game">
           <div class="container">
                <div class="row">
-                    <div class="col-md-12  mt-5">
-                         <div class="row">
-                              <div class="col-md-4 pr-0">
-                                   <a href="">
-                                        <img src="~/Public/Asset/img/Cover_Nguoi_yeu_ban_la_ai_trong_em_gai_mua.png" alt="" class="img-fluid">
-                                   </a>
-                              </div>
-                              <div class="col-md-8 bg-light pl-4">
-                                   <a href="" class="tittle-game">
-                                        <h3 class="text-dark mt-2 ">Người yêu bạn là ai trong Em gái mưa?</h3>
-                                   </a>
+                    @foreach (var item in Model)
+                    {
+                         <div class="col-md-12 mt-5">
+                              <div class="row">
+                                   <div class="col-md-4 pr-0">
+                                        <a href="">
+                                             <img src="~/Public/Asset/img/@item.img_tittle" alt="" class="img-fluid">
+                                        </a>
+                                   </div>
+                                   <div class="col-md-8 bg-light pl-4">
+                                        <a href="" class="tittle-game">
+                                             <h3 class="text-dark mt-2 ">@item.quizz_tittle</h3>
+                                        </a>
 
-                                   <div class="game-info mt-4">
-                                        <i class="fas fa-users text-info"><span class="ml-2 text-secondary">520 người đã chơi</span></i>
-                                        <button class="btn btn-success float-right">Bắt đầu</button>
+                                        <div class="game-info mt-4">
+                                             <i class="fas fa-users text-info"><span class="ml-2 text-secondary">@item.qty_player người đã chơi</span></i>
+                                             <a href="" class="btn btn-success float-right" data-id="@item.id_quizz">Bắt đầu</a>
+                                        </div>
                                    </div>
                               </div>
                          </div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                         <div class="row">
-                              <div class="col-md-4 pr-0">
-                                   <a href="">
-                                        <img src="~/Public/Asset/img/Cover_ban_se_gap_nguoi_yeu_cua_minh_qua_mang_xa_hoi_nao.png" alt="" class="img-fluid">
-                                   </a>
-                              </div>
-                              <div class="col-md-8 bg-light pl-4">
-                                   <a href="" class="tittle-game">
-                                        <h3 class="text-dark mt-2 ">Bạn sẽ gặp người yêu tương lai của mình qua mạng xã hội nào?</h3>
-                                   </a>
-                                   <div class="game-info mt-4">
-                                        <i class="fas fa-users text-info"><span class="ml-2 text-secondary">656 người đã chơi</span></i>
-                                        <button class="btn btn-success float-right">Bắt đầu</button>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                         <div class="row">
-                              <div class="col-md-4 pr-0">
-                                   <a href="">
-                                        <img src="~/Public/Asset/img/Cover_ban_se_tan_gai_hieu_qua_nhat_bang_cach_nao.png" alt="" class="img-fluid">
-                                   </a>
-                              </div>
-                              <div class="col-md-8 bg-light pl-4">
-                                   <a href="" class="tittle-game">
-                                        <h3 class="text-dark mt-2 ">Bạn sẽ tán gái hiệu quả nhất bằng cách nào?</h3>
-                                   </a>
-                                   <div class="game-info mt-4">
-                                        <i class="fas fa-users text-info"><span class="ml-2 text-secondary">385 người đã chơi</span></i>
-                                        <button class="btn btn-success float-right">Bắt đầu</button>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
+                    }
+
+
                </div>
           </div>
      </div>
@@ -76,4 +47,22 @@
      </div>
 </div>
 <!-- END CONTENT -->
-
+<script>
+     $(document).ready(function () {
+          $('.game-info>a').on('click', function () {
+               var id = $(this).data('id');
+               alert(id);
+               $.ajax({
+                    url: '/api/Quizz_API',
+                    type: 'PUT',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    data: {id:1}
+                    success: function (res) {
+                         alert();
+                    }
+               })
+               return false;
+          });
+     });
+</script>

@@ -6,6 +6,10 @@ using System.Web.Mvc;
 using BTLWebHenHo.Models;
 using System.Security.Cryptography;
 using BTLWebHenHo.EF.Services;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using System.Net;
 
 namespace BTLWebHenHo.Controllers
 {
@@ -20,9 +24,18 @@ namespace BTLWebHenHo.Controllers
           {
                return View();
           }
-          public ActionResult Quizz()
+          //use API
+          public async Task<ActionResult> Quizz()
           {
-               return View();
+               System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
+               HttpClient client = new HttpClient();
+               client.BaseAddress = new Uri("http://127.0.0.1/");
+               client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+               HttpResponseMessage response = await client.GetAsync("/api/Quizz_API").ConfigureAwait(false);
+               List<tbl_quizz> model = new List<tbl_quizz>();
+               if (response.IsSuccessStatusCode)
+               { model = await response.Content.ReadAsAsync<List<tbl_quizz>>(); }
+               return View(model);
           }
           public ActionResult Blog()
           {
@@ -49,9 +62,10 @@ namespace BTLWebHenHo.Controllers
                ViewBag.category = category;
                return View();
           }
-          public ActionResult Blog_Detail()
+          public ActionResult Blog_Detail(int id)
           {
-               if (Request.Url.Segments.Count() ==3) return RedirectToAction("Blog");
+
+               if (Request.Url.Segments.Count() == 3) return RedirectToAction("Blog");
                var id_blog = Request.Url.Segments[3];
                var blog = db.tbl_blogs.Where(x => x.id_blog.ToString() == id_blog).FirstOrDefault();
                ViewBag.blog = blog;
