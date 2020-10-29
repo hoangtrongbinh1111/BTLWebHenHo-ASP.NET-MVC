@@ -33,7 +33,7 @@
                             <div class="col-md-8">
                                 <h3 id="product-name">@info_product.name</h3>
                                 <h6 class="text-bold">Mã sản phẩm: <span id="product-code">@info_product.code</span></h6>
-                                <h6>Giá sản phẩm: <span id="product-price">@info_product.price  Xu</span></h6>
+                                <h6>Giá sản phẩm: <span id="product-price">@info_product.price  đ</span></h6>
                                 <div class="pro_description">
 
 
@@ -42,7 +42,7 @@
                                     <form>
                                         <input type="number" name="num-order" min=1 max=100 value="1" class="text-center">
                                     </form>
-                                    <a href="/Cart/CheckOut">
+                                    <a href="/Cart/add_product/@info_product.id_product">
                                         <button class="btn btn-danger ml-3">Mua ngay</button>
                                     </a>
                                     <a href="/Cart/buy_coin">

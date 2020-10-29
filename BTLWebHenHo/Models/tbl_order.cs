@@ -19,6 +19,8 @@ namespace BTLWebHenHo.Models
 
         public int? id_product { get; set; }
 
+        public int? status { get; set; }
+
         public virtual tbl_products tbl_products { get; set; }
 
         public virtual tbl_transaction tbl_transaction { get; set; }

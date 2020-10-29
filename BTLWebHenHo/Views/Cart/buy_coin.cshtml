@@ -35,19 +35,20 @@
         </div>
         <ul class="nav nav-pills nav-fill mx-2" id="myPill" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="tab-upgrade" data-toggle="tab" href="#content-half" role="tab" aria-controls="content-half" aria-selected="true">
-                    <div>
-                        <p class="mb-0">Nâng cấp tài khoản</p>
-                    </div>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="tab-shop" data-toggle="tab" href="#content-shop" role="tab" aria-controls="content-shop" aria-selected="false">
+                <a class="nav-link  active" id="tab-shop" data-toggle="tab" href="#content-shop" role="tab" aria-controls="content-shop" aria-selected="false">
                     <div>
                         <p class="mb-0">Shop</p>
                     </div>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tab-upgrade" data-toggle="tab" href="#content-half" role="tab" aria-controls="content-half" aria-selected="true">
+                    <div>
+                        <p class="mb-0">Nâng cấp tài khoản</p>
+                    </div>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" id="tab-buy-coin" data-toggle="tab" href="#content-likeme" role="tab" aria-controls="content-likeme" aria-selected="false">
                     <div>
@@ -58,7 +59,7 @@
         </ul>
         <div class="tab-content" id="myPillContent">
             <!-- upgrade -->
-            <div class="tab-pane fade active show" id="content-half" role="tabpanel" aria-labelledby="tab-upgrade">
+            <div class="tab-pane fade" id="content-half" role="tabpanel" aria-labelledby="tab-upgrade">
                 <div id="myCarousel" class="carousel slide border mt-3" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
@@ -207,7 +208,7 @@
             </div>
             <!-- End upgrade -->
             <!-- Shop -->
-            <div class="tab-pane fade" id="content-shop" role="tabpanel" aria-labelledby="tab-shop">
+            <div class="tab-pane fade  active show" id="content-shop" role="tabpanel" aria-labelledby="tab-shop">
                 <!-- Carousel -->
                 <div id="myCarousel_shop" class="carousel slide border mt-3" data-ride="carousel">
                     <!-- Indicators -->
@@ -298,8 +299,9 @@
                                                             <h3 class="product-tittle">
                                                                 <a href="/Cart/shop">@item.name</a>
                                                             </h3>
-                                                            <p class="product-price font-weight-bold text-danger">@item.price xu</p>
-                                                            <button class="btn btn-success product-buy-now mr-2" name="btn_buy_now">Mua ngay</button>
+                                                            <p class="product-price font-weight-bold text-danger">@item.price đ</p>
+                                                            <a href="/Cart/add_product/@item.id_product"><button class="btn btn-success product-buy-now mr-2" name="btn_buy_now">Mua ngay</button></a>
+                                                            
                                                             <a href="/Cart/shop/@item.id_product">
                                                                 <button class="btn btn-danger product-detail">Chi tiết</button>
                                                             </a>

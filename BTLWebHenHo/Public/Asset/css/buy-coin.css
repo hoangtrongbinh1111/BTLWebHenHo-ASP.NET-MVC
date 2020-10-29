@@ -52,12 +52,13 @@ ul.nav {
     border-radius: 2rem;
 }
 
-a#tab-upgrade {
-    border-radius: 2rem 0 0 2rem;
+a#tab-buy-coin {
+    
+    border-radius: 0 2rem 2rem 0;
 }
 
-a#tab-buy-coin {
-    border-radius: 0 2rem 2rem 0;
+a#tab-shop {
+    border-radius: 2rem 0 0 2rem;
 }
 
 
