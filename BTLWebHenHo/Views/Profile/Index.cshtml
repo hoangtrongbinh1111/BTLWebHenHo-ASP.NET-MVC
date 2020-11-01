@@ -432,7 +432,7 @@
                                              <div class="col-6">
                                                   <div class="card-tab-half-3">
                                                        <div class="card-upper card-image">
-                                                            <a class="d-block" href="">
+                                                            <a class="d-block" href="/Profile/chat_to_online_people?id_other_user=@item.UserID" >
                                                                  <img class="img-fluid" src="~/Public/Asset/img/Avatar/@item.avatar" alt="" style="height:300px;width:300px;">
                                                             </a>
                                                             <div class="card-meta">
@@ -652,6 +652,8 @@
                                                             <h5>@item.Nickname</h5>
                                                             <p>@item.address</p>
                                                        </div>
+                                                       <button class="del_chat_peo" data-id="@item.tc.id_chat">Close</button>
+
                                                   </a>
                                              }
 
@@ -2062,6 +2064,20 @@
                //$("#dislike_friend").off('click').on('click', function () {
                //     $('.like').html("<button class='btn btn-info' id='like_friend' onclick='like_func()'><img src='~/Public/Asset/img/tym_icon.png'>Thích</button>");
                //});
+               $(".del_chat_peo").on('click', function (e) {
+                    
+                    var id_chat = $(this).data('id');                   
+                    $.ajax({
+                         url: '/api/Quizz_API/?id_chat=' + id_chat,
+                         type: 'GET',
+                         contentType: "application/json; charset=utf-8",
+                         success: function (res) {
+                              window.location.reload();
+                    }
+                    })
+                    e.stopPropagation();
+                    return false;
+               });
                
           });
           function like_func() {

@@ -46,20 +46,65 @@
           </div>
      </div>
 </div>
+<!-- The Modal -->
+<div class="modal" id="Game_1">
+     <div class="modal-dialog">
+          <div class="modal-content">
+               <!-- Modal Header -->
+               <div class="modal-header">
+                    <h4 class="modal-title">Kết quả</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+               </div>
+               <!-- Modal body -->
+               <div class="modal-body text-center" id="info_1">
+
+
+               </div>
+               <!-- Modal footer -->
+               <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               </div>
+          </div>
+     </div>
+</div>
+@foreach (var item in Model)
+{
+     <!-- The Modal -->
+     <div class="modal" id="Game_@item.id_quizz">
+          <div class="modal-dialog">
+               <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                         <h4 class="modal-title">Kết quả</h4>
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body text-center" id="info_@item.id_quizz">
+
+
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+               </div>
+          </div>
+     </div>
+}
+
+
 <!-- END CONTENT -->
 <script>
      $(document).ready(function () {
           $('.game-info>a').on('click', function () {
                var id = $(this).data('id');
-               alert(id);
+               $('#Game_' + id).modal('show');
                $.ajax({
-                    url: '/api/Quizz_API',
-                    type: 'PUT',
+                    url: '/api/Quizz_API/' + id,
+                    type: 'GET',
                     contentType: "application/json; charset=utf-8",
-                    dataType: 'json',
-                    data: {id:1}
                     success: function (res) {
-                         alert();
+                         $('#info_' + id).html("<h3 class='text-danger'>Đây chính là người yêu bạn</h3><img src='/Public/Asset/img/Avatar/" + res + "' class='img-fluid'/>");                        
                     }
                })
                return false;

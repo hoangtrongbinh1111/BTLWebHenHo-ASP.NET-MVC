@@ -5,7 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -503,6 +508,57 @@ namespace BTLWebHenHo.Controllers
                ViewBag.hottest_user = info_online;
                ViewBag.num_hot_thumb = Max_thumb;
                return View(info_online);
+          }
+
+          public ActionResult chat_to_online_people(int? id_other_user)
+          {
+               int id_main_user = get_ID_User();
+               var is_chatted = db.tbl_chat.Where(x => x.id_main_user == id_main_user).ToList();
+               bool is_connect_with_peo = false;
+               int stt_id_chat = 0;
+               if (is_chatted != null)
+               {
+                    foreach(var item in is_chatted)
+                    {
+                         if (item.id_other_user == id_other_user)
+                         {
+                              is_connect_with_peo = true;
+                              stt_id_chat = item.id_chat;
+                              break;
+                         }
+                    }
+                    if (is_connect_with_peo == true)
+                    {
+                         return RedirectToAction("Chat_ToFriend", "Profile", new { id_other_user = id_other_user, stt_id_chat = stt_id_chat });
+                    }
+                    else if(is_connect_with_peo == false)
+                    {
+                         return RedirectToAction("Create_chat_friend", "Profile", new { id_main_user = id_main_user, id_other_user = id_other_user });
+                    }
+               }
+               else
+               {
+                    return RedirectToAction("Create_chat_friend", "Profile", new { id_main_user = id_main_user, id_other_user = id_other_user });
+               }
+               return RedirectToAction("Chat_ToFriend", "Profile",new { id_other_user=id_other_user,stt_id_chat=stt_id_chat});
+          }
+          
+          public async Task<ActionResult> Create_chat_friend(int id_main_user,int id_other_user)
+          {               
+               string postString = string.Format("?id_main_user={0}&id_other_user={1}", id_main_user,id_other_user);
+               HttpWebRequest request = WebRequest.Create("https://localhost:44397/api/Quizz_API" + postString) as HttpWebRequest;
+               request.Method = "POST";
+               request.ContentType = "application/json;charset=UTF-8";
+               byte[] byteArray = Encoding.UTF8.GetBytes(postString);
+               request.ContentLength = byteArray.Length;
+               Stream dataStream = request.GetRequestStream();
+               dataStream.Write(byteArray, 0, byteArray.Length);
+               dataStream.Close();
+               StreamReader responseReader = new StreamReader(request.GetResponse().GetResponseStream());
+               string responseData = responseReader.ReadToEnd();
+               responseReader.Close();
+               request.GetResponse().Close();
+               return RedirectToAction("Chat_ToFriend", "Profile", new { id_other_user = id_other_user, stt_id_chat = Convert.ToInt32(responseData) });
           }
      }
 }
