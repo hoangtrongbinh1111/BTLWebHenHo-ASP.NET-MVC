@@ -39,15 +39,16 @@
 
                                 </div>
                                 <div id="buy-product" class="d-flex mt-4">
-                                    <form>
-                                        <input type="number" name="num-order" min=1 max=100 value="1" class="text-center">
+                                    <form method="post" action="/Cart/add_mul_product/@info_product.id_product">
+                                        <input type="number" name="num_order" min=1 max=100 value="1" class="text-center">
+                                        
+                                            <button class="btn btn-danger ml-3" name="command" value="buy_now">Mua ngay</button>
+                                        
+                                       
+                                            <button class="btn btn-danger ml-3" name="command" value="add_product">Thêm vào giỏ hàng</button>
+                                        
                                     </form>
-                                    <a href="/Cart/add_product/@info_product.id_product">
-                                        <button class="btn btn-danger ml-3">Mua ngay</button>
-                                    </a>
-                                    <a href="/Cart/buy_coin">
-                                        <button class="btn btn-danger ml-3">Thêm vào giỏ hàng</button>
-                                    </a>
+                                    
                                 </div>
                             </div>
 

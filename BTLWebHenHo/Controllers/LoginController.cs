@@ -34,7 +34,7 @@ namespace BTLWebHenHo.Controllers
                if (ModelState.IsValid)
                {
                     var f_password = GetMD5(password);
-                    var data = _db.UserInfoes.Where(s => s.username.Equals(username) && s.passw.Equals(password)).ToList();  //So sánh đối chiếu tài khoản                 
+                    var data = _db.UserInfoes.Where(s => s.username.Equals(username) && s.passw.Equals(f_password)).ToList();  //So sánh đối chiếu tài khoản                 
                     if (data.Count() > 0)
                     {
                          if (remember_me == "True")//remember-me is set
@@ -113,7 +113,7 @@ namespace BTLWebHenHo.Controllers
                             UserInfo new_user = new UserInfo();
                             new_user.username = _user.username;
                             //new_user.passw = GetMD5(_user.passw);
-                            new_user.passw = _user.passw;
+                            new_user.passw = GetMD5( _user.passw);
                             _db.UserInfoes.Add(new_user);
                             _db.SaveChanges();
                             int id = _db.UserInfoes.Where(x => x.username == _user.username).Select(x => x.UserID).FirstOrDefault();

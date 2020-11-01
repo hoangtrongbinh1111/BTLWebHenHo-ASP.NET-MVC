@@ -4,8 +4,8 @@
     ViewBag.Title = "buy_coin";
     // var list_product = ViewBag.list_product;
     var catalog = ViewBag.catalog;
-
-  //  tbl_products list_product = ViewData.Model;
+    var num_product = ViewBag.num_product;
+    //  tbl_products list_product = ViewData.Model;
 
 }
 @using BTLWebHenHo.Models
@@ -26,10 +26,10 @@
             </div>
             <!-- Giỏ hàng -->
             <div>
-                <a href="/Cart/payment">
+                <a href="/Cart/CheckOut">
                     <i class="fas fa-cart-plus"></i>
                 </a>
-                <span class="product-num text-center">0</span>
+                <span class="product-num text-center">@num_product</span>
             </div>
 
         </div>
