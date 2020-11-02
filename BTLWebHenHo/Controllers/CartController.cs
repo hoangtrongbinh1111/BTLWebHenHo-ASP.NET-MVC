@@ -11,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using BTLWebHenHo.Models;
 using BTLWebHenHo.EF.Model;
 using BTLWebHenHo.EF.Services;
 
@@ -586,6 +585,26 @@ namespace BTLWebHenHo.Controllers
             transaction_1.all_amount = all_amount;
             db.SaveChanges();
 
+        }
+
+        [HttpPost]
+        public ActionResult get_location(string fullname,string telephone,string address,string command)
+        {
+            string location = "";
+            if(command=="close")
+            {
+                ViewBag.get_location = location;
+                return RedirectToAction("CheckOut");
+            }
+            if(command=="complete")
+            {
+                GeoLocationController local = new GeoLocationController();
+                
+                 location = local.get_location(address);
+                ViewBag.get_location = location;
+                return RedirectToAction("CheckOut");
+            }
+            return RedirectToAction("CheckOut");
         }
 
     }

@@ -7,6 +7,7 @@
     var all_amount = ViewBag.all_amount;
     var price_transit = 7000;
     var all = all_amount + price_transit;
+    var location = ViewBag.location;
 
 }
 
@@ -165,7 +166,7 @@
 
 
                         </div>
-
+                        <p>@location</p>
                     </div>
                 </div>
             </div>
@@ -184,60 +185,22 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <h3>Thêm địa chỉ mới</h3>
-                    <input type="text" name="fullname" id="fullname" placeholder="Họ & tên" class="form-control mb-3" />
-                    <input type="tel" id="telephone" placeholder="Số điện thoại" class="form-control mb-3" />
-                    <select name="province" class="form-control mb-3">
-                        <option value="0" selected>
-                            Tỉnh/Thành phố
-                        </option>
-                        <option value="1">
-                            Hà Nội
-                        </option>
-                        <option value="2">
-                            Thành phố Hồ Chí Minh
-                        </option>
-                        <option value="3">
-                            Đà Nẵng
-                        </option>
+                    <form action="/Cart/get_location" method="post">
+                        <input type="text" name="fullname" id="fullname" placeholder="Họ & tên" class="form-control mb-3" />
+                        <input type="tel" name="telephone" id="telephone" placeholder="Số điện thoại" class="form-control mb-3" />
+                        <input type="text" name="address" id="address" placeholder="Địa chỉ" class="form-control mb-3" />
 
-                    </select>
-                    <select name="town" class="form-control mb-3">
-                        <option value="0" selected>
-                            Quận/Huyện
-                        </option>
-                        <option value="1">
-                            Cầu Giấy
-                        </option>
-                        <option value="2">
-                            Bắc Từ Liêm
-                        </option>
-                        <option value="3">
-                            Khoái Châu
-                        </option>
 
-                    </select>
-                    <select name="" class="form-control mb-3">
-                        <option value="0" selected>
-                            Phường/Xã
-                        </option>
-                        <option value="1">
-                            Dân Tiến
-                        </option>
-                        <option value="2">
-                            Đồng Tiến
-                        </option>
-                        <option value="3">
-                            Hồng Tiến
-                        </option>
+                        <button type="button" name="command" value="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" name="command" value="complete" class="btn btn-danger" data-dismiss="modal">Hoàn thành</button>
 
-                    </select>
-                    <input type="tel" class="form-control" placeholder="Địa chỉ cụ thể" />
+                    </form>
+                    
 
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hoàn thành</button>
+                    
                 </div>
             </div>
         </div>
@@ -275,6 +238,7 @@
             });
         });
     </script>
+   
 </body>
 
 </html>
