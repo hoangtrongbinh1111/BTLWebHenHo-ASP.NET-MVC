@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Web.SessionState;
 using System.Web.UI;
 using BTLWebHenHo.EF.Model;
+using BTLWebHenHo.common;
 
 namespace BTLWebHenHo.Controllers
 {
@@ -52,6 +53,16 @@ namespace BTLWebHenHo.Controllers
                               Response.Cookies.Add(usercredentialsCookie);
                          }                         
                          Session["UserID"] = data.FirstOrDefault().UserID;//lấy IDUser vào Session 
+                         //role user
+                         var dao = new UserDAO();
+                         var usersession = new userlogin();
+                         int id_user = data.FirstOrDefault().UserID;
+                         var info = _db.Profile_User.Where(x=>x.UserID==id_user ).FirstOrDefault();
+                         usersession.UserID = info.UserID;
+                         usersession.ListPermission = dao.GetListPermission(info.id_User_Type);
+                         usersession.User_Type = info.id_User_Type;
+                         usersession.Role = info.tbl_User_Type.VN_Name;
+                         Session.Add(CommonConstant.USER_SESSION, usersession);
                          return RedirectToAction("Index", "Profile",new { id= data.FirstOrDefault().UserID });
                          //add session                        
                          //Session["idUser"] = data.FirstOrDefault().UserID;//lấy IDUser vào Session

@@ -1,4 +1,5 @@
-﻿using BTLWebHenHo.EF.Model;
+﻿using BTLWebHenHo.Authorize;
+using BTLWebHenHo.EF.Model;
 using BTLWebHenHo.EF.Services;
 using BTLWebHenHo.Models;
 using System;
@@ -19,9 +20,9 @@ namespace BTLWebHenHo.Controllers
      public class ProfileController : Controller
     {
           BTLWebHenHo.Models.WebHenHoDbContext db = new Models.WebHenHoDbContext();
-          
-        // GET: Profile
-        public ActionResult Index(int id)
+          //[CustomAuthorizeAttribute(Permission = "MANAGER_ALL")]
+          // GET: Profile
+          public ActionResult Index(int id)
         {              
                if (id != get_ID_User())
                {
@@ -422,6 +423,7 @@ namespace BTLWebHenHo.Controllers
                
                return RedirectToAction("Index", "Profile");
           }
+          
           [HttpPost]
           public ActionResult Delete_image_user(string name_img)
           {
