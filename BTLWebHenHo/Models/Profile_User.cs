@@ -115,6 +115,10 @@ namespace BTLWebHenHo.Models
 
         public int? UserID { get; set; }
 
+        public int? id_User_Type { get; set; }
+
+        public virtual tbl_User_Type tbl_User_Type { get; set; }
+
         public virtual UserInfo UserInfo { get; set; }
     }
 }

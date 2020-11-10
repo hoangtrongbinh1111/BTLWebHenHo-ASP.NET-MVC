@@ -11,7 +11,7 @@
           string[] spl = info.birthday.Split('-');
           birthday = spl[0];
           age = DateTime.Now.Year - Convert.ToInt32(birthday);
-          birthday = spl[2] + "/" + spl[1] + "/" + spl[0];
+          birthday = spl[2] + "-" + spl[1] + "-" + spl[0];
      }
      var list_user_chat = ViewBag.list_user_chat;
      //cal percent profile done

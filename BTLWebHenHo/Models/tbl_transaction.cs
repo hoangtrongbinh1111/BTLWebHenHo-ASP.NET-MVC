@@ -36,6 +36,16 @@ namespace BTLWebHenHo.Models
         [StringLength(50)]
         public string name_customer { get; set; }
 
+        public double? ship { get; set; }
+
+        public double? all_money { get; set; }
+
+        [StringLength(50)]
+        public string translate { get; set; }
+
+        [StringLength(50)]
+        public string payment { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_order> tbl_order { get; set; }
 

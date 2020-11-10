@@ -51,9 +51,7 @@ namespace BTLWebHenHo.Controllers
                          }                         
                          Session["UserID"] = data.FirstOrDefault().UserID;//lấy IDUser vào Session 
                          return RedirectToAction("Index", "Profile");
-                         //add session                        
-                         //Session["idUser"] = data.FirstOrDefault().UserID;//lấy IDUser vào Session
-                         //return RedirectToAction("Index", "Profile");
+                        
                     }
                     else
                     {
@@ -121,7 +119,7 @@ namespace BTLWebHenHo.Controllers
                             new_info_user.NickName = _user.fullname;
                             new_info_user.gender = _user.gender;
                             new_info_user.UserID = id;
-                            string birthday = _user.day + "-" + _user.month + "-" + _user.year;
+                            string birthday = _user.year + "-" + _user.month + "-" + _user.day;
                             //DateTime date = Convert.ToDateTime(birthday);
                             //DateTime date = Convert.ToDateTime(birthday);
                             new_info_user.birthday = birthday;
@@ -130,17 +128,8 @@ namespace BTLWebHenHo.Controllers
                             _db.SaveChanges();
                             return RedirectToAction("Index");
                         }
-
-
-
-
                     }
-                    ////_user.Password = GetMD5(_user.Password);
-                    //_db.Configuration.ValidateOnSaveEnabled = false;                            
-                    ////_db.UserInfoes.Add(_user);
-                    //_db.SaveChanges();
-                    //return RedirectToAction("Index");
-
+                  
                 }
                 else
                 {
@@ -149,9 +138,6 @@ namespace BTLWebHenHo.Controllers
                 }
             }
             return View();
-
-
-
         }
         //Logout
         [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
