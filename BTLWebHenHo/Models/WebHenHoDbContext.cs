@@ -12,8 +12,11 @@ namespace BTLWebHenHo.Models
           {
           }
 
+          public virtual DbSet<Country> Countries { get; set; }
+          public virtual DbSet<District> Districts { get; set; }
           public virtual DbSet<new_imgage> new_imgage { get; set; }
           public virtual DbSet<Profile_User> Profile_User { get; set; }
+          public virtual DbSet<Province> Provinces { get; set; }
           public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
           public virtual DbSet<tbl_admin> tbl_admin { get; set; }
           public virtual DbSet<tbl_blogs> tbl_blogs { get; set; }
@@ -33,9 +36,15 @@ namespace BTLWebHenHo.Models
           public virtual DbSet<tbl_user_permission> tbl_user_permission { get; set; }
           public virtual DbSet<tbl_User_Type> tbl_User_Type { get; set; }
           public virtual DbSet<UserInfo> UserInfoes { get; set; }
+          public virtual DbSet<Ward> Wards { get; set; }
 
           protected override void OnModelCreating(DbModelBuilder modelBuilder)
           {
+               modelBuilder.Entity<District>()
+                   .HasMany(e => e.Wards)
+                   .WithRequired(e => e.District)
+                   .WillCascadeOnDelete(false);
+
                modelBuilder.Entity<new_imgage>()
                    .Property(e => e.new_img)
                    .IsUnicode(false);
@@ -43,6 +52,11 @@ namespace BTLWebHenHo.Models
                modelBuilder.Entity<Profile_User>()
                    .Property(e => e.birthday)
                    .IsUnicode(false);
+
+               modelBuilder.Entity<Province>()
+                   .HasMany(e => e.Districts)
+                   .WithRequired(e => e.Province)
+                   .WillCascadeOnDelete(false);
 
                modelBuilder.Entity<tbl_permission>()
                    .Property(e => e.name)

@@ -138,6 +138,7 @@ namespace BTLWebHenHo.Controllers
                             //DateTime date = Convert.ToDateTime(birthday);
                             //DateTime date = Convert.ToDateTime(birthday);
                             new_info_user.birthday = birthday;
+                            new_info_user.id_User_Type = 3;
                             //new_info_user.UserID = new_user.UserID;
                             _db.Profile_User.Add(new_info_user);
                             _db.SaveChanges();

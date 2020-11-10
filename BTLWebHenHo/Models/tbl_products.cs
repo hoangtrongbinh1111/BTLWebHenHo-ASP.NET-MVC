@@ -40,6 +40,8 @@ namespace BTLWebHenHo.Models
 
         public int? id_catalog { get; set; }
 
+        public double? weight { get; set; }
+
         public virtual tbl_catalogs tbl_catalogs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
