@@ -309,7 +309,7 @@
                                                        </button>
                                                   </div>
                                              </div>
-                                        }                                    
+                                        }
                                    </div>
                               </div>
                          </div>
@@ -427,12 +427,12 @@
                                              if (item.birthday != null)
                                              {
                                                   string[] spl = item.birthday.Split('-');
-                                                  agee = DateTime.Now.Year - Convert.ToInt32(spl[0]);     
+                                                  agee = DateTime.Now.Year - Convert.ToInt32(spl[0]);
                                              }
                                              <div class="col-6">
                                                   <div class="card-tab-half-3">
                                                        <div class="card-upper card-image">
-                                                            <a class="d-block" href="/Profile/chat_to_online_people?id_other_user=@item.UserID" >
+                                                            <a class="d-block" href="/Profile/chat_to_online_people?id_other_user=@item.UserID">
                                                                  <img class="img-fluid" src="~/Public/Asset/img/Avatar/@item.avatar" alt="" style="height:300px;width:300px;">
                                                             </a>
                                                             <div class="card-meta">
@@ -444,7 +444,12 @@
                                                        <div class="card-under">
                                                             <div class="card-under-text">
                                                                  <p class="card-under-job">Nghề nghiệp</p>
-                                                                 <p class="card-under-info-job">@item.job</p>
+                                                                 <p class="card-under-info-job">
+                                                                      @if (@item.job != null)
+                                                                      {<span>@item.job</span>}
+                                                                 else
+                                                                 { <span>Không có</span>}
+                                                                 </p>
                                                             </div>
                                                             <div class="card-under-button">
                                                                  <button class="btn btn-info btn-block"><img class="img-fluid" src="~/Public/Asset/img/tym_icon.png">Thích</button>
@@ -453,116 +458,270 @@
                                                   </div>
                                              </div>
                                         }
-                                        
+
                                    </div>
                               </div>
                          </div>
                          <!-- end tab-half-3 -->
-                         <div class="tab-pane show fade" id="tab-half-4">
-                              <form action="/" method="POST" class="pb-4">
-                                   <div class="form-panel">
-                                        <a href="">
-                                             <p>Tìm kiếm cơ bản</p>
-                                        </a>
+                        
+                         <div class="accordion tab-pane show fade" id="tab-half-4">
+                              @* search fast *@
+                              <div class="card">
+                                   <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0 d-flex justify-content-between">
+                                             <button class="btn " type="button" data-toggle="collapse"
+                                                     data-target="#collapseOne"
+                                                     aria-expanded="true" aria-controls="collapseOne" style="color: #555; font-weight: 700;">
+                                                  Tìm kiếm nhanh
+                                             </button>
+                                             <i class="fas fa-chevron-down mt-2"></i>
+                                        </h5>
                                    </div>
-                                   <div class="container">
-                                        <h3>Tuổi</h3>
-                                        <div class="row">
-                                             <div class="col-6 form-group">
-                                                  <select name="" id="age_min" class="form-control">
-                                                       <option class="checkbox" value="0">Bất kỳ</option>
-                                                       <option class="checkbox" value="18">18</option>
-                                                       <option class="checkbox" value="19">19</option>
-                                                       <option class="checkbox" value="20">20</option>
-                                                       <option class="checkbox" value="21">21</option>
-                                                       <option class="checkbox" value="22">22</option>
-                                                       <option class="checkbox" value="23">23</option>
-                                                       <option class="checkbox" value="24">24</option>
-                                                       <option class="checkbox" value="25">25</option>
-                                                       <option class="checkbox" value="26">26</option>
-                                                       <option class="checkbox" value="27">27</option>
-                                                       <option class="checkbox" value="28">28</option>
-                                                       <option class="checkbox" value="29">29</option>
-                                                       <option class="checkbox" value="30">30</option>
-                                                       <option class="checkbox" value="31">31</option>
-                                                       <option class="checkbox" value="32">32</option>
-                                                       <option class="checkbox" value="33">33</option>
-                                                       <option class="checkbox" value="34">34</option>
-
-                                                       <option class="checkbox" value="35">35</option>
-                                                       <option class="checkbox" value="36">36</option>
-                                                       <option class="checkbox" value="37">37</option>
-
-
-
-
-                                                  </select>
-                                             </div>
-                                             <div class="col-6 form-group">
-                                                  <select name="" id="age_max" class="form-control">
-                                                       <option class="checkbox" value="0">Bất kỳ</option>
-                                                       <option class="checkbox" value="18">18</option>
-                                                       <option class="checkbox" value="19">19</option>
-                                                       <option class="checkbox" value="20">20</option>
-                                                       <option class="checkbox" value="21">21</option>
-                                                       <option class="checkbox" value="22">22</option>
-                                                       <option class="checkbox" value="23">23</option>
-                                                       <option class="checkbox" value="24">24</option>
-                                                       <option class="checkbox" value="25">25</option>
-                                                       <option class="checkbox" value="26">26</option>
-                                                       <option class="checkbox" value="27">27</option>
-                                                       <option class="checkbox" value="28">28</option>
-                                                       <option class="checkbox" value="29">29</option>
-                                                       <option class="checkbox" value="30">30</option>
-                                                       <option class="checkbox" value="31">31</option>
-                                                       <option class="checkbox" value="32">32</option>
-                                                       <option class="checkbox" value="33">33</option>
-                                                       <option class="checkbox" value="34">34</option>
-
-                                                       <option class="checkbox" value="35">35</option>
-                                                       <option class="checkbox" value="36">36</option>
-                                                       <option class="checkbox" value="37">37</option>
-
-
-
-
-                                                  </select>
-                                             </div>
-                                        </div>
-                                        <h3>Quốc gia</h3>
-                                        <div class="row">
-                                             <div class="col-12 form-group">
-                                                  <select name="national" id="national_find" class="form-control">
-                                                       <option class="checkbox" value="none">Chọn quốc gia</option>
-                                                       <option class="checkbox" value="vietnam">Việt Nam</option>
-                                                       <option class="checkbox" value="nhatban">Nhật Bản</option>
-                                                  </select>
-                                             </div>
-                                        </div>
-                                   </div>
-                                   <div class="form-panel pos">
-                                        <a href="">
-                                             <p class="panel__title">Tìm kiếm nâng cao</p>
-                                        </a>
-                                        <i class="fas fa-chevron-down"></i>
-                                   </div>
-                              </form>
-
-                              <div class="tab-half-4-button">
-                                   <div class="container">
-                                        <div class="row">
-                                             <div class="col-6">
-                                                  <button class="btn  btn-block again" name="btn-again">Thiết lập lại</button>
-                                             </div>
-                                             <div class="col-6">
-                                                  <button class="btn  btn-block search" name="tab-half-4-btn-search" id="tab-half-4-btn-search">Tìm kiếm</button>
+                                   <div id="collapseOne" class="collapse show"
+                                        aria-labelledby="headingOne" data-parent="#tab-half-4">
+                                        <div class="card-body">
+                                             @* body *@
+                                             <div class="tab-half-4-button">
+                                                  <div class="container">
+                                                       <div class="row text-center">                                                                                                                      
+                                                            <button class="btn btn-block search" name="tab-half-4-btn-search" id="tab-half-4-btn-search-fast">Tìm kiếm ngay</button>                                                            
+                                                       </div>
+                                                  </div>
                                              </div>
                                         </div>
                                    </div>
                               </div>
-                              <div class="show_info_find">
-                                   
+                              @* search basic *@
+                              <div class="card">
+                                   <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0 d-flex justify-content-between">
+                                             <button class="btn collapsed" type="button" data-toggle="collapse"
+                                                     data-target="#collapseTwo"
+                                                     aria-expanded="false" aria-controls="collapseTwo" style="color: #555; font-weight: 700;">
+                                                  Tìm kiếm cơ bản
+                                             </button>
+                                             <i class="fas fa-chevron-down mt-2"></i>
+                                        </h5>
+                                   </div>
+                                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                        data-parent="#tab-half-4">
+                                        <div class="card-body">
+                                             <div class="container">
+                                                  <h3>Tuổi</h3>
+                                                  <div class="row">
+                                                       <div class="col-6 form-group">
+                                                            <select name="" id="age_min" class="form-control">
+                                                                 <option class="checkbox" value="0">Bất kỳ</option>
+                                                                 <option class="checkbox" value="18">18</option>
+                                                                 <option class="checkbox" value="19">19</option>
+                                                                 <option class="checkbox" value="20">20</option>
+                                                                 <option class="checkbox" value="21">21</option>
+                                                                 <option class="checkbox" value="22">22</option>
+                                                                 <option class="checkbox" value="23">23</option>
+                                                                 <option class="checkbox" value="24">24</option>
+                                                                 <option class="checkbox" value="25">25</option>
+                                                                 <option class="checkbox" value="26">26</option>
+                                                                 <option class="checkbox" value="27">27</option>
+                                                                 <option class="checkbox" value="28">28</option>
+                                                                 <option class="checkbox" value="29">29</option>
+                                                                 <option class="checkbox" value="30">30</option>
+                                                                 <option class="checkbox" value="31">31</option>
+                                                                 <option class="checkbox" value="32">32</option>
+                                                                 <option class="checkbox" value="33">33</option>
+                                                                 <option class="checkbox" value="34">34</option>
+                                                                 <option class="checkbox" value="35">35</option>
+                                                                 <option class="checkbox" value="36">36</option>
+                                                                 <option class="checkbox" value="37">37</option>
+                                                            </select>
+                                                       </div>
+                                                       <div class="col-6 form-group">
+                                                            <select name="" id="age_max" class="form-control">
+                                                                 <option class="checkbox" value="0">Bất kỳ</option>
+                                                                 <option class="checkbox" value="18">18</option>
+                                                                 <option class="checkbox" value="19">19</option>
+                                                                 <option class="checkbox" value="20">20</option>
+                                                                 <option class="checkbox" value="21">21</option>
+                                                                 <option class="checkbox" value="22">22</option>
+                                                                 <option class="checkbox" value="23">23</option>
+                                                                 <option class="checkbox" value="24">24</option>
+                                                                 <option class="checkbox" value="25">25</option>
+                                                                 <option class="checkbox" value="26">26</option>
+                                                                 <option class="checkbox" value="27">27</option>
+                                                                 <option class="checkbox" value="28">28</option>
+                                                                 <option class="checkbox" value="29">29</option>
+                                                                 <option class="checkbox" value="30">30</option>
+                                                                 <option class="checkbox" value="31">31</option>
+                                                                 <option class="checkbox" value="32">32</option>
+                                                                 <option class="checkbox" value="33">33</option>
+                                                                 <option class="checkbox" value="34">34</option>
+                                                                 <option class="checkbox" value="35">35</option>
+                                                                 <option class="checkbox" value="36">36</option>
+                                                                 <option class="checkbox" value="37">37</option>
+                                                            </select>
+                                                       </div>
+                                                  </div>
+                                                  <h3>Quốc gia</h3>
+                                                  <div class="row">
+                                                       <div class="col-12 form-group">
+                                                            <select name="national" id="national_find" class="form-control">
+                                                                 <option class="checkbox" value="none">Chọn quốc gia</option>
+                                                                 <option class="checkbox" value="vietnam">Việt Nam</option>
+                                                                 <option class="checkbox" value="nhatban">Nhật Bản</option>
+                                                            </select>
+                                                       </div>
+                                                  </div>
+                                                  <div class="tab-half-4-button">
+                                                       <div class="container">
+                                                            <div class="row">
+                                                                 <div class="col-6">
+                                                                      <button class="btn  btn-block again" name="btn-again" id="tab-half-4-btn-set-basic">Thiết lập lại</button>
+                                                                 </div>
+                                                                 <div class="col-6">
+                                                                      <button class="btn  btn-block search" name="tab-half-4-btn-search" id="tab-half-4-btn-search-basic">Tìm kiếm</button>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
                               </div>
+                              @* search advance *@
+                              <div class="card">
+                                   <div class="card-header" id="headingThree">
+                                        <h5 class="mb-0 d-flex justify-content-between">
+                                             <button class="btn collapsed" type="button"
+                                                     data-toggle="collapse" data-target="#collapseThree"
+                                                     aria-expanded="false" aria-controls="collapseThree" style="color: #555; font-weight: 700;">
+                                                  Tìm kiếm nâng cao
+                                             </button>
+                                             <i class="fas fa-chevron-down mt-2"></i>
+                                        </h5>
+                                   </div>
+                                   <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                        data-parent="#tab-half-4">
+                                        <div class="card-body">
+                                             <div class="container">
+                                                  <h3>Tuổi</h3>
+                                                  <div class="row">
+                                                       <div class="col-6 form-group">
+                                                            <select name="" id="age_min_advance" class="form-control">
+                                                                 <option class="checkbox" value="0">Bất kỳ</option>
+                                                                 <option class="checkbox" value="18">18</option>
+                                                                 <option class="checkbox" value="19">19</option>
+                                                                 <option class="checkbox" value="20">20</option>
+                                                                 <option class="checkbox" value="21">21</option>
+                                                                 <option class="checkbox" value="22">22</option>
+                                                                 <option class="checkbox" value="23">23</option>
+                                                                 <option class="checkbox" value="24">24</option>
+                                                                 <option class="checkbox" value="25">25</option>
+                                                                 <option class="checkbox" value="26">26</option>
+                                                                 <option class="checkbox" value="27">27</option>
+                                                                 <option class="checkbox" value="28">28</option>
+                                                                 <option class="checkbox" value="29">29</option>
+                                                                 <option class="checkbox" value="30">30</option>
+                                                                 <option class="checkbox" value="31">31</option>
+                                                                 <option class="checkbox" value="32">32</option>
+                                                                 <option class="checkbox" value="33">33</option>
+                                                                 <option class="checkbox" value="34">34</option>
+                                                                 <option class="checkbox" value="35">35</option>
+                                                                 <option class="checkbox" value="36">36</option>
+                                                                 <option class="checkbox" value="37">37</option>
+                                                            </select>
+                                                       </div>
+                                                       <div class="col-6 form-group">
+                                                            <select name="" id="age_max_advance" class="form-control">
+                                                                 <option class="checkbox" value="0">Bất kỳ</option>
+                                                                 <option class="checkbox" value="18">18</option>
+                                                                 <option class="checkbox" value="19">19</option>
+                                                                 <option class="checkbox" value="20">20</option>
+                                                                 <option class="checkbox" value="21">21</option>
+                                                                 <option class="checkbox" value="22">22</option>
+                                                                 <option class="checkbox" value="23">23</option>
+                                                                 <option class="checkbox" value="24">24</option>
+                                                                 <option class="checkbox" value="25">25</option>
+                                                                 <option class="checkbox" value="26">26</option>
+                                                                 <option class="checkbox" value="27">27</option>
+                                                                 <option class="checkbox" value="28">28</option>
+                                                                 <option class="checkbox" value="29">29</option>
+                                                                 <option class="checkbox" value="30">30</option>
+                                                                 <option class="checkbox" value="31">31</option>
+                                                                 <option class="checkbox" value="32">32</option>
+                                                                 <option class="checkbox" value="33">33</option>
+                                                                 <option class="checkbox" value="34">34</option>
+                                                                 <option class="checkbox" value="35">35</option>
+                                                                 <option class="checkbox" value="36">36</option>
+                                                                 <option class="checkbox" value="37">37</option>
+                                                            </select>
+                                                       </div>
+                                                  </div>
+                                                  <h3>Quốc gia</h3>
+                                                  <div class="row">
+                                                       <div class="col-12 form-group">
+                                                            <select name="national" id="national_find_advance" class="form-control">
+                                                                 <option class="checkbox" value="none">Chọn quốc gia</option>
+                                                                 <option class="checkbox" value="vietnam">Việt Nam</option>
+                                                                 <option class="checkbox" value="nhatban">Nhật Bản</option>
+                                                            </select>
+                                                       </div>
+                                                  </div>
+                                                  <h3>Quê quán</h3>
+                                                  <div class="row">
+                                                       <div class="col-12 form-group">
+                                                            <select name="national" id="address_find_advance" class="form-control">
+                                                                 <option class="checkbox" value="none">Chọn quê quán</option>
+                                                                 <option class="checkbox" value="1">Hà Nội</option>
+                                                                 <option class="checkbox" value="2">Hồ Chí Minh</option>
+                                                                 <option class="checkbox" value="3">Hưng Yên</option>
+                                                                 <option class="checkbox" value="4">Đà Nẵng</option>
+                                                            </select>
+                                                       </div>
+                                                  </div>
+                                                  <h3>Học vấn</h3>
+                                                  <div class="row">
+                                                       <div class="col-12 form-group">
+                                                            <select name="national" id="study_find_advance" class="form-control">
+                                                                 <option class="checkbox" value="none">Chọn học vấn</option>
+                                                                 <option class="checkbox" value="1">Đại học</option>
+                                                                 <option class="checkbox" value="2">Cao Đẳng</option>
+                                                                 <option class="checkbox" value="3">Tốt nghiệp PT</option>
+                                                                 <option class="checkbox" value="4">Chưa tốt nghiệp PT</option>
+                                                            </select>
+                                                       </div>
+                                                  </div>
+                                                  <h3>Tính cách</h3>
+                                                  <div class="row">
+                                                       <div class="col-12 form-group">
+                                                            <select name="national" id="character_find_advance" class="form-control">
+                                                                 <option class="checkbox" value="none">Chọn tính cách</option>
+                                                                 <option class="checkbox" value="1">Thông minh</option>
+                                                                 <option class="checkbox" value="2">Tốt bụng</option>
+                                                                 <option class="checkbox" value="3">Nhút nhát</option>
+                                                                 <option class="checkbox" value="4">Kĩ tính</option>
+                                                            </select>
+                                                       </div>
+                                                  </div>
+                                                  <div class="tab-half-4-button">
+                                                       <div class="container">
+                                                            <div class="row">
+                                                                 <div class="col-6">
+                                                                      <button class="btn  btn-block again" name="btn-again" id="tab-half-4-btn-set-advance">Thiết lập lại</button>
+                                                                 </div>
+                                                                 <div class="col-6">
+                                                                      <button class="btn  btn-block search" name="tab-half-4-btn-search" id="tab-half-4-btn-search-advance">Tìm kiếm</button>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             
+                                        </div>
+                                   </div>
+                              </div>
+
+                         </div>
+                         <div class="show_info_find">
+
                          </div>
                     </div>
                </div>
@@ -646,14 +805,13 @@
                                              {
                                                   if (item.image_link == null)
                                                   { item.image_link = "thumb_811567_20181121_023719_59.png"; }
-                                                  <a class="media" href="/Profile/Chat_ToFriend?id_other_user=@item.tc.id_other_user&stt_id_chat=@item.tc.content">
+                                                  <a class="media" data-id="@item.tc.id_chat" href="/Profile/Chat_ToFriend?id_other_user=@item.tc.id_other_user&stt_id_chat=@item.tc.content">
                                                        <img class="img-fluid" src="~/Public/Asset/img/Avatar/@item.image_link" alt="">
                                                        <div class="media-body">
                                                             <h5>@item.Nickname</h5>
                                                             <p>@item.address</p>
                                                        </div>
-                                                       <button class="del_chat_peo" data-id="@item.tc.id_chat">Close</button>
-
+                                                       <button id="del_chat_peo_@item.tc.id_chat" class="btn btn-success" style="display:none;margin-top:1rem;"><i class="far fa-trash-alt"></i></button>
                                                   </a>
                                              }
 
@@ -2027,8 +2185,8 @@
                })
           });
 
-          //search info friend
-          $("#tab-half-4-btn-search").on('click', function () {
+          //search info friend basic
+          $("#tab-half-4-btn-search-basic").on('click', function () {
                var age_start = $("select#age_min").val();
                var age_end = $("select#age_max").val();
                var country_val = $("select#national_find").val();
@@ -2042,6 +2200,50 @@
                     }
 
                })
+          });
+               //set default
+          $("#tab-half-4-btn-set-basic").on('click', function () {
+               $("select#age_min").val(0);
+               $("select#age_max").val(0);
+               $("select#national_find").val("none");
+          });
+               //search fast
+          $("#tab-half-4-btn-search-fast").on('click', function () {                           
+               $.ajax({
+                    url: '/Profile/getInfoFriend_by_find_fast',
+                    type: 'post',
+                    success: function (data) {
+                         $(".show_info_find").html(data);
+                    }
+
+               })
+          });
+               //search advance
+               $("#tab-half-4-btn-search-advance").on('click', function () {           
+                    var age_start = $("select#age_min_advance").val();
+                    var age_end = $("select#age_max_advance").val();
+                    var country_val = $("select#national_find_advance").val();
+                    var country = $("select#national_find_advance option:selected").text();  
+                    var address = $("select#address_find_advance option:selected").text();
+                    var study = $("select#study_find_advance option:selected").text();
+                    var character=$("select#character_find_advance option:selected").text();
+               $.ajax({
+                    url: '/Profile/getInfoFriend_by_find_advance',
+                    type: 'post',
+                    data: { age_start: age_start, age_end: age_end, country_val: country_val, country: country, address: address, study: study, character: character },
+                    success: function (data) {
+                         $(".show_info_find").html(data);
+                    }
+
+               })
+               });
+          $("#tab-half-4-btn-set-advance").on('click', function () {
+               $("select#age_min_advance").val(0);
+               $("select#age_max_advance").val(0);
+               $("select#national_find_advance").val("none");
+               $("select#address_find_advance").val("none");
+               $("select#study_find_advance").val("none");
+               $("select#character_find_advance").val("none");
           });
                //hottest info
                $("#skip_hottest_info").on('click', function () {
@@ -2064,9 +2266,10 @@
                //$("#dislike_friend").off('click').on('click', function () {
                //     $('.like').html("<button class='btn btn-info' id='like_friend' onclick='like_func()'><img src='~/Public/Asset/img/tym_icon.png'>Thích</button>");
                //});
-               $(".del_chat_peo").on('click', function (e) {
-                    
-                    var id_chat = $(this).data('id');                   
+               $(".media").hover(function () {
+                    var id_chat = $(this).data('id');
+                    $("#del_chat_peo_" + id_chat).css("display", "block");
+                    $("#del_chat_peo_" + id_chat).on('click', function (e) {                                                        
                     $.ajax({
                          url: '/api/Quizz_API/?id_chat=' + id_chat,
                          type: 'GET',
@@ -2077,7 +2280,25 @@
                     })
                     e.stopPropagation();
                     return false;
+                    });
+               }, function () {
+                         var id_chat = $(this).data('id');
+                    $("#del_chat_peo_" + id_chat).css("display", "none");
                });
+               //$(".del_chat_peo").on('click', function (e) {
+                    
+               //     var id_chat = $(this).data('id');                   
+               //     $.ajax({
+               //          url: '/api/Quizz_API/?id_chat=' + id_chat,
+               //          type: 'GET',
+               //          contentType: "application/json; charset=utf-8",
+               //          success: function (res) {
+               //               window.location.reload();
+               //     }
+               //     })
+               //     e.stopPropagation();
+               //     return false;
+               //});
                
           });
           function like_func() {

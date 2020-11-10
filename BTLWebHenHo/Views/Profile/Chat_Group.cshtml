@@ -1,7 +1,7 @@
 ﻿
 @{
      Layout = null;
-     
+     var id_user = ViewBag.UserID;
 }
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
      
      <div id="wrapper">
           <div class="header">
-               <a href="~/Profile">
+               <a href="/Profile/Index/@id_user">
                     <i class="fas fa-chevron-left"></i>
                </a>
                <h3>Group chat MTAhub</h3>               

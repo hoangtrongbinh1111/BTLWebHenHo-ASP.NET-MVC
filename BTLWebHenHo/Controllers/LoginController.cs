@@ -21,7 +21,9 @@ namespace BTLWebHenHo.Controllers
 
                if (Request.Cookies["usercredentials"] != null)
                {
-                    return RedirectToAction("Index", "Profile");
+                    HttpCookie reqCookie = Request.Cookies["usercredentials"];
+
+                    return RedirectToAction("Index", "Profile",new { id= Convert.ToInt32(reqCookie["UserID"]) });
                }
 
 
@@ -50,7 +52,7 @@ namespace BTLWebHenHo.Controllers
                               Response.Cookies.Add(usercredentialsCookie);
                          }                         
                          Session["UserID"] = data.FirstOrDefault().UserID;//lấy IDUser vào Session 
-                         return RedirectToAction("Index", "Profile");
+                         return RedirectToAction("Index", "Profile",new { id= data.FirstOrDefault().UserID });
                          //add session                        
                          //Session["idUser"] = data.FirstOrDefault().UserID;//lấy IDUser vào Session
                          //return RedirectToAction("Index", "Profile");
@@ -121,7 +123,7 @@ namespace BTLWebHenHo.Controllers
                             new_info_user.NickName = _user.fullname;
                             new_info_user.gender = _user.gender;
                             new_info_user.UserID = id;
-                            string birthday = _user.day + "-" + _user.month + "-" + _user.year;
+                            string birthday = _user.year + "-" + _user.month + "-" + _user.day;
                             //DateTime date = Convert.ToDateTime(birthday);
                             //DateTime date = Convert.ToDateTime(birthday);
                             new_info_user.birthday = birthday;
@@ -161,7 +163,7 @@ namespace BTLWebHenHo.Controllers
                Session.RemoveAll();
                Session.Abandon();//delete current session
                Response.Cookies["usercredentials"].Expires=DateTime.Now.AddDays(-1);
-               return RedirectToAction("Index");
+               return RedirectToAction("Index","Login");
           }
           //create a string MD5
           public static string GetMD5(string str)

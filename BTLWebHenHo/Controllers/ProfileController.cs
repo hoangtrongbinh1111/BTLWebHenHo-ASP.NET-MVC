@@ -19,77 +19,86 @@ namespace BTLWebHenHo.Controllers
      public class ProfileController : Controller
     {
           BTLWebHenHo.Models.WebHenHoDbContext db = new Models.WebHenHoDbContext();
+          
         // GET: Profile
-        public ActionResult Index()
-        {
-               if (Session["UserID"] != null || Request.Cookies["usercredentials"] != null)
+        public ActionResult Index(int id)
+        {              
+               if (id != get_ID_User())
                {
-                    int id_user=get_ID_User();
-                    var info_online = db.Profile_User.Where(x=>x.UserID != id_user).ToList();
-                    ViewBag.info_online = info_online.Take(4).ToList();
-                    var info = db.Profile_User.Where(x => x.UserID == id_user).FirstOrDefault();
-                    ViewBag.info = info;
-                    ViewBag.cal_percent = cal_percent(info);
-                    //hottest
-                    var Max_thumb = 0;
-                    int? id_hot = 0;
-                    string[] spl = { };
-                    foreach (var item in info_online)
+                    return RedirectToAction("viewProfileUser", "Profile",new { id=id});
+               }
+               else if (id == get_ID_User())
+               {
+                    if (Session["UserID"] != null || Request.Cookies["usercredentials"] != null)
                     {
-                         if (item.list_thumb != null)
+                         int id_user = get_ID_User();
+                         var info_online = db.Profile_User.Where(x => x.UserID != id_user).ToList();
+                         ViewBag.info_online = info_online.Take(4).ToList();
+                         var info = db.Profile_User.Where(x => x.UserID == id_user).FirstOrDefault();
+                         ViewBag.info = info;
+                         ViewBag.cal_percent = cal_percent(info);
+                         //hottest
+                         var Max_thumb = 0;
+                         int? id_hot = 0;
+                         string[] spl = { };
+                         foreach (var item in info_online)
                          {
-                              spl = item.list_thumb.Split('/');
+                              if (item.list_thumb != null)
+                              {
+                                   spl = item.list_thumb.Split('/');
+                              }
+
+                              if (spl.Count() > Max_thumb)
+                              {
+                                   Max_thumb = spl.Count();
+                                   id_hot = item.UserID;
+                              }
                          }
-                         
-                         if (spl.Count() > Max_thumb)
+                         if (id_hot == 0)
                          {
-                              Max_thumb = spl.Count();
-                              id_hot = item.UserID;
-                         }                             
-                    }
-                    if (id_hot == 0)
-                    {
-                         id_hot = id_user;
-                         var hottest = db.Profile_User.Where(x => x.UserID == id_hot).FirstOrDefault();
-                         if (hottest.list_thumb != null)
-                         {
-                              spl = hottest.list_thumb.Split('/');
-                              Max_thumb = spl.Count();
+                              id_hot = id_user;
+                              var hottest = db.Profile_User.Where(x => x.UserID == id_hot).FirstOrDefault();
+                              if (hottest.list_thumb != null)
+                              {
+                                   spl = hottest.list_thumb.Split('/');
+                                   Max_thumb = spl.Count();
+                              }
+                              ViewBag.hottest_user = hottest;
+                              ViewBag.num_hot_thumb = Max_thumb;
                          }
-                         ViewBag.hottest_user = hottest;
-                         ViewBag.num_hot_thumb = Max_thumb;
+                         else
+                         {
+                              var hottest = db.Profile_User.Where(x => x.UserID == id_hot).FirstOrDefault();
+                              ViewBag.hottest_user = hottest;
+                              ViewBag.num_hot_thumb = Max_thumb;
+                         }
+
+                         //new image
+                         var new_img = db.new_imgage.OrderByDescending(x => x.id_new_img).ToList();
+                         ViewBag.new_img = new_img.Take(4).ToList();
+                         //get list chat
+                         var list_user_chat = db.tbl_chat.Where(x => x.id_main_user == id_user).ToList();
+                         List<Chat_specific> ls = new List<Chat_specific>();
+
+                         foreach (var item in list_user_chat)
+                         {
+                              var getinf = db.Profile_User.Where(x => x.UserID == item.id_other_user).FirstOrDefault();
+                              Chat_specific cs = new Chat_specific();
+                              cs.tc = item;
+                              cs.Nickname = getinf.NickName;
+                              cs.address = getinf.address_user;
+                              cs.image_link = getinf.avatar;
+                              ls.Add(cs);
+                         }
+                         ViewBag.list_user_chat = ls;
+                         return View();
                     }
                     else
                     {
-                         var hottest = db.Profile_User.Where(x => x.UserID == id_hot).FirstOrDefault();
-                         ViewBag.hottest_user = hottest;
-                         ViewBag.num_hot_thumb = Max_thumb;
-                    }     
-                    
-                    //new image
-                    var new_img = db.new_imgage.OrderByDescending(x => x.id_new_img).ToList();
-                    ViewBag.new_img = new_img.Take(4).ToList();
-                    //get list chat
-                    var list_user_chat = db.tbl_chat.Where(x => x.id_main_user == id_user).ToList();
-                    List<Chat_specific> ls = new List<Chat_specific>();
-                   
-                    foreach(var item in list_user_chat)
-                    {
-                         var getinf = db.Profile_User.Where(x=>x.UserID==item.id_other_user).FirstOrDefault();
-                         Chat_specific cs = new Chat_specific();
-                         cs.tc = item;
-                         cs.Nickname = getinf.NickName;
-                         cs.address = getinf.address_user;
-                         cs.image_link = getinf.avatar;
-                         ls.Add(cs);
+                         return RedirectToAction("Index", "Login");
                     }
-                    ViewBag.list_user_chat = ls;
-                    return View();
                }
-               else
-               {
-                    return RedirectToAction("Index", "Login");
-               }               
+               return View();        
           }
           public int cal_percent(Profile_User pu)
           {
@@ -160,7 +169,26 @@ namespace BTLWebHenHo.Controllers
                int percentComplete = (int)Math.Round((double)(100 * (qty - count)) / qty);
                return percentComplete;
           }
-          
+          public ActionResult viewProfileUser(int id)
+          {
+               if (id == get_ID_User())
+               {
+                    return RedirectToAction("Index", "Profile", new { id = get_ID_User() }) ;
+               }
+               var info = db.Profile_User.Where(x => x.UserID == id).FirstOrDefault();
+               if (info == null)
+               {
+                    return RedirectToAction("Error", "Profile");
+               }
+               ViewBag.info = info;
+               ViewBag.id_user = get_ID_User();
+               return View();
+          }
+          public ActionResult Error()
+          {
+               ViewBag.id_user = get_ID_User();
+               return View();
+          }
           public ActionResult Chat_Group()
           {
                
@@ -433,30 +461,17 @@ namespace BTLWebHenHo.Controllers
                List<Profile_User> ui = new List<Profile_User>();
                var pu = db.Profile_User.ToList();
                foreach(var info in pu)
-               {                    
-                   var age = 0;
-//<<<<<<< HEAD
-//                    string[] spl = info.birthday.Split('-');
-//                    if (spl.Count() > 1)
-//                    {                        
-//                         age = DateTime.Now.Year - Convert.ToInt32(spl[2]);         
-//                    }
-//                    else
-//                    {
-//                         string[] spl1 = info.birthday.Split('/');                        
-//                         age = DateTime.Now.Year - Convert.ToInt32(spl[2]);
-//                    }
-//=======
-                    string[] spl = info.birthday.Split('-');                                       
-                    age = DateTime.Now.Year - Convert.ToInt32(spl[0]);                          
-//>>>>>>> 329a9eec7d1765ed4bf95ebeb05543820371205b
+               {
+                    if (info.UserID == get_ID_User())
+                         continue;
+                    var age = cal_age(info);
                     if (country_val == "none")
                     {
                          if(age_start==age_end && age_end == 0)
                          {
                               ui.Add(info);
                          }
-                         if (age_end == 0)
+                         else if (age_end == 0)
                          {
                               if (age >= age_start)
                               {
@@ -474,7 +489,7 @@ namespace BTLWebHenHo.Controllers
                          {
                               ui.Add(info);
                          }
-                         if (age_end == 0)
+                         else if (age_end == 0)
                          {
                               if (age >= age_start  && info.national_user == country)
                               {
@@ -488,7 +503,134 @@ namespace BTLWebHenHo.Controllers
                     }
 
                }
+               if (ui.Count() == 0)
+               {
+                    Profile_User new_us = new Profile_User();
+                    new_us.UserID = 0;
+                    new_us.NickName = "Không có ai phù hợp";
+                    ui.Add(new_us);
+               }
                return View(ui);
+          }
+          public ActionResult getInfoFriend_by_find_fast()
+          {
+               List<Profile_User> ui = new List<Profile_User>();
+               var pu = db.Profile_User.ToList();
+               var id_user = get_ID_User();
+               var age_main_user = cal_age(db.Profile_User.FirstOrDefault(x=>x.UserID==id_user));
+               foreach (var info in pu)
+               {
+                    if (info.UserID == get_ID_User())
+                         continue;
+                    if (Math.Abs(age_main_user - cal_age(info))<=2)
+                    {
+                         ui.Add(info);
+                    }                   
+               }
+               if (ui.Count() == 0)
+               {
+                    Profile_User new_us = new Profile_User();
+                    new_us.UserID = 0;
+                    new_us.NickName = "Không có ai phù hợp";
+                    ui.Add(new_us);
+               }
+               return View("~/Views/Profile/getInfoFriend_by_find_basic.cshtml",ui);
+          }
+          public ActionResult getInfoFriend_by_find_advance(int age_start, int age_end, string country_val, string country,string address,string study,string character)
+          {
+               List<Profile_User> ui = new List<Profile_User>();
+               var pu = db.Profile_User.ToList();
+               foreach (var info in pu)
+               {
+                    if (info.UserID == get_ID_User())
+                         continue;
+                    var age = cal_age(info);
+                    if (country_val == "none")
+                    {
+                         if (age_start == age_end && age_end == 0)
+                         {
+                              ui.Add(info);
+                         }
+                         else if (age_end == 0)
+                         {
+                              if (age >= age_start)
+                              {
+                                   ui.Add(info);
+                              }
+                         }
+                         else if (age >= age_start && age <= age_end)
+                         {
+                              ui.Add(info);                             
+                         }
+                    }
+                    else
+                    {
+                         if (age_start == age_end && age_end == 0 && info.national_user == country)
+                         {
+                              ui.Add(info);
+                         }
+                         else if (age_end == 0)
+                         {
+                              if (age >= age_start && info.national_user == country)
+                              {
+                                   ui.Add(info);
+                              }
+                         }
+                         else if (age >= age_start && age <= age_end && info.national_user == country)
+                         {
+                              ui.Add(info);
+                         }
+                    }
+                    
+               }
+               List<Profile_User> ui_find = new List<Profile_User>() ;
+               foreach (var item in ui)
+               {
+                    if (address != "Chọn quê quán")
+                    {
+                         if (item.address_user != address)
+                         {
+                              ui_find.Add(item);
+                              continue;
+                         }
+                    }
+                    if (study != "Chọn học vấn")
+                    {
+                         if (item.education != study)
+                         {
+                              ui_find.Add(item);
+                              continue;
+                         }
+                    }
+                    if (character != "Chọn tính cách")
+                    {
+                         if (item.character_user != character)
+                         {
+                              ui_find.Add(item);
+                              continue;
+                         }
+                    }
+               }
+               foreach(var info in ui_find)
+               {
+                    ui.Remove(info);
+               }
+               if (ui.Count() == 0)
+               {
+                    Profile_User new_us = new Profile_User();
+                    new_us.UserID = 0;
+                    new_us.NickName = "Không có ai phù hợp";
+                    ui.Add(new_us);
+               }
+               return View("~/Views/Profile/getInfoFriend_by_find_basic.cshtml", ui);
+          }
+          [NonAction]
+          int cal_age(Profile_User info)
+          {
+               var age = 0;
+               string[] spl = info.birthday.Split('-');
+               age = DateTime.Now.Year - Convert.ToInt32(spl[0]);
+               return age;
           }
           public ActionResult hottest_info(int id)
           {

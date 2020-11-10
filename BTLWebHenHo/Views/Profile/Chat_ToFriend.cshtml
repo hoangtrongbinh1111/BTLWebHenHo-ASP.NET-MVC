@@ -4,6 +4,7 @@
      var id_chat = ViewBag.id_chat;
      var stt = ViewBag.stt_id_chat;
      var NickName_other = ViewBag.NickName_other;
+     var id_user = ViewBag.UserID;
 }
 
 <!DOCTYPE html>
@@ -18,7 +19,7 @@
 
      <div id="wrapper">
           <div class="header">
-               <a href="~/Profile">
+               <a href="/Profile/Index/@id_user">
                     <i class="fas fa-chevron-left"></i>
                </a>
                <h3>Chat cùng: <strong>@NickName_other</strong></h3>

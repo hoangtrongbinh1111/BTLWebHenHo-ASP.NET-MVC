@@ -1,12 +1,12 @@
 ﻿
 @{
-    Layout = null;
-    ViewBag.Title = "buy_coin";
-    // var list_product = ViewBag.list_product;
-    var catalog = ViewBag.catalog;
-    var num_product = ViewBag.num_product;
-    //  tbl_products list_product = ViewData.Model;
-
+     Layout = null;
+     ViewBag.Title = "buy_coin";
+     // var list_product = ViewBag.list_product;
+     var catalog = ViewBag.catalog;
+     var num_product = ViewBag.num_product;
+     //  tbl_products list_product = ViewData.Model;
+     var id_user=ViewBag.id_user;
 }
 @using BTLWebHenHo.Models
 @model List<BTLWebHenHo.Models.tbl_products>
@@ -19,7 +19,7 @@
     <div id="wrapper">
         <div id="tittle-trade" class="d-flex py-3 justify-content-between">
             <div class="d-flex">
-                <a href="/Profile/Index">
+                <a href="/Profile/Index/@id_user">
                     <i class="fas fa-arrow-left"></i>
                 </a>
                 <h3>Chọn gói thanh toán</h3>

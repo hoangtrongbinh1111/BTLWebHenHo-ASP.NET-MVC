@@ -1,0 +1,62 @@
+﻿
+@{
+     Layout = null;
+     var id_user = ViewBag.id_user;
+}
+
+     <html>
+     @Html.Partial("head")
+     <style>
+          body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    background: #dae2f8 linear-gradient(90deg, #f7c9c9, #91a8d1)
+}
+
+#wrapper {
+    width: 660px;
+    margin: 0px auto;
+    background: #fff;
+    min-height: 100vh;
+}
+
+body a:hover {
+    text-decoration: none;
+}
+
+
+/* tittle trade */
+
+#tittle-trade {
+    color: #fff;
+    background: #4c71b5;
+}
+
+#tittle-trade a>i {
+    color: #fff;
+    font-size: 2rem;
+    margin: 0 1rem;
+    margin-top: 5px;
+}
+.page_not_found{
+     margin-left:1rem;
+     margin-top:1rem;
+}
+     </style>
+     <body>
+          <div id="wrapper">
+               <div id="tittle-trade" class="d-flex py-3 justify-content-between">
+                    <div class="d-flex">
+                         <a href="/Profile/Index/@id_user">
+                              <i class="fas fa-arrow-left"></i>
+                         </a>
+                         <h3>Người dùng không tồn tại</h3>
+                    </div>
+                    
+               </div>
+               <div>
+                    <h2 class="page_not_found">Mời bạn quay lại</h2>
+               </div>
+          </div>
+     </body>
+</html>

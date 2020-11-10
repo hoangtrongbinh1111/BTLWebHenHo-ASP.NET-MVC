@@ -35,6 +35,7 @@ namespace BTLWebHenHo.Controllers
             // var model = new tbl_products().ListAll();
             var model = db.tbl_products.ToList();
             var id_user = get_ID_User();
+               ViewBag.id_user = id_user;
             int id_transaction = db.tbl_transaction.Where(x => x.UserID == id_user && x.status == "false").Select(x => x.id_transaction).FirstOrDefault();
             var list_order = db.tbl_order.Where(x => x.id_transaction == id_transaction).ToList();
             int num_product = 0;
@@ -45,7 +46,7 @@ namespace BTLWebHenHo.Controllers
             ViewBag.num_product = num_product;
             return View(model);
           }
-        
+          
           public ActionResult shop()
           {
             
@@ -57,10 +58,19 @@ namespace BTLWebHenHo.Controllers
                 var id = Request.Url.Segments[3];
                 var info_product = db.tbl_products.Where(x => x.id_product.ToString() == id).FirstOrDefault();
                 ViewBag.info_product = info_product;
-           
-                
-            
-            return View();
+               int num_product = 0;
+               var id_user = get_ID_User();
+               int id_transaction = db.tbl_transaction.Where(x => x.UserID == id_user && x.status == "false").Select(x => x.id_transaction).FirstOrDefault();
+               var list_order = db.tbl_order.Where(x => x.id_transaction == id_transaction).ToList();
+               foreach (var item in list_order)
+               {
+                    num_product += Convert.ToInt32(item.qty);
+               }
+              
+               ViewBag.num_product = num_product;
+
+
+               return View();
 
         }
         [HttpPost]

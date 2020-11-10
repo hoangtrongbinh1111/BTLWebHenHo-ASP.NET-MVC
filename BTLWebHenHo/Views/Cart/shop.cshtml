@@ -3,7 +3,7 @@
     Layout = null;
     ViewBag.Title = "shop";
     var info_product = ViewBag.info_product;
-  
+     var num_product = ViewBag.num_product;
 }
 
 <!DOCTYPE html>
@@ -15,65 +15,75 @@
 <link rel="stylesheet" href="~/Public/Asset/css/payment.css">
 <link rel="stylesheet" href="~/Public/Asset/css/shop.css">
 <body>
-    <div id="wrapper">
-        <div id="tittle-trade" class="d-flex py-3">
-            <a href="/Cart/buy_coin">
-                <i class="fas fa-arrow-left"></i>
-            </a>
-            <h3>Chi tiết sản phẩm</h3>
-        </div>
-        <div  class="mt-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-4" id="product-thumbnail">
-                                <img src="~/Public/Asset/img/shop/@info_product.image_link" alt="" class="img-fluid">
-                            </div>
-                            <div class="col-md-8">
-                                <h3 id="product-name">@info_product.name</h3>
-                                <h6 class="text-bold">Mã sản phẩm: <span id="product-code">@info_product.code</span></h6>
-                                <h6>Giá sản phẩm: <span id="product-price">@info_product.price  đ</span></h6>
-                                <div class="pro_description">
+     <div id="wrapper">         
+          <div id="tittle-trade" class="d-flex py-3 justify-content-between">
+               <div class="d-flex">
+                    <a href="/Cart/buy_coin">
+                         <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <h3>Chi tiết sản phẩm</h3>
+               </div>
+               <!-- Giỏ hàng -->
+               <div>
+                    <a href="/Cart/CheckOut">
+                         <i class="fas fa-cart-plus"></i>
+                    </a>
+                    <span class="product-num text-center">@num_product</span>
+               </div>
+
+          </div>
+          <div class="mt-3">
+               <div class="container">
+                    <div class="row">
+                         <div class="col-md-12">
+                              <div class="row">
+                                   <div class="col-md-4" id="product-thumbnail">
+                                        <img src="~/Public/Asset/img/shop/@info_product.image_link" alt="" class="img-fluid">
+                                   </div>
+                                   <div class="col-md-8">
+                                        <h3 id="product-name">@info_product.name</h3>
+                                        <h6 class="text-bold">Mã sản phẩm: <span id="product-code">@info_product.code</span></h6>
+                                        <h6>Giá sản phẩm: <span id="product-price">@info_product.price  đ</span></h6>
+                                        <div class="pro_description">
 
 
-                                </div>
-                                <div id="buy-product" class="d-flex mt-4">
-                                    <form method="post" action="/Cart/add_mul_product/@info_product.id_product">
-                                        <input type="number" name="num_order" min=1 max=100 value="1" class="text-center">
-                                        
-                                            <button class="btn btn-danger ml-3" name="command" value="buy_now">Mua ngay</button>
-                                        
-                                       
-                                            <button class="btn btn-danger ml-3" name="command" value="add_product">Thêm vào giỏ hàng</button>
-                                        
-                                    </form>
-                                    
-                                </div>
-                            </div>
+                                        </div>
+                                        <div id="buy-product" class="d-flex mt-4">
+                                             <form method="post" action="/Cart/add_mul_product/@info_product.id_product">
+                                                  <input type="number" name="num_order" min=1 max=100 value="1" class="text-center">
+
+                                                  <button class="btn btn-danger ml-3" name="command" value="buy_now">Mua ngay</button>
 
 
-                        </div>
+                                                  <button class="btn btn-danger ml-3" name="command" value="add_product">Thêm vào giỏ hàng</button>
+
+                                             </form>
+
+                                        </div>
+                                   </div>
+
+
+                              </div>
+                         </div>
+                         <div class="col-md-12 detail-prd">
+                              <div class="border-bottom mt-5">
+                                   <h4 class="detail-item mb-0">Chi tiết sản phẩm</h4>
+                              </div>
+                              <div class="pro_content">
+
+                              </div>
+                              <div class="text-center">
+                                   <img src="~/Public/Asset/img/shop/@info_product.image_link" alt="">
+                                   <h3>Hãy mua ngay!!!</h3>
+                              </div>
+
+                         </div>
                     </div>
-                    <div class="col-md-12 detail-prd">
-                        <div class="border-bottom mt-5">
-                            <h4 class="detail-item mb-0">Chi tiết sản phẩm</h4>
-                        </div>
-                        <div class="pro_content">
-
-                        </div>
-                        <div class="text-center">
-                            <img src="~/Public/Asset/img/shop/@info_product.image_link" alt="">
-                            <h3>Hãy mua ngay!!!</h3>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+               </div>
+          </div>
 
 
-    </div>
+     </div>
     <script>
         $(document).ready(function () {
               var content = '@info_product.content';

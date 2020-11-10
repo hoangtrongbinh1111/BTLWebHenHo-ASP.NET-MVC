@@ -1,0 +1,433 @@
+﻿
+@{
+     Layout = null;
+     var info = ViewBag.info;
+     var age = 0;
+     var birthday = "";
+     if (info.birthday != null)
+     {
+          string[] spl = info.birthday.Split('-');
+          birthday = spl[0];
+          age = DateTime.Now.Year - Convert.ToInt32(birthday);
+          birthday = spl[2] + "/" + spl[1] + "/" + spl[0];
+     }
+     var id_user = ViewBag.id_user;
+}
+
+<!DOCTYPE html>
+
+<html>
+@Html.Partial("head")
+<link rel="stylesheet" href="~/Public/Asset/css/personal.css">
+<script src="~/Public/Asset/js/personal.js"></script>
+@*<script src="~/Public/Asset/js/vendor/jquery.ui.widget.js"></script>
+     <script src="~/Public/Asset/js/vendor/jquery.fileupload.js"></script>*@
+<style>
+     body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    background: #dae2f8 linear-gradient(90deg, #f7c9c9, #91a8d1)
+}
+
+#wrapper {
+    width: 660px;
+    margin: 0px auto;
+    background: #fff;
+    min-height: 100vh;
+}
+
+body a:hover {
+    text-decoration: none;
+}
+
+
+/* tittle trade */
+
+#tittle-trade {
+    color: #fff;
+    background: #4c71b5;
+}
+
+#tittle-trade a>i {
+    color: #fff;
+    font-size: 2rem;
+    margin: 0 1rem;
+    margin-top: 5px;
+}
+</style>
+<body>
+     <div id="wrapper">                                
+               <div id="tittle-trade" class="d-flex py-3 justify-content-between">
+                    <div class="d-flex">
+                         <a href="/Profile/Index/@id_user">
+                              <i class="fas fa-arrow-left"></i>
+                         </a>
+                         <h3>Trang cá nhân của @info.NickName</h3>
+                    </div>
+               </div>
+          
+          
+               <div class="tab-pane fade show active" id="content-personal" role="tabpanel" aria-labelledby="tab-personal">
+                    <div class="text-center my-5">
+                         <a href="" class="card_link">
+                              @{
+                                   if (info.avatar != null)
+                                   {
+                                        <img src="~/Public/Asset/img/Avatar/@info.avatar" alt="" width="400px" height="400px">
+                                   }
+                                   else
+                                   {
+                                        <img src="~/Public/Asset/img/male_default_large.jpg" alt="" width="400px" height="400px">
+                                   }
+                              }
+
+                         </a>
+                         <div class="wp-item-info text-center mt-2">
+                              <div class="item-info-user ml-3 font-weight-bolder">
+                                   <p class="item-fullname">@info.NickName - @age - <span class="item-address">@info.address_user</span></p></p>
+
+                              </div>
+
+                         </div>
+                    </div>
+                    <div id="list-img">
+                         <div class="tittle-item">
+                              Ảnh
+                         </div>
+
+                         @if (info.list_thumb != null)
+                         {
+                              string[] list_img = info.list_thumb.Split('/');
+                              <div id="list_your_image">
+                                   <ul class="list-unstyled d-flex flex-wrap justify-content-around">
+                                        @for (int i = 0; i < list_img.Count() - 1; i++)
+                                        {
+                                             <li class="mr-2 mb-2" data-name_img="@list_img[i]">
+                                                  <img src="~/Public/Asset/img/List_image_upload/@list_img[i]" class="img-fluid" />
+                                                  <i class="fas fa-times-circle del_img_user"></i>
+                                             </li>
+                                        }
+                                   </ul>
+                              </div>
+                         }
+                         else
+                         {
+                              <p class="sub-tittle-item">Không có ảnh để hiển thị</p>
+                         }
+
+
+                    </div>
+
+                    <div id="introduce-self">
+                         <div class="tittle-item">
+                              Giới thiệu bản thân
+                         </div>
+                         <p class="sub-tittle-item">Hoa rơi cửa phật, vạn sự tùy duyên</p>
+                    </div>
+                    <form>
+                         <div id="Info-basic-username">
+                              <div class="tittle-item">
+                                   Thông tin cơ bản
+                              </div>
+                              <table class="table">
+                                   <tbody>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Tên</td>
+                                             <td id="NickName">
+                                                  <span>@info.NickName</span>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Giới tính</td>
+                                             <td id="gender">
+                                                  @{if (info.gender != null)
+                                                       { <span>@info.gender</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Tuổi</td>
+                                             <td id="age">
+                                                  <span>@age</span>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Ngày sinh</td>
+                                             <td id="birthday">
+                                                  @{if (info.birthday != null)
+                                                       { <span>@birthday</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Chòm sao</td>
+                                             <td id="star">
+                                                  Song Tử
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Chiều cao</td>
+                                             <td id="height">
+                                                  <span>@info.height</span>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40 pt-15">
+                                                  Dáng người
+                                             </td>
+                                             <td id="body">
+                                                  @{if (info.body != null)
+                                                       { <span>@info.body</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40 pt-15">
+                                                  Nhóm máu
+                                             </td>
+                                             <td id="blood">
+                                                  @{if (info.blood != null)
+                                                       { <span>@info.blood</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40 pt-15">
+                                                  Quốc gia
+                                             </td>
+                                             <td id="national_user">
+                                                  @{if (info.national_user != null)
+                                                       { <span>@info.national_user</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40 pt-15">
+                                                  Quê quán
+                                             </td>
+                                             <td id="address_user">
+                                                  @{if (info.address_user != null)
+                                                       { <span>@info.address_user</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40 pt-15">
+                                                  Anh chị em
+                                             </td>
+                                             <td id="family">
+                                                  @{if (info.family != null)
+                                                       { <span>@info.family</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40 pt-15">
+                                                  Ngôn ngữ
+                                             </td>
+                                             <td id="language">
+                                                  @{if (info.language_user != null)
+                                                       { <span>@info.language_user</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                   </tbody>
+                              </table>
+                         </div>
+                         <div id="Info-job-username">
+                              <div class="tittle-item">
+                                   Học vấn - Nghề nghiệp
+                              </div>
+                              <table class="table">
+                                   <tbody>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Học vấn</td>
+                                             <td id="education">
+                                                  @{if (info.education != null)
+                                                       { <span>@info.education</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Nghề nghiệp</td>
+                                             <td id="job">
+                                                  @{if (info.job != null)
+                                                       { <span>@info.job</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Thu nhập hàng tháng</td>
+                                             <td id="income">
+                                                  @{if (info.income != null)
+                                                       { <span>@info.income</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                   </tbody>
+                              </table>
+                         </div>
+                         <div id="Info-family-username">
+                              <div class="tittle-item">
+                                   Gia đình
+                              </div>
+                              <table class="table">
+                                   <tbody>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Tình trạng hôn nhân</td>
+                                             <td id="martial_status">
+                                                  @{if (info.martial_status != null)
+                                                       { <span>@info.martial_status</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Đã có con</td>
+                                             <td id="baby_status">
+                                                  @{if (info.baby_status != null)
+                                                       { <span>@info.baby_status</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Mong muốn có con</td>
+                                             <td id="want_baby_status">
+                                                  @{if (info.want_baby_status != null)
+                                                       { <span>@info.want_baby_status</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Tình trạng sinh sống</td>
+                                             <td id="live_status">
+                                                  @{if (info.live_status != null)
+                                                       { <span>@info.live_status</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                   </tbody>
+                              </table>
+                         </div>
+                         <div id="Info-family-username">
+                              <div class="tittle-item">
+                                   Quan điểm - Phong cách sống
+                              </div>
+                              <table class="table">
+                                   <tbody>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Sở thích</td>
+                                             <td>
+                                                  <span>@info.hobbies</span>
+                                             </td>
+
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Tính cách</td>
+                                             <td id="character_user">
+                                                  @{if (info.character_user != null)
+                                                       { <span>@info.character_user</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Quan hệ xã hội</td>
+                                             <td id="public_relationship">
+                                                  @{if (info.public_relationship != null)
+                                                       { <span>@info.public_relationship</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Mong muốn gặp mặt</td>
+                                             <td id="want_meet">
+                                                  @{if (info.want_meet != null)
+                                                       { <span>@info.want_meet</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Mong muốn kết hôn</td>
+                                             <td id="want_marry">
+                                                  @{if (info.want_marry != null)
+                                                       { <span>@info.want_marry</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Sẵn sàng làm việc nhà</td>
+                                             <td id="ready_do_hw">
+                                                  @{if (info.ready_do_homework != null)
+                                                       { <span>@info.ready_do_homework</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Ngày nghỉ</td>
+                                             <td id="freeday">
+                                                  @{if (info.freeday != null)
+                                                       { <span>@info.freeday</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Uống rượu</td>
+                                             <td id="wine">
+                                                  @{if (info.wine != null)
+                                                       { <span>@info.wine</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Hút thuốc</td>
+                                             <td id="smoke">
+                                                  @{if (info.smoke != null)
+                                                       { <span>@info.smoke</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td class=" txt-light f-18 w-40">Chi phí cho lần hẹn đầu</td>
+                                             <td id="pay_first_meet">
+                                                  @{if (info.pay_first_meet != null)
+                                                       { <span>@info.pay_first_meet</span>}
+                                                  else
+                                                  {<span>Không có</span>} }
+                                             </td>
+                                        </tr>
+                                   </tbody>
+                              </table>
+                         </div>
+                    </form>
+               </div>
+          
+     </div>
+     <a id="back-to-top" href="#" class="btn btn-danger btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+     <script>
+
+         
+     </script>
+</body>
+</html>
