@@ -5,9 +5,14 @@
     ViewBag.Title = "add_product";
     var list_order = ViewBag.list_order;
     var all_amount = ViewBag.all_amount;
-    var price_transit = 7000;
-    var all = all_amount + price_transit;
-    var location = ViewBag.location;
+    var transaction = ViewBag.trans;
+    var all = all_amount;
+    if(transaction!=null)
+    {
+        all = all_amount +transaction.ship;
+    }
+    var provincial = ViewBag.provincial;
+
 
 }
 
@@ -17,13 +22,18 @@
 <html>
 @Html.Partial("head")
 <link rel="stylesheet" href="~/Public/Asset/css/CheckOut.css">
-<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAA7j_Q-rshuWkc8HyFI4V2HxQYPm-xtd00hTQOC0OXpAMO40FHAxT29dNBGfxqMPq5zwdeiDSHEPL89A&callback=initMaps" type="text/javascript"></script>
+@*<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAA7j_Q-rshuWkc8HyFI4V2HxQYPm-xtd00hTQOC0OXpAMO40FHAxT29dNBGfxqMPq5zwdeiDSHEPL89A&callback=initMaps" type="text/javascript"></script>*@
+@*<style>
+</style>*@
 <style>
+    .hide{
+        display:none;
+    }
 </style>
 <body>
-    <script language="javascript">
+    @*<script language="javascript">
         var geocoder, location1, location2;
-    </script>
+    </script>*@
     <div id="wrapper">
         <div id="tittle-trade" class="d-flex py-3">
             <a href="/Cart/buy_coin">
@@ -34,29 +44,75 @@
         <div class="border_delivery">
 
         </div>
+
         <div class="address_ship">
             <div class="ship_header mt-3 d-flex">
                 <i class="fas fa-map-marker-alt mx-2"></i>
                 <h4>Địa chỉ nhận hàng</h4>
             </div>
-            <div class="address_content container">
-                <div class="row">
-                    <div class="col-md-12">
+            @{
+                if (list_order != null && list_order.Count > 0)
+                {
+                    <div class="address_content container">
                         <div class="row">
-                            <div class="col-md-4">
-                                <strong>Hoang Trong Binh (+84)</strong>
-                                <p>0985592699</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p> Nhà ông Hoàng Văn Biện, thôn Đào Viên, xã Dân Tiến, huyện Khoái Châu, tỉnh Hưng Yên</p>
-                            </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#change_address">Thay đổi</button>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong id="full_name">
+                                            @{
+                                                if (transaction != null)
+                                                {
+                                                    @transaction.name_customer;
+
+                                                }
+                                                else
+                                                {
+                                                    <span>Chưa có thông tin</span>
+
+                                                }
+                                        }
+                                    </strong>
+                                    <p id="te_le_phone">
+                                        @{
+                                            if (transaction != null)
+                                            {
+                                                @transaction.phone;
+
+                                            }
+                                            else
+                                            {
+                                                <span>Chưa có thông tin</span>
+
+                                            }
+                                        }
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="add_ress">
+                                        @{
+                                            if (transaction != null)
+                                            {
+                                                @transaction.address;
+
+                                            }
+                                            else
+                                            {
+                                                <span>Chưa có thông tin</span>
+
+                                            }
+                                        }
+                                    </p>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#change_address">Thay đổi</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
+            }
+
 
         </div>
         <div class="btn-continue">
@@ -105,68 +161,139 @@
                                     </table>
                                     <a href="/Cart/DeleteAll">Xóa tất cả</a>
                                     <div class=" my-5">
-                                        <div class="ship_unit d-flex justify-content-between">
-                                            <p class="mt-3">Đơn vị vận chuyển</p>
-                                            <div class="ship_unit_content d-flex ml-2 ">
-                                                <div class="ship_unit_info d-flex flex-column mr-5">
-                                                    <strong>Vận chuyển nhanh</strong>
-                                                    <small>Giao hàng tiết kiệm</small>
-                                                    <p class="text-danger" style="font-size:13px;">Chọn thời gian giao hàng mong muốn</p>
+                                        <div class="ship_unit d-flex justify-content-between"  style="background: #efefef;">
+                                            <p class="mt-3"style=" padding-top: 10px; font-size: 22px;font-weight: 700;">Chọn hình thức giao hàng</p>
+                                            <div class="ship_unit_info d-flex flex-column">
+                                                <div class="form-group" style="margin-bottom:0px;">
+                                                    @{
+                                                        if (transaction.translate == "normal")
+                                                        {
+                                                            <input type="radio" name="translate" value="normal" id="normal" checked="checked" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <input type="radio" name="translate" value="normal" id="normal" />
+                                                        }
+                                                    }
+                                                    <label for="normal">Giao hàng tiêu chuẩn</label>
                                                 </div>
-                                                <a href="" class="mr-4">THAY ĐỔI</a>
-                                                <span>@price_transit đ</span>
+                                                <div class="form-group" style="margin-bottom:0px;">
+                                                    @{
+                                                        if (transaction.translate == "fast")
+                                                        {
+                                                            <input type="radio" name="translate" value="fast" id="fast" checked="checked" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <input type="radio" name="translate" value="fast" id="fast" />
+                                                        }
+                                                    }
+                                                    <label for="fast">Giao hàng nhanh</label>
+                                                </div>
+                                                <div class="form-group" style="margin-bottom:0px;">
+                                                    @{
+                                                        if (transaction.translate == "slow")
+                                                        {
+                                                            <input type="radio" name="translate" value="slow" id="slow" checked="checked" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <input type="radio" name="translate" value="slow" id="slow" />
+                                                        }
+                                                    }
+
+                                                    <label for="slow">Giao hàng tiết kiêm</label>
+                                                </div>
+                                                </div>
+                                            <div class="ship_unit_content d-flex ml-2 " style=" padding-top: 32px;padding-right: 10px;">
+                                                <span id="ship">
+                                                    @{
+                                                        if (transaction != null)
+                                                        {
+                                                            @transaction.ship;
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>0</span>
+
+                                                        }
+                                                    } đ
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="payment d-flex justify-content-between">
-                                        <h5 class="mt-2">Phương thức thanh toán</h5>
-                                        <p class="border p-2">Thanh toán khi nhận hàng</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="take_note">
-                                            <span>Lời nhắn</span>
-                                            <input type="text" placeholder="Lưu ý cho người bán" class="p-2" style="width:320px;">
-                                        </div>
-
-                                    </div>
-                                    <div class="checkout_bill mt-5">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-4">
-
-                                                </div>
-                                                <div class="col-md-8 text-right">
-                                                    <div class="d-flex justify-content-between">
-                                                        <p>Tổng tiền hàng</p>
-                                                        <p class="all_amount">@all_amount đ</p>
-                                                    </div>
-                                                    <div class="d-flex justify-content-between">
-                                                        <p>Phí vận chuyển</p>
-                                                        <p>@price_transit đ</p>
-                                                    </div>
-                                                    <div class="d-flex justify-content-between">
-                                                        <p class="mt-3">Tổng thanh toán</p>
-                                                        <p class="all" style="color:#ee4d2d;font-size:2rem;">@all đ</p>
-                                                    </div>
-                                                    <button class="btn btn-success w-75 py-2">Đặt hàng</button>
-                                                </div>
+                                    <form action="/Cart/payment" method="post" class="form-group">
+                                        <div class="payment d-flex justify-content-between">
+                                            <h5 class="" style="font-weight:700;">Phương thức thanh toán</h5>
+                                            <div class="form-group">
+                                                <input type="radio" name="payment" value="offline" id="offline" checked="checked" />
+                                                <label for="offline">Thanh toán khi nhận hàng</label>
+                                            </div>
+                                            <br />
+                                            <div class="form-group">
+                                                <input type="radio" name="payment" value="online" id="online" />
+                                                <label for="online">Thanh toán online</label>
                                             </div>
 
                                         </div>
-                                    </div>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="take_note">
+                                                <span>Lời nhắn</span>
+                                                <input type="text" name="note" placeholder="Lưu ý cho người bán" class="p-2" style="width:320px;">
+                                            </div>
+
+                                        </div>
+                                        <div class="checkout_bill mt-5">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+
+                                                    </div>
+                                                    <div class="col-md-8 text-right mb-5">
+                                                        <div class="d-flex justify-content-between">
+                                                            <p>Tổng tiền hàng</p>
+                                                            <p class="all_amount">@all_amount đ</p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between">
+                                                            <p>Phí vận chuyển</p>
+                                                            <p class="ship">
+                                                                @{
+                                                                    if (transaction != null)
+                                                                    {
+                                                                        @transaction.ship;
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span>Chưa có thông tin</span>
+
+                                                                    }
+                                                                }  đ
+                                                            </p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between">
+                                                            <p class="mt-3">Tổng thanh toán</p>
+                                                            <p class="all" style="color:#ee4d2d;font-size:2rem;">@all đ</p>
+                                                        </div>
+                                                       <button class="btn btn-success w-75 py-2">Đặt hàng</button>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                    
                                 }
                                 else
                                 {
                                     <p>Không có sản phẩm nào để hiển thị</p>
                                 }
-
-
                             }
-
-
-
+                          
                         </div>
-                        <p>@location</p>
+                       
                     </div>
                 </div>
             </div>
@@ -185,28 +312,51 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <h3>Thêm địa chỉ mới</h3>
-                    <form action="/Cart/get_location" method="post">
-                        <input type="text" name="fullname" id="fullname" placeholder="Họ & tên" class="form-control mb-3" />
-                        <input type="tel" name="telephone" id="telephone" placeholder="Số điện thoại" class="form-control mb-3" />
-                        <input type="text" name="address" id="address" placeholder="Địa chỉ" class="form-control mb-3" />
+                    @Html.AntiForgeryToken()
+                    <input type="text" name="fullname" id="fullname" placeholder="Họ & tên" class="form-control mb-3" />
+                    <input type="tel" name="telephone" id="telephone" placeholder="Số điện thoại" class="form-control mb-3" />
+                    <select class="form-control mb-3" name="provincial" id="provincial">
+                        <option value="0" selected>Chọn tỉnh</option>
+                        @{
+
+                            foreach (var item in provincial)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        }
+                    </select>
+                    <select class="form-control mb-3" name="distric" id="distric">
+                        <option value="0">Chọn quận, huyện</option>
+                    </select>
+                    <select class="form-control mb-3" name="ward" id="ward">
+                        <option value="0">Chọn xã, phường</option>
+                    </select>
+                    <input class="form-control mb-5" type="text" name="address" value="" id="address" placeholder="Địa chỉ chi tiết" />
 
 
-                        <button type="button" name="command" value="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" name="command" value="complete" class="btn btn-danger" data-dismiss="modal">Hoàn thành</button>
+                    <div class="alert alert-danger hide">
 
-                    </form>
-                    
+                    </div>
+                    <div class="alert alert-success hide">
+
+                    </div>
+                    <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="btn-complete" value="complete" class="btn btn-danger">Hoàn thành</button>
+
+
+
 
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    
+                   
                 </div>
             </div>
         </div>
     </div>
     <script>
         $(document).ready(function () {
+            // số lượng sản phẩm thay đổi
             $(".num_order").change(function () {
 
                 var id = $(this).attr("data-id");
@@ -223,8 +373,8 @@
                     success: function (response) {
                         $("#amount-" + id).text(response.amount + " đ");
                         $(".all_amount").text(response.all_amount + " đ");
-                        //   var all = all_amount + 7000;
-                        // $(".all").text(all);
+                           
+                         $(".all").text(response.all_money+ " đ");
 
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
@@ -236,6 +386,204 @@
 
                 });
             });
+
+            // thay đổi tỉnh thành
+            $("#provincial").click(function () {  
+                
+                var val_provi = $("#provincial").find(":selected").val();
+                var data = { val_provi: val_provi };
+                $.ajax({
+
+                    url: "/Cart/change_provi",
+                    type: "POST",
+                    dataType: "json",
+                    data: data,
+
+                    success: function (response) {
+
+                        //   var all = all_amount + 7000;
+                        // $(".all").text(all);
+                        $("#distric").html(response.distric);
+                        $("#ward").html("");
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert("loi");
+                        alert(xhr.status);
+                        alert(thrownError);
+                    }
+                })
+            });
+
+            //Thay đổi huyện, quận
+             $("#distric").change(function () {
+
+                 var val_distric = $("#distric").find(":selected").val();
+                var data = { val_distric: val_distric };
+                $.ajax({
+
+                    url: "/Cart/change_distric",
+                    type: "POST",
+                    dataType: "json",
+                    data: data,
+
+                    success: function (response) {
+
+                        //   var all = all_amount + 7000;
+                        // $(".all").text(all);
+                        $("#ward").html(response.ward);
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert("loi");
+                        alert(xhr.status);
+                        alert(thrownError);
+                    }
+                })
+            });
+            
+            //    // xử lý thay đổi thông tin trong phần thay đổi địa chỉ
+            $("#btn-complete").click(function () {
+                var fullname = $("#fullname").val();
+                var telephone = $("#telephone").val();
+                var provincial = $("#provincial").find(":selected").text();
+                var distric = $("#distric").find(":selected").text();
+              var  ward = $("#ward").find(":selected").text();
+              var  address = $("#address").val();
+                var data = {
+                    fullname: fullname,
+                    telephone: telephone,
+                    provincial: provincial,
+                    distric: distric,
+                    ward: ward,
+                    address: address,
+                   
+                   
+                };
+                $.ajax({
+                     url: "/Cart/get_location",
+                    type: "POST",
+                    dataType: "json",
+                    data: data,
+                    success: function (response)
+                    {
+                        // Nếu có lỗi
+                        if (response.error[0] != "" || response.error[1] != "" || response.error[2] != "" || response.error[3] != "" || response.error[4] != "" || response.error[5] != "")
+                        {
+                            var html = "";
+                            for (var i = 0; i < 6; i++)
+                            {
+                                if (response.error[i] != "")
+                                {
+                                    html += "<p>" + response.error[i] + "</p><br>";
+                                }
+
+                            }
+                            $(".alert-danger").html(html).removeClass('hide');
+                        }
+                        else {
+                          
+                            $(".close").click();
+                            $("#full_name").text(response.fullname);
+                            $("#te_le_phone").text(response.telephone);
+                            $(".add_ress").text(response.location);
+                            $("#ship").text(response.ship+ " đ");
+                            $(".ship").text(response.ship+ " đ");
+
+                            $(".all").text(response.all+ " đ");
+                          
+                        }
+                       
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert("loi");
+                        alert(xhr.status);
+                        alert(thrownError);
+                    }
+                });
+            });
+                            
+            // xử lý thay đổi phương thức giao hàng
+            $("#normal").click(function () {
+                var translate = "normal";
+                var data = { translate: translate };
+                $.ajax({
+                     url: "/Cart/translate_nomarl",
+                    type: "POST",
+                    dataType: "json",
+                    data: data,
+
+                    success: function (response) {
+
+                       
+                       $("#ship").text(response.ship+ " đ");
+                            $(".ship").text(response.ship+ " đ");
+
+                            $(".all").text(response.all+ " đ");
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert("loi");
+                        alert(xhr.status);
+                        alert(thrownError);
+                    }
+                })
+            })
+
+            $("#fast").click(function () {
+                var translate = "fast";
+                var data = { translate: translate };
+                $.ajax({
+                     url: "/Cart/translate_nomarl",
+                    type: "POST",
+                    dataType: "json",
+                    data: data,
+
+                    success: function (response) {
+
+                       
+                     $("#ship").text(response.ship+ " đ");
+                            $(".ship").text(response.ship+ " đ");
+
+                            $(".all").text(response.all+ " đ");
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert("loi");
+                        alert(xhr.status);
+                        alert(thrownError);
+                    }
+                })
+            })
+
+            $("#slow").click(function () {
+                var translate = "slow";
+                var data = { translate: translate };
+                $.ajax({
+                     url: "/Cart/translate_nomarl",
+                    type: "POST",
+                    dataType: "json",
+                    data: data,
+
+                    success: function (response) {
+
+                       
+                       $("#ship").text(response.ship+ " đ");
+                            $(".ship").text(response.ship+ " đ");
+
+                            $(".all").text(response.all+ " đ");
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert("loi");
+                        alert(xhr.status);
+                        alert(thrownError);
+                    }
+                })
+            })
+               
+
         });
     </script>
    

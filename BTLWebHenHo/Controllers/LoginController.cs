@@ -8,7 +8,6 @@ using System.Security.Cryptography;
 using System.Web.SessionState;
 using System.Web.UI;
 using BTLWebHenHo.EF.Model;
-using BTLWebHenHo.common;
 
 namespace BTLWebHenHo.Controllers
 {
@@ -22,9 +21,7 @@ namespace BTLWebHenHo.Controllers
 
                if (Request.Cookies["usercredentials"] != null)
                {
-                    HttpCookie reqCookie = Request.Cookies["usercredentials"];
-
-                    return RedirectToAction("Index", "Profile",new { id= Convert.ToInt32(reqCookie["UserID"]) });
+                    return RedirectToAction("Index", "Profile");
                }
 
 
@@ -53,20 +50,8 @@ namespace BTLWebHenHo.Controllers
                               Response.Cookies.Add(usercredentialsCookie);
                          }                         
                          Session["UserID"] = data.FirstOrDefault().UserID;//lấy IDUser vào Session 
-                         //role user
-                         var dao = new UserDAO();
-                         var usersession = new userlogin();
-                         int id_user = data.FirstOrDefault().UserID;
-                         var info = _db.Profile_User.Where(x=>x.UserID==id_user ).FirstOrDefault();
-                         usersession.UserID = info.UserID;
-                         usersession.ListPermission = dao.GetListPermission(info.id_User_Type);
-                         usersession.User_Type = info.id_User_Type;
-                         usersession.Role = info.tbl_User_Type.VN_Name;
-                         Session.Add(CommonConstant.USER_SESSION, usersession);
-                         return RedirectToAction("Index", "Profile",new { id= data.FirstOrDefault().UserID });
-                         //add session                        
-                         //Session["idUser"] = data.FirstOrDefault().UserID;//lấy IDUser vào Session
-                         //return RedirectToAction("Index", "Profile");
+                         return RedirectToAction("Index", "Profile");
+                        
                     }
                     else
                     {
@@ -138,23 +123,13 @@ namespace BTLWebHenHo.Controllers
                             //DateTime date = Convert.ToDateTime(birthday);
                             //DateTime date = Convert.ToDateTime(birthday);
                             new_info_user.birthday = birthday;
-                            new_info_user.id_User_Type = 3;
                             //new_info_user.UserID = new_user.UserID;
                             _db.Profile_User.Add(new_info_user);
                             _db.SaveChanges();
                             return RedirectToAction("Index");
                         }
-
-
-
-
                     }
-                    ////_user.Password = GetMD5(_user.Password);
-                    //_db.Configuration.ValidateOnSaveEnabled = false;                            
-                    ////_db.UserInfoes.Add(_user);
-                    //_db.SaveChanges();
-                    //return RedirectToAction("Index");
-
+                  
                 }
                 else
                 {
@@ -163,9 +138,6 @@ namespace BTLWebHenHo.Controllers
                 }
             }
             return View();
-
-
-
         }
         //Logout
         [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
@@ -175,7 +147,7 @@ namespace BTLWebHenHo.Controllers
                Session.RemoveAll();
                Session.Abandon();//delete current session
                Response.Cookies["usercredentials"].Expires=DateTime.Now.AddDays(-1);
-               return RedirectToAction("Index","Login");
+               return RedirectToAction("Index");
           }
           //create a string MD5
           public static string GetMD5(string str)
