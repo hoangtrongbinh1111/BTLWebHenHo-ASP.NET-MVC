@@ -20,7 +20,7 @@
           @foreach (var item in Model)
           {
                i++;
-               if (item.birthday != null)
+               if (item.birthday != null&&item.birthday!="Không có")
                {
                     string[] spl = item.birthday.Split('-');
                     age = DateTime.Now.Year - Convert.ToInt32(spl[0]);                  

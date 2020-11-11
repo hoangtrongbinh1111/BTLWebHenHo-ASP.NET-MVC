@@ -630,6 +630,8 @@ namespace BTLWebHenHo.Controllers
           [NonAction]
           int cal_age(Profile_User info)
           {
+               if (info.birthday == null || info.birthday == "Không có")
+                    return 0;
                var age = 0;
                string[] spl = info.birthday.Split('-');
                age = DateTime.Now.Year - Convert.ToInt32(spl[0]);
