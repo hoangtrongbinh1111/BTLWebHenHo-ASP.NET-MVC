@@ -20,7 +20,7 @@ namespace BTLWebHenHo.Controllers
      public class ProfileController : Controller
     {
           BTLWebHenHo.Models.WebHenHoDbContext db = new Models.WebHenHoDbContext();
-          //[CustomAuthorizeAttribute(Permission = "MANAGER_ALL")]
+          
           // GET: Profile
           public ActionResult Index(int id)
         {              
@@ -190,6 +190,7 @@ namespace BTLWebHenHo.Controllers
                ViewBag.id_user = get_ID_User();
                return View();
           }
+          [CustomAuthorizeAttribute(Permission = "MANAGER_ALL")]
           public ActionResult Chat_Group()
           {
                
@@ -703,6 +704,11 @@ namespace BTLWebHenHo.Controllers
                responseReader.Close();
                request.GetResponse().Close();
                return RedirectToAction("Chat_ToFriend", "Profile", new { id_other_user = id_other_user, stt_id_chat = Convert.ToInt32(responseData) });
+          }
+          public ActionResult Error401()
+          {
+               ViewBag.id_user = get_ID_User();
+               return View();
           }
      }
 }

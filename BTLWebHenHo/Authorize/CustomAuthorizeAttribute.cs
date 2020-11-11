@@ -46,7 +46,7 @@ namespace BTLWebHenHo.Authorize
                var values = new RouteValueDictionary(new
                {
                     action = "Error401",
-                    controller = "Home",
+                    controller = "Profile",
                });
                filterContext.Result = new RedirectToRouteResult(values);
           }

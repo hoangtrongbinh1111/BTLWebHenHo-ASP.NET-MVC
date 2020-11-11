@@ -181,5 +181,6 @@ namespace BTLWebHenHo.Controllers
                ftb.Update(row_upd);
                return Json(new { status=true});
           }
+         
      }
 }
