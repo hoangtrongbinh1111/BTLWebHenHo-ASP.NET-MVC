@@ -20,8 +20,23 @@ namespace BTLWebHenHo.Controllers
     {
         // GET: Cart
         WebHenHoDbContext db = new WebHenHoDbContext();
-        public ActionResult payment()
+        [HttpPost]
+        public ActionResult payment(string payment,string note)
         {
+            if(payment=="offline")
+            {
+                int id_user = get_ID_User();
+                tbl_transaction transaction = db.tbl_transaction.Where(x => x.UserID == id_user && x.status == "false").FirstOrDefault();
+                transaction.note = note;
+                transaction.status = "true";
+                db.SaveChanges();
+                return RedirectToAction("buy_coin");
+            }
+            else if(payment=="online")
+             {
+                return View();
+            }
+            
             return View();
         }
         public ActionResult buy_coin()

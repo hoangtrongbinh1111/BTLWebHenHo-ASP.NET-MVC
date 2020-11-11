@@ -46,6 +46,8 @@ namespace BTLWebHenHo.Models
         [StringLength(50)]
         public string payment { get; set; }
 
+        public string note { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_order> tbl_order { get; set; }
 
