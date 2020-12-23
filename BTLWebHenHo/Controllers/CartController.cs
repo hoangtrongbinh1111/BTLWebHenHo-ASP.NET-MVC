@@ -50,6 +50,7 @@ namespace BTLWebHenHo.Controllers
             // var model = new tbl_products().ListAll();
             var model = db.tbl_products.ToList();
             var id_user = get_ID_User();
+               ViewBag.id_user = id_user;
             int id_transaction = db.tbl_transaction.Where(x => x.UserID == id_user && x.status == "false").Select(x => x.id_transaction).FirstOrDefault();
             var list_order = db.tbl_order.Where(x => x.id_transaction == id_transaction).ToList();
             int num_product = 0;
@@ -68,7 +69,7 @@ namespace BTLWebHenHo.Controllers
             var info_user = db.UserInfoes.Where(x => x.UserID == id_user).FirstOrDefault();
             // kiểm tra xem đã có đơn hàng trước chưa
             var check_transaction = db.tbl_transaction.Where(x => x.UserID == id_user && x.status == "false").ToList();
-            if (check_transaction.Count() > 0)   // nếu đã có đơn hàng
+            if (check_transaction.Count() > 0||check_transaction!=null)   // nếu đã có đơn hàng
             {
                 int id_transaction = db.tbl_transaction.Where(x => x.UserID == id_user && x.status == "false").Select(x => x.id_transaction).FirstOrDefault();
 

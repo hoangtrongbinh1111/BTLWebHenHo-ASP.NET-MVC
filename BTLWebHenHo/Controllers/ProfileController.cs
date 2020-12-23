@@ -404,13 +404,14 @@ namespace BTLWebHenHo.Controllers
           [HttpPost]
           public ActionResult Upload_List_Img(HttpPostedFileBase[] file)
           {
-               foreach(var imageFile in file)
+               int id_user = get_ID_User();
+               foreach (var imageFile in file)
                {
                     string fileName = Path.GetFileName(imageFile.FileName);
                     string path = Path.Combine(Server.MapPath("~/Public/Asset/img/List_image_upload"), fileName);
                     imageFile.SaveAs(path);
 
-                    int id_user=get_ID_User();                   
+                                   
                     var upd = db.Profile_User.Where(x => x.UserID == id_user).FirstOrDefault();
                     //country is list image
                     upd.list_thumb += fileName+"/";
@@ -422,7 +423,7 @@ namespace BTLWebHenHo.Controllers
                     db.SaveChanges();               
                }
                
-               return RedirectToAction("Index", "Profile");
+               return RedirectToAction("Index", "Profile",new { id=id_user});
           }
           
           [HttpPost]

@@ -22,7 +22,9 @@ namespace BTLWebHenHo.Controllers
 
                if (Request.Cookies["usercredentials"] != null)
                {
-                    return RedirectToAction("Index", "Profile");
+                    HttpCookie reqCookie = Request.Cookies["usercredentials"];
+
+                    return RedirectToAction("Index", "Profile", new { id = Convert.ToInt32(reqCookie["UserID"]) });
                }
 
 
@@ -62,7 +64,7 @@ namespace BTLWebHenHo.Controllers
                          usersession.Role = info.tbl_User_Type.VN_Name;
                          Session.Add(CommonConstant.USER_SESSION, usersession);
                          return RedirectToAction("Index", "Profile", new { id = data.FirstOrDefault().UserID });
-                         return RedirectToAction("Index", "Profile");
+                 
                         
                     }
                     else
@@ -160,7 +162,7 @@ namespace BTLWebHenHo.Controllers
                Session.RemoveAll();
                Session.Abandon();//delete current session
                Response.Cookies["usercredentials"].Expires=DateTime.Now.AddDays(-1);
-               return RedirectToAction("Index");
+               return RedirectToAction("Index", "Login");
           }
           //create a string MD5
           public static string GetMD5(string str)
